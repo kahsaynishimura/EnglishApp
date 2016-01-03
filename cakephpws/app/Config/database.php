@@ -69,10 +69,10 @@ class DATABASE_CONFIG {
 	public $default = array(
 		'datasource' => 'Database/Mysql',
 		'persistent' => false,
-		'host' => 'karinanishimura.com.br.mysql', 
-		'login' => 'karinanishimura_com_br',
-		'password' => '9KBZkWdT',
-		'database' => 'karinanishimura_com_br',
+		'host' => 'localhost', 
+		'login' => 'root',
+		'password' => 'root',
+		'database' => 'english_app',
 		'prefix' => '',
 		//'encoding' => 'utf8',
 	);
