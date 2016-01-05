@@ -1,0 +1,810 @@
+2016-01-04 21:49:07 Error: Fatal Error (1): Uncaught TypeError: Argument 1 passed to ErrorHandler::handleException() must be an instance of Exception, instance of Error given in /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/Error/ErrorHandler.php:116
+Stack trace:
+#0 [internal function]: ErrorHandler::handleException(Object(Error))
+#1 {main}
+  thrown in [/Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/Error/ErrorHandler.php, line 116]
+2016-01-04 21:49:07 Error: [InternalErrorException] Internal Server Error
+Request URL: /EnglishApp/cakephpws/users/add
+Stack Trace:
+#0 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/Error/ErrorHandler.php(213): ErrorHandler::handleFatalError(1, 'Uncaught TypeEr...', '/Users/karina/G...', 116)
+#1 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/Core/App.php(933): ErrorHandler::handleError(1, 'Uncaught TypeEr...', '/Users/karina/G...', 116, Array)
+#2 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/Core/App.php(906): App::_checkFatalError()
+#3 [internal function]: App::shutdown()
+#4 {main}
+2016-01-04 21:51:06 Error: Fatal Error (1): Uncaught TypeError: Argument 1 passed to ErrorHandler::handleException() must be an instance of Exception, instance of Error given in /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/Error/ErrorHandler.php:116
+Stack trace:
+#0 [internal function]: ErrorHandler::handleException(Object(Error))
+#1 {main}
+  thrown in [/Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/Error/ErrorHandler.php, line 116]
+2016-01-04 21:51:06 Error: [InternalErrorException] Internal Server Error
+Request URL: /EnglishApp/cakephpws/users/add
+Stack Trace:
+#0 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/Error/ErrorHandler.php(213): ErrorHandler::handleFatalError(1, 'Uncaught TypeEr...', '/Users/karina/G...', 116)
+#1 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/Core/App.php(933): ErrorHandler::handleError(1, 'Uncaught TypeEr...', '/Users/karina/G...', 116, Array)
+#2 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/Core/App.php(906): App::_checkFatalError()
+#3 [internal function]: App::shutdown()
+#4 {main}
+2016-01-04 22:06:37 Error: Fatal Error (1): Uncaught TypeError: Argument 1 passed to ErrorHandler::handleException() must be an instance of Exception, instance of Error given in /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/Error/ErrorHandler.php:116
+Stack trace:
+#0 [internal function]: ErrorHandler::handleException(Object(Error))
+#1 {main}
+  thrown in [/Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/Error/ErrorHandler.php, line 116]
+2016-01-04 22:06:37 Error: [InternalErrorException] Internal Server Error
+Request URL: /EnglishApp/cakephpws/users/add
+Stack Trace:
+#0 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/Error/ErrorHandler.php(213): ErrorHandler::handleFatalError(1, 'Uncaught TypeEr...', '/Users/karina/G...', 116)
+#1 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/Core/App.php(933): ErrorHandler::handleError(1, 'Uncaught TypeEr...', '/Users/karina/G...', 116, Array)
+#2 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/Core/App.php(906): App::_checkFatalError()
+#3 [internal function]: App::shutdown()
+#4 {main}
+2016-01-04 22:10:09 Error: [PDOException] SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '1' for key 'code'
+Request URL: /EnglishApp/cakephpws/users/add
+Stack Trace:
+#0 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/Model/Datasource/DboSource.php(461): PDOStatement->execute(Array)
+#1 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/Model/Datasource/DboSource.php(427): DboSource->_execute('INSERT INTO `en...', Array)
+#2 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/Model/Datasource/DboSource.php(1024): DboSource->execute('INSERT INTO `en...')
+#3 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/Model/Model.php(1933): DboSource->create(Object(User), Array, Array)
+#4 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/Model/Model.php(1751): Model->_doSave(Array, Array)
+#5 /Users/karina/GitHub/EnglishApp/cakephpws/app/Controller/UsersController.php(71): Model->save(Array)
+#6 [internal function]: UsersController->add()
+#7 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/Controller/Controller.php(490): ReflectionMethod->invokeArgs(Object(UsersController), Array)
+#8 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/Routing/Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#9 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest))
+#10 /Users/karina/GitHub/EnglishApp/cakephpws/app/webroot/index.php(110): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#11 {main}
+2016-01-04 22:10:43 Error: [PDOException] SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '1' for key 'code'
+Request URL: /EnglishApp/cakephpws/users/add
+Stack Trace:
+#0 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/Model/Datasource/DboSource.php(461): PDOStatement->execute(Array)
+#1 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/Model/Datasource/DboSource.php(427): DboSource->_execute('INSERT INTO `en...', Array)
+#2 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/Model/Datasource/DboSource.php(1024): DboSource->execute('INSERT INTO `en...')
+#3 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/Model/Model.php(1933): DboSource->create(Object(User), Array, Array)
+#4 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/Model/Model.php(1751): Model->_doSave(Array, Array)
+#5 /Users/karina/GitHub/EnglishApp/cakephpws/app/Controller/UsersController.php(71): Model->save(Array)
+#6 [internal function]: UsersController->add()
+#7 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/Controller/Controller.php(490): ReflectionMethod->invokeArgs(Object(UsersController), Array)
+#8 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/Routing/Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#9 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest))
+#10 /Users/karina/GitHub/EnglishApp/cakephpws/app/webroot/index.php(110): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#11 {main}
+2016-01-04 22:12:27 Error: [PDOException] SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '1' for key 'code'
+Request URL: /EnglishApp/cakephpws/users/add
+Stack Trace:
+#0 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/Model/Datasource/DboSource.php(461): PDOStatement->execute(Array)
+#1 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/Model/Datasource/DboSource.php(427): DboSource->_execute('INSERT INTO `en...', Array)
+#2 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/Model/Datasource/DboSource.php(1024): DboSource->execute('INSERT INTO `en...')
+#3 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/Model/Model.php(1933): DboSource->create(Object(User), Array, Array)
+#4 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/Model/Model.php(1751): Model->_doSave(Array, Array)
+#5 /Users/karina/GitHub/EnglishApp/cakephpws/app/Controller/UsersController.php(71): Model->save(Array)
+#6 [internal function]: UsersController->add()
+#7 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/Controller/Controller.php(490): ReflectionMethod->invokeArgs(Object(UsersController), Array)
+#8 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/Routing/Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#9 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest))
+#10 /Users/karina/GitHub/EnglishApp/cakephpws/app/webroot/index.php(110): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#11 {main}
+2016-01-04 22:13:29 Error: [PDOException] SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '1' for key 'code'
+Request URL: /EnglishApp/cakephpws/users/add
+Stack Trace:
+#0 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/Model/Datasource/DboSource.php(461): PDOStatement->execute(Array)
+#1 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/Model/Datasource/DboSource.php(427): DboSource->_execute('INSERT INTO `en...', Array)
+#2 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/Model/Datasource/DboSource.php(1024): DboSource->execute('INSERT INTO `en...')
+#3 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/Model/Model.php(1933): DboSource->create(Object(User), Array, Array)
+#4 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/Model/Model.php(1751): Model->_doSave(Array, Array)
+#5 /Users/karina/GitHub/EnglishApp/cakephpws/app/Controller/UsersController.php(71): Model->save(Array)
+#6 [internal function]: UsersController->add()
+#7 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/Controller/Controller.php(490): ReflectionMethod->invokeArgs(Object(UsersController), Array)
+#8 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/Routing/Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#9 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest))
+#10 /Users/karina/GitHub/EnglishApp/cakephpws/app/webroot/index.php(110): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#11 {main}
+2016-01-04 22:15:13 Error: [PDOException] SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '1' for key 'code'
+Request URL: /EnglishApp/cakephpws/users/add
+Stack Trace:
+#0 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/Model/Datasource/DboSource.php(461): PDOStatement->execute(Array)
+#1 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/Model/Datasource/DboSource.php(427): DboSource->_execute('INSERT INTO `en...', Array)
+#2 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/Model/Datasource/DboSource.php(1024): DboSource->execute('INSERT INTO `en...')
+#3 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/Model/Model.php(1933): DboSource->create(Object(User), Array, Array)
+#4 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/Model/Model.php(1751): Model->_doSave(Array, Array)
+#5 /Users/karina/GitHub/EnglishApp/cakephpws/app/Controller/UsersController.php(71): Model->save(Array)
+#6 [internal function]: UsersController->add()
+#7 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/Controller/Controller.php(490): ReflectionMethod->invokeArgs(Object(UsersController), Array)
+#8 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/Routing/Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#9 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest))
+#10 /Users/karina/GitHub/EnglishApp/cakephpws/app/webroot/index.php(110): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#11 {main}
+2016-01-04 22:19:23 Error: [PDOException] SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '1' for key 'code'
+Request URL: /EnglishApp/cakephpws/users/add
+Stack Trace:
+#0 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/Model/Datasource/DboSource.php(461): PDOStatement->execute(Array)
+#1 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/Model/Datasource/DboSource.php(427): DboSource->_execute('INSERT INTO `en...', Array)
+#2 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/Model/Datasource/DboSource.php(1024): DboSource->execute('INSERT INTO `en...')
+#3 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/Model/Model.php(1933): DboSource->create(Object(User), Array, Array)
+#4 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/Model/Model.php(1751): Model->_doSave(Array, Array)
+#5 /Users/karina/GitHub/EnglishApp/cakephpws/app/Controller/UsersController.php(72): Model->save(Array)
+#6 [internal function]: UsersController->add()
+#7 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/Controller/Controller.php(490): ReflectionMethod->invokeArgs(Object(UsersController), Array)
+#8 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/Routing/Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#9 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest))
+#10 /Users/karina/GitHub/EnglishApp/cakephpws/app/webroot/index.php(110): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#11 {main}
+2016-01-04 22:21:02 Error: [MissingActionException] Action UsersController::login() could not be found.
+Exception Attributes: array (
+  'controller' => 'UsersController',
+  'action' => 'login',
+)
+Request URL: /EnglishApp/cakephpws/users/login
+Stack Trace:
+#0 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/Routing/Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#1 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest))
+#2 /Users/karina/GitHub/EnglishApp/cakephpws/app/webroot/index.php(110): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2016-01-04 22:21:08 Error: [MissingActionException] Action UsersController::login() could not be found.
+Exception Attributes: array (
+  'controller' => 'UsersController',
+  'action' => 'login',
+)
+Request URL: /EnglishApp/cakephpws/users/login
+Stack Trace:
+#0 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/Routing/Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#1 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest))
+#2 /Users/karina/GitHub/EnglishApp/cakephpws/app/webroot/index.php(110): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2016-01-04 22:22:16 Error: [MissingActionException] Action UsersController::login() could not be found.
+Exception Attributes: array (
+  'controller' => 'UsersController',
+  'action' => 'login',
+)
+Request URL: /EnglishApp/cakephpws/users/login
+Stack Trace:
+#0 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/Routing/Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#1 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest))
+#2 /Users/karina/GitHub/EnglishApp/cakephpws/app/webroot/index.php(110): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2016-01-04 22:22:40 Error: [PDOException] SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '1' for key 'code'
+Request URL: /EnglishApp/cakephpws/users/add
+Stack Trace:
+#0 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/Model/Datasource/DboSource.php(461): PDOStatement->execute(Array)
+#1 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/Model/Datasource/DboSource.php(427): DboSource->_execute('INSERT INTO `en...', Array)
+#2 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/Model/Datasource/DboSource.php(1024): DboSource->execute('INSERT INTO `en...')
+#3 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/Model/Model.php(1933): DboSource->create(Object(User), Array, Array)
+#4 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/Model/Model.php(1751): Model->_doSave(Array, Array)
+#5 /Users/karina/GitHub/EnglishApp/cakephpws/app/Controller/UsersController.php(51): Model->save(Array)
+#6 [internal function]: UsersController->add()
+#7 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/Controller/Controller.php(490): ReflectionMethod->invokeArgs(Object(UsersController), Array)
+#8 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/Routing/Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#9 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest))
+#10 /Users/karina/GitHub/EnglishApp/cakephpws/app/webroot/index.php(110): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#11 {main}
+2016-01-04 22:23:08 Error: [PDOException] SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '1' for key 'code'
+Request URL: /EnglishApp/cakephpws/users/add
+Stack Trace:
+#0 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/Model/Datasource/DboSource.php(461): PDOStatement->execute(Array)
+#1 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/Model/Datasource/DboSource.php(427): DboSource->_execute('INSERT INTO `en...', Array)
+#2 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/Model/Datasource/DboSource.php(1024): DboSource->execute('INSERT INTO `en...')
+#3 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/Model/Model.php(1933): DboSource->create(Object(User), Array, Array)
+#4 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/Model/Model.php(1751): Model->_doSave(Array, Array)
+#5 /Users/karina/GitHub/EnglishApp/cakephpws/app/Controller/UsersController.php(51): Model->save(Array)
+#6 [internal function]: UsersController->add()
+#7 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/Controller/Controller.php(490): ReflectionMethod->invokeArgs(Object(UsersController), Array)
+#8 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/Routing/Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#9 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest))
+#10 /Users/karina/GitHub/EnglishApp/cakephpws/app/webroot/index.php(110): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#11 {main}
+2016-01-04 22:26:54 Error: [PDOException] SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '12' for key 'code'
+Request URL: /EnglishApp/cakephpws/users/add
+Stack Trace:
+#0 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/Model/Datasource/DboSource.php(461): PDOStatement->execute(Array)
+#1 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/Model/Datasource/DboSource.php(427): DboSource->_execute('INSERT INTO `en...', Array)
+#2 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/Model/Datasource/DboSource.php(1024): DboSource->execute('INSERT INTO `en...')
+#3 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/Model/Model.php(1933): DboSource->create(Object(User), Array, Array)
+#4 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/Model/Model.php(1751): Model->_doSave(Array, Array)
+#5 /Users/karina/GitHub/EnglishApp/cakephpws/app/Controller/UsersController.php(51): Model->save(Array)
+#6 [internal function]: UsersController->add()
+#7 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/Controller/Controller.php(490): ReflectionMethod->invokeArgs(Object(UsersController), Array)
+#8 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/Routing/Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#9 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest))
+#10 /Users/karina/GitHub/EnglishApp/cakephpws/app/webroot/index.php(110): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#11 {main}
+2016-01-05 14:24:21 Error: [NotFoundException] Not Found
+Request URL: /EnglishApp/cakephpws/
+Stack Trace:
+#0 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/View/View.php(971): include()
+#1 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/View/View.php(933): View->_evaluate('/Users/karina/G...', Array)
+#2 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/View/View.php(473): View->_render('/Users/karina/G...')
+#3 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/Controller/Controller.php(960): View->render('home', NULL)
+#4 /Users/karina/GitHub/EnglishApp/cakephpws/app/Controller/PagesController.php(68): Controller->render('home')
+#5 [internal function]: PagesController->display('home')
+#6 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/Controller/Controller.php(490): ReflectionMethod->invokeArgs(Object(PagesController), Array)
+#7 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/Routing/Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#8 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(PagesController), Object(CakeRequest))
+#9 /Users/karina/GitHub/EnglishApp/cakephpws/app/webroot/index.php(110): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#10 {main}
+2016-01-05 14:24:33 Error: [NotFoundException] Not Found
+Request URL: /EnglishApp/cakephpws/
+Stack Trace:
+#0 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/View/View.php(971): include()
+#1 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/View/View.php(933): View->_evaluate('/Users/karina/G...', Array)
+#2 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/View/View.php(473): View->_render('/Users/karina/G...')
+#3 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/Controller/Controller.php(960): View->render('home', NULL)
+#4 /Users/karina/GitHub/EnglishApp/cakephpws/app/Controller/PagesController.php(68): Controller->render('home')
+#5 [internal function]: PagesController->display('home')
+#6 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/Controller/Controller.php(490): ReflectionMethod->invokeArgs(Object(PagesController), Array)
+#7 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/Routing/Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#8 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(PagesController), Object(CakeRequest))
+#9 /Users/karina/GitHub/EnglishApp/cakephpws/app/webroot/index.php(110): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#10 {main}
+2016-01-05 14:24:41 Error: [MissingHelperException] Helper class XmlHelper could not be found.
+Exception Attributes: array (
+  'class' => 'XmlHelper',
+  'plugin' => false,
+)
+Request URL: /EnglishApp/cakephpws/users
+Stack Trace:
+#0 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/View/View.php(907): HelperCollection->load('Xml', Array)
+#1 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/View/View.php(354): View->loadHelpers()
+#2 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/Controller/Controller.php(1247): View->__construct(Object(UsersController))
+#3 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/Controller/Controller.php(946): Controller->_getViewObject()
+#4 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/Routing/Dispatcher.php(200): Controller->render()
+#5 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest))
+#6 /Users/karina/GitHub/EnglishApp/cakephpws/app/webroot/index.php(110): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#7 {main}
+2016-01-05 14:24:57 Error: [MissingHelperException] Helper class XmlHelper could not be found.
+Exception Attributes: array (
+  'class' => 'XmlHelper',
+  'plugin' => false,
+)
+Request URL: /EnglishApp/cakephpws/users
+Stack Trace:
+#0 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/View/View.php(907): HelperCollection->load('Xml', Array)
+#1 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/View/View.php(354): View->loadHelpers()
+#2 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/Controller/Controller.php(1247): View->__construct(Object(UsersController))
+#3 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/Controller/Controller.php(946): Controller->_getViewObject()
+#4 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/Routing/Dispatcher.php(200): Controller->render()
+#5 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest))
+#6 /Users/karina/GitHub/EnglishApp/cakephpws/app/webroot/index.php(110): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#7 {main}
+2016-01-05 14:25:22 Error: [MissingHelperException] Helper class XmlHelper could not be found.
+Exception Attributes: array (
+  'class' => 'XmlHelper',
+  'plugin' => false,
+)
+Request URL: /EnglishApp/cakephpws/users
+Stack Trace:
+#0 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/View/View.php(907): HelperCollection->load('Xml', Array)
+#1 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/View/View.php(354): View->loadHelpers()
+#2 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/Controller/Controller.php(1247): View->__construct(Object(UsersController))
+#3 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/Controller/Controller.php(946): Controller->_getViewObject()
+#4 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/Routing/Dispatcher.php(200): Controller->render()
+#5 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest))
+#6 /Users/karina/GitHub/EnglishApp/cakephpws/app/webroot/index.php(110): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#7 {main}
+2016-01-05 14:26:32 Error: [MissingViewException] View file "Users/xml/index.ctp" is missing.
+Exception Attributes: array (
+  'file' => 'Users/xml/index.ctp',
+)
+Request URL: /EnglishApp/cakephpws/users.xml
+Stack Trace:
+#0 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/View/XmlView.php(104): View->_getViewFileName('Users/xml/index')
+#1 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/Controller/Controller.php(960): XmlView->render(NULL, NULL)
+#2 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/Routing/Dispatcher.php(200): Controller->render()
+#3 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest))
+#4 /Users/karina/GitHub/EnglishApp/cakephpws/app/webroot/index.php(110): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2016-01-05 14:26:45 Error: [MissingViewException] View file "Users/xml/index.ctp" is missing.
+Exception Attributes: array (
+  'file' => 'Users/xml/index.ctp',
+)
+Request URL: /EnglishApp/cakephpws/users.xml
+Stack Trace:
+#0 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/View/XmlView.php(104): View->_getViewFileName('Users/xml/index')
+#1 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/Controller/Controller.php(960): XmlView->render(NULL, NULL)
+#2 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/Routing/Dispatcher.php(200): Controller->render()
+#3 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest))
+#4 /Users/karina/GitHub/EnglishApp/cakephpws/app/webroot/index.php(110): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2016-01-05 14:26:48 Error: [MissingViewException] View file "Users/xml/index.ctp" is missing.
+Exception Attributes: array (
+  'file' => 'Users/xml/index.ctp',
+)
+Request URL: /EnglishApp/cakephpws/users.xml
+Stack Trace:
+#0 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/View/XmlView.php(104): View->_getViewFileName('Users/xml/index')
+#1 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/Controller/Controller.php(960): XmlView->render(NULL, NULL)
+#2 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/Routing/Dispatcher.php(200): Controller->render()
+#3 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest))
+#4 /Users/karina/GitHub/EnglishApp/cakephpws/app/webroot/index.php(110): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2016-01-05 14:27:13 Error: [MissingViewException] View file "Users/xml/index.ctp" is missing.
+Exception Attributes: array (
+  'file' => 'Users/xml/index.ctp',
+)
+Request URL: /EnglishApp/cakephpws/users.xml
+Stack Trace:
+#0 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/View/XmlView.php(104): View->_getViewFileName('Users/xml/index')
+#1 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/Controller/Controller.php(960): XmlView->render(NULL, NULL)
+#2 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/Routing/Dispatcher.php(200): Controller->render()
+#3 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest))
+#4 /Users/karina/GitHub/EnglishApp/cakephpws/app/webroot/index.php(110): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2016-01-05 14:29:02 Error: Fatal Error (1): Uncaught TypeError: Argument 1 passed to ErrorHandler::handleException() must be an instance of Exception, instance of Error given in /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/Error/ErrorHandler.php:116
+Stack trace:
+#0 [internal function]: ErrorHandler::handleException(Object(Error))
+#1 {main}
+  thrown in [/Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/Error/ErrorHandler.php, line 116]
+2016-01-05 14:29:02 Error: [InternalErrorException] Internal Server Error
+Request URL: /EnglishApp/cakephpws/users.xml
+Stack Trace:
+#0 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/Error/ErrorHandler.php(213): ErrorHandler::handleFatalError(1, 'Uncaught TypeEr...', '/Users/karina/G...', 116)
+#1 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/Core/App.php(933): ErrorHandler::handleError(1, 'Uncaught TypeEr...', '/Users/karina/G...', 116, Array)
+#2 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/Core/App.php(906): App::_checkFatalError()
+#3 [internal function]: App::shutdown()
+#4 {main}
+2016-01-05 14:29:41 Error: Fatal Error (1): Uncaught TypeError: Argument 1 passed to ErrorHandler::handleException() must be an instance of Exception, instance of Error given in /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/Error/ErrorHandler.php:116
+Stack trace:
+#0 [internal function]: ErrorHandler::handleException(Object(Error))
+#1 {main}
+  thrown in [/Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/Error/ErrorHandler.php, line 116]
+2016-01-05 14:29:41 Error: [InternalErrorException] Internal Server Error
+Request URL: /EnglishApp/cakephpws/users.xml
+Stack Trace:
+#0 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/Error/ErrorHandler.php(213): ErrorHandler::handleFatalError(1, 'Uncaught TypeEr...', '/Users/karina/G...', 116)
+#1 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/Core/App.php(933): ErrorHandler::handleError(1, 'Uncaught TypeEr...', '/Users/karina/G...', 116, Array)
+#2 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/Core/App.php(906): App::_checkFatalError()
+#3 [internal function]: App::shutdown()
+#4 {main}
+2016-01-05 15:46:45 Error: [MissingControllerException] Controller class Users.jsonController could not be found.
+Exception Attributes: array (
+  'class' => 'Users.jsonController',
+  'plugin' => NULL,
+)
+Request URL: /EnglishApp/cakephpws/users.json
+Stack Trace:
+#0 /Users/karina/GitHub/EnglishApp/cakephpws/app/webroot/index.php(110): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2016-01-05 15:51:37 Error: [MissingViewException] View file "Users/json/index.ctp" is missing.
+Exception Attributes: array (
+  'file' => 'Users/json/index.ctp',
+)
+Request URL: /EnglishApp/cakephpws/users.json
+Stack Trace:
+#0 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/View/JsonView.php(107): View->_getViewFileName('Users/json/inde...')
+#1 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/Controller/Controller.php(960): JsonView->render(NULL, NULL)
+#2 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/Routing/Dispatcher.php(200): Controller->render()
+#3 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest))
+#4 /Users/karina/GitHub/EnglishApp/cakephpws/app/webroot/index.php(110): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2016-01-05 16:00:30 Error: [MissingViewException] View file "Users/xml/add.ctp" is missing.
+Exception Attributes: array (
+  'file' => 'Users/xml/add.ctp',
+)
+Request URL: /EnglishApp/cakephpws/users/add.xml
+Stack Trace:
+#0 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/View/XmlView.php(104): View->_getViewFileName('Users/xml/add')
+#1 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/Controller/Controller.php(960): XmlView->render(NULL, NULL)
+#2 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/Routing/Dispatcher.php(200): Controller->render()
+#3 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest))
+#4 /Users/karina/GitHub/EnglishApp/cakephpws/app/webroot/index.php(110): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2016-01-05 16:00:51 Error: [MissingViewException] View file "Users/xml/add.ctp" is missing.
+Exception Attributes: array (
+  'file' => 'Users/xml/add.ctp',
+)
+Request URL: /EnglishApp/cakephpws/users/add.xml
+Stack Trace:
+#0 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/View/XmlView.php(104): View->_getViewFileName('Users/xml/add')
+#1 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/Controller/Controller.php(960): XmlView->render(NULL, NULL)
+#2 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/Routing/Dispatcher.php(200): Controller->render()
+#3 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest))
+#4 /Users/karina/GitHub/EnglishApp/cakephpws/app/webroot/index.php(110): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2016-01-05 16:01:01 Error: [MissingViewException] View file "Users/xml/add.ctp" is missing.
+Exception Attributes: array (
+  'file' => 'Users/xml/add.ctp',
+)
+Request URL: /EnglishApp/cakephpws/users/add.xml
+Stack Trace:
+#0 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/View/XmlView.php(104): View->_getViewFileName('Users/xml/add')
+#1 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/Controller/Controller.php(960): XmlView->render(NULL, NULL)
+#2 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/Routing/Dispatcher.php(200): Controller->render()
+#3 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest))
+#4 /Users/karina/GitHub/EnglishApp/cakephpws/app/webroot/index.php(110): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2016-01-05 16:01:25 Error: [MissingActionException] Action UsersController::add.json() could not be found.
+Exception Attributes: array (
+  'controller' => 'UsersController',
+  'action' => 'add.json',
+)
+Request URL: /EnglishApp/cakephpws/users/add.json
+Stack Trace:
+#0 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/Routing/Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#1 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest))
+#2 /Users/karina/GitHub/EnglishApp/cakephpws/app/webroot/index.php(110): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2016-01-05 16:02:27 Error: [MissingViewException] View file "Users/xml/add.ctp" is missing.
+Exception Attributes: array (
+  'file' => 'Users/xml/add.ctp',
+)
+Request URL: /EnglishApp/cakephpws/users/add.xml
+Stack Trace:
+#0 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/View/XmlView.php(104): View->_getViewFileName('Users/xml/add')
+#1 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/Controller/Controller.php(960): XmlView->render(NULL, NULL)
+#2 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/Routing/Dispatcher.php(200): Controller->render()
+#3 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest))
+#4 /Users/karina/GitHub/EnglishApp/cakephpws/app/webroot/index.php(110): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2016-01-05 16:16:18 Error: [NotFoundException] Invalid user
+Request URL: /EnglishApp/cakephpws/users/2.xml
+Stack Trace:
+#0 [internal function]: UsersController->view('2')
+#1 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/Controller/Controller.php(490): ReflectionMethod->invokeArgs(Object(UsersController), Array)
+#2 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/Routing/Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#3 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest))
+#4 /Users/karina/GitHub/EnglishApp/cakephpws/app/webroot/index.php(110): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2016-01-05 16:37:34 Error: [MissingViewException] View file "Users/xml/index_api.ctp" is missing.
+Exception Attributes: array (
+  'file' => 'Users/xml/index_api.ctp',
+)
+Request URL: /EnglishApp/cakephpws/users/index_api.xml
+Stack Trace:
+#0 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/View/XmlView.php(104): View->_getViewFileName('Users/xml/index...')
+#1 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/Controller/Controller.php(960): XmlView->render(NULL, NULL)
+#2 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/Routing/Dispatcher.php(200): Controller->render()
+#3 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest))
+#4 /Users/karina/GitHub/EnglishApp/cakephpws/app/webroot/index.php(110): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2016-01-05 16:41:31 Error: [MissingViewException] View file "Users/xml/view.ctp" is missing.
+Exception Attributes: array (
+  'file' => 'Users/xml/view.ctp',
+)
+Request URL: /EnglishApp/cakephpws/users/view/10.xml
+Stack Trace:
+#0 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/View/XmlView.php(104): View->_getViewFileName('Users/xml/view')
+#1 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/Controller/Controller.php(960): XmlView->render(NULL, NULL)
+#2 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/Routing/Dispatcher.php(200): Controller->render()
+#3 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest))
+#4 /Users/karina/GitHub/EnglishApp/cakephpws/app/webroot/index.php(110): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2016-01-05 16:47:57 Error: [MissingViewException] View file "Users/xml/index.ctp" is missing.
+Exception Attributes: array (
+  'file' => 'Users/xml/index.ctp',
+)
+Request URL: /EnglishApp/cakephpws/users.xml
+Stack Trace:
+#0 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/View/XmlView.php(104): View->_getViewFileName('Users/xml/index')
+#1 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/Controller/Controller.php(960): XmlView->render(NULL, NULL)
+#2 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/Routing/Dispatcher.php(200): Controller->render()
+#3 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest))
+#4 /Users/karina/GitHub/EnglishApp/cakephpws/app/webroot/index.php(110): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2016-01-05 16:48:03 Error: [MissingViewException] View file "Users/xml/index.ctp" is missing.
+Exception Attributes: array (
+  'file' => 'Users/xml/index.ctp',
+)
+Request URL: /EnglishApp/cakephpws/users/index.xml
+Stack Trace:
+#0 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/View/XmlView.php(104): View->_getViewFileName('Users/xml/index')
+#1 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/Controller/Controller.php(960): XmlView->render(NULL, NULL)
+#2 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/Routing/Dispatcher.php(200): Controller->render()
+#3 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest))
+#4 /Users/karina/GitHub/EnglishApp/cakephpws/app/webroot/index.php(110): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2016-01-05 16:48:32 Error: [MissingActionException] Action UsersController::view_api.1xml() could not be found.
+Exception Attributes: array (
+  'controller' => 'UsersController',
+  'action' => 'view_api.1xml',
+)
+Request URL: /EnglishApp/cakephpws/users/view_api.1xml
+Stack Trace:
+#0 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/Routing/Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#1 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest))
+#2 /Users/karina/GitHub/EnglishApp/cakephpws/app/webroot/index.php(110): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2016-01-05 17:03:15 Error: [MissingActionException] Action UsersController::login() could not be found.
+Exception Attributes: array (
+  'controller' => 'UsersController',
+  'action' => 'login',
+)
+Request URL: /EnglishApp/cakephpws/users/login
+Stack Trace:
+#0 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/Routing/Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#1 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest))
+#2 /Users/karina/GitHub/EnglishApp/cakephpws/app/webroot/index.php(110): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2016-01-05 17:04:45 Error: [MissingControllerException] Controller class HomeController could not be found.
+Exception Attributes: array (
+  'class' => 'HomeController',
+  'plugin' => NULL,
+)
+Request URL: /EnglishApp/cakephpws/home
+Stack Trace:
+#0 /Users/karina/GitHub/EnglishApp/cakephpws/app/webroot/index.php(110): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2016-01-05 17:04:51 Error: [MissingActionException] Action UsersController::login() could not be found.
+Exception Attributes: array (
+  'controller' => 'UsersController',
+  'action' => 'login',
+)
+Request URL: /EnglishApp/cakephpws/users/login
+Stack Trace:
+#0 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/Routing/Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#1 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest))
+#2 /Users/karina/GitHub/EnglishApp/cakephpws/app/webroot/index.php(110): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2016-01-05 17:05:07 Error: [MissingActionException] Action UsersController::login() could not be found.
+Exception Attributes: array (
+  'controller' => 'UsersController',
+  'action' => 'login',
+)
+Request URL: /EnglishApp/cakephpws/users/login
+Stack Trace:
+#0 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/Routing/Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#1 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest))
+#2 /Users/karina/GitHub/EnglishApp/cakephpws/app/webroot/index.php(110): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2016-01-05 17:05:09 Error: [MissingActionException] Action UsersController::login() could not be found.
+Exception Attributes: array (
+  'controller' => 'UsersController',
+  'action' => 'login',
+)
+Request URL: /EnglishApp/cakephpws/users/login
+Stack Trace:
+#0 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/Routing/Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#1 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest))
+#2 /Users/karina/GitHub/EnglishApp/cakephpws/app/webroot/index.php(110): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2016-01-05 17:05:16 Error: [NotFoundException] Not Found
+Request URL: /EnglishApp/cakephpws/pages/display
+Stack Trace:
+#0 [internal function]: PagesController->display('display')
+#1 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/Controller/Controller.php(490): ReflectionMethod->invokeArgs(Object(PagesController), Array)
+#2 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/Routing/Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#3 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(PagesController), Object(CakeRequest))
+#4 /Users/karina/GitHub/EnglishApp/cakephpws/app/webroot/index.php(110): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2016-01-05 17:05:40 Error: [NotFoundException] Not Found
+Request URL: /EnglishApp/cakephpws/pages/display/home
+Stack Trace:
+#0 [internal function]: PagesController->display('display', 'home')
+#1 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/Controller/Controller.php(490): ReflectionMethod->invokeArgs(Object(PagesController), Array)
+#2 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/Routing/Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#3 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(PagesController), Object(CakeRequest))
+#4 /Users/karina/GitHub/EnglishApp/cakephpws/app/webroot/index.php(110): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2016-01-05 17:46:04 Error: [MissingActionException] Action AppController::Controller() could not be found.
+Exception Attributes: array (
+  'controller' => 'AppController',
+  'action' => 'Controller',
+)
+Request URL: /EnglishApp/cakephpws/app/Controller/ScriptsUsersController.php
+Stack Trace:
+#0 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/Routing/Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#1 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(AppController), Object(CakeRequest))
+#2 /Users/karina/GitHub/EnglishApp/cakephpws/app/webroot/index.php(110): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2016-01-05 17:46:30 Error: [MissingControllerException] Controller class EnglishAppController could not be found.
+Exception Attributes: array (
+  'class' => 'EnglishAppController',
+  'plugin' => NULL,
+)
+Request URL: /EnglishApp/cakephpws/EnglishApp/cakephpws/books
+Stack Trace:
+#0 /Users/karina/GitHub/EnglishApp/cakephpws/app/webroot/index.php(110): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2016-01-05 17:46:47 Error: [MissingControllerException] Controller class EnglishAppController could not be found.
+Exception Attributes: array (
+  'class' => 'EnglishAppController',
+  'plugin' => NULL,
+)
+Request URL: /EnglishApp/cakephpws/EnglishApp/cakephpws/books
+Stack Trace:
+#0 /Users/karina/GitHub/EnglishApp/cakephpws/app/webroot/index.php(110): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2016-01-05 17:51:27 Error: [MissingControllerException] Controller class EnglishAppController could not be found.
+Exception Attributes: array (
+  'class' => 'EnglishAppController',
+  'plugin' => NULL,
+)
+Request URL: /EnglishApp/cakephpws/EnglishApp/cakephpws/books
+Stack Trace:
+#0 /Users/karina/GitHub/EnglishApp/cakephpws/app/webroot/index.php(110): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2016-01-05 17:53:43 Error: [MissingControllerException] Controller class EnglishAppController could not be found.
+Exception Attributes: array (
+  'class' => 'EnglishAppController',
+  'plugin' => NULL,
+)
+Request URL: /EnglishApp/cakephpws/EnglishApp/cakephpws/books
+Stack Trace:
+#0 /Users/karina/GitHub/EnglishApp/cakephpws/app/webroot/index.php(110): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2016-01-05 17:54:58 Error: [MissingControllerException] Controller class EnglishAppController could not be found.
+Exception Attributes: array (
+  'class' => 'EnglishAppController',
+  'plugin' => NULL,
+)
+Request URL: /EnglishApp/cakephpws/EnglishApp/cakephpws/users
+Stack Trace:
+#0 /Users/karina/GitHub/EnglishApp/cakephpws/app/webroot/index.php(110): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2016-01-05 17:55:08 Error: [MissingControllerException] Controller class EnglishAppController could not be found.
+Exception Attributes: array (
+  'class' => 'EnglishAppController',
+  'plugin' => NULL,
+)
+Request URL: /EnglishApp/cakephpws/EnglishApp/cakephpws/users/add
+Stack Trace:
+#0 /Users/karina/GitHub/EnglishApp/cakephpws/app/webroot/index.php(110): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2016-01-05 17:56:06 Error: [MissingControllerException] Controller class EnglishAppController could not be found.
+Exception Attributes: array (
+  'class' => 'EnglishAppController',
+  'plugin' => NULL,
+)
+Request URL: /EnglishApp/cakephpws/EnglishApp/cakephpws/books/add/url%5Bcontroller%5D:users/url%5Baction%5D:add
+Stack Trace:
+#0 /Users/karina/GitHub/EnglishApp/cakephpws/app/webroot/index.php(110): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2016-01-05 18:00:19 Error: [MissingControllerException] Controller class PostsController could not be found.
+Exception Attributes: array (
+  'class' => 'PostsController',
+  'plugin' => NULL,
+)
+Request URL: /EnglishApp/cakephpws/posts
+Stack Trace:
+#0 /Users/karina/GitHub/EnglishApp/cakephpws/app/webroot/index.php(110): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2016-01-05 18:07:58 Error: [NotFoundException] Not Found
+Request URL: /EnglishApp/cakephpws/
+Stack Trace:
+#0 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/View/View.php(971): include()
+#1 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/View/View.php(933): View->_evaluate('/Users/karina/G...', Array)
+#2 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/View/View.php(473): View->_render('/Users/karina/G...')
+#3 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/Controller/Controller.php(960): View->render('home', NULL)
+#4 /Users/karina/GitHub/EnglishApp/cakephpws/app/Controller/PagesController.php(68): Controller->render('home')
+#5 [internal function]: PagesController->display('home')
+#6 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/Controller/Controller.php(490): ReflectionMethod->invokeArgs(Object(PagesController), Array)
+#7 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/Routing/Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#8 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(PagesController), Object(CakeRequest))
+#9 /Users/karina/GitHub/EnglishApp/cakephpws/app/webroot/index.php(110): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#10 {main}
+2016-01-05 18:08:57 Error: [NotFoundException] Not Found
+Request URL: /EnglishApp/cakephpws/
+Stack Trace:
+#0 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/View/View.php(971): include()
+#1 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/View/View.php(933): View->_evaluate('/Users/karina/G...', Array)
+#2 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/View/View.php(473): View->_render('/Users/karina/G...')
+#3 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/Controller/Controller.php(960): View->render('home', NULL)
+#4 /Users/karina/GitHub/EnglishApp/cakephpws/app/Controller/PagesController.php(68): Controller->render('home')
+#5 [internal function]: PagesController->display('home')
+#6 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/Controller/Controller.php(490): ReflectionMethod->invokeArgs(Object(PagesController), Array)
+#7 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/Routing/Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#8 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(PagesController), Object(CakeRequest))
+#9 /Users/karina/GitHub/EnglishApp/cakephpws/app/webroot/index.php(110): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#10 {main}
+2016-01-05 18:09:45 Error: [NotFoundException] Not Found
+Request URL: /EnglishApp/cakephpws/
+Stack Trace:
+#0 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/View/View.php(971): include()
+#1 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/View/View.php(933): View->_evaluate('/Users/karina/G...', Array)
+#2 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/View/View.php(473): View->_render('/Users/karina/G...')
+#3 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/Controller/Controller.php(960): View->render('home', NULL)
+#4 /Users/karina/GitHub/EnglishApp/cakephpws/app/Controller/PagesController.php(68): Controller->render('home')
+#5 [internal function]: PagesController->display('home')
+#6 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/Controller/Controller.php(490): ReflectionMethod->invokeArgs(Object(PagesController), Array)
+#7 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/Routing/Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#8 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(PagesController), Object(CakeRequest))
+#9 /Users/karina/GitHub/EnglishApp/cakephpws/app/webroot/index.php(110): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#10 {main}
+2016-01-05 18:09:48 Error: [NotFoundException] Not Found
+Request URL: /EnglishApp/cakephpws/
+Stack Trace:
+#0 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/View/View.php(971): include()
+#1 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/View/View.php(933): View->_evaluate('/Users/karina/G...', Array)
+#2 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/View/View.php(473): View->_render('/Users/karina/G...')
+#3 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/Controller/Controller.php(960): View->render('home', NULL)
+#4 /Users/karina/GitHub/EnglishApp/cakephpws/app/Controller/PagesController.php(68): Controller->render('home')
+#5 [internal function]: PagesController->display('home')
+#6 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/Controller/Controller.php(490): ReflectionMethod->invokeArgs(Object(PagesController), Array)
+#7 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/Routing/Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#8 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(PagesController), Object(CakeRequest))
+#9 /Users/karina/GitHub/EnglishApp/cakephpws/app/webroot/index.php(110): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#10 {main}
+2016-01-05 18:10:01 Error: [NotFoundException] Not Found
+Request URL: /EnglishApp/cakephpws/
+Stack Trace:
+#0 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/View/View.php(971): include()
+#1 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/View/View.php(933): View->_evaluate('/Users/karina/G...', Array)
+#2 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/View/View.php(473): View->_render('/Users/karina/G...')
+#3 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/Controller/Controller.php(960): View->render('home', NULL)
+#4 /Users/karina/GitHub/EnglishApp/cakephpws/app/Controller/PagesController.php(68): Controller->render('home')
+#5 [internal function]: PagesController->display('home')
+#6 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/Controller/Controller.php(490): ReflectionMethod->invokeArgs(Object(PagesController), Array)
+#7 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/Routing/Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#8 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(PagesController), Object(CakeRequest))
+#9 /Users/karina/GitHub/EnglishApp/cakephpws/app/webroot/index.php(110): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#10 {main}
+2016-01-05 18:10:13 Error: [NotFoundException] Not Found
+Request URL: /EnglishApp/cakephpws/
+Stack Trace:
+#0 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/View/View.php(971): include()
+#1 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/View/View.php(933): View->_evaluate('/Users/karina/G...', Array)
+#2 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/View/View.php(473): View->_render('/Users/karina/G...')
+#3 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/Controller/Controller.php(960): View->render('home', NULL)
+#4 /Users/karina/GitHub/EnglishApp/cakephpws/app/Controller/PagesController.php(68): Controller->render('home')
+#5 [internal function]: PagesController->display('home')
+#6 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/Controller/Controller.php(490): ReflectionMethod->invokeArgs(Object(PagesController), Array)
+#7 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/Routing/Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#8 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(PagesController), Object(CakeRequest))
+#9 /Users/karina/GitHub/EnglishApp/cakephpws/app/webroot/index.php(110): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#10 {main}
+2016-01-05 18:11:21 Error: [NotFoundException] Not Found
+Request URL: /EnglishApp/cakephpws/
+Stack Trace:
+#0 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/View/View.php(971): include()
+#1 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/View/View.php(933): View->_evaluate('/Users/karina/G...', Array)
+#2 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/View/View.php(473): View->_render('/Users/karina/G...')
+#3 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/Controller/Controller.php(960): View->render('home', NULL)
+#4 /Users/karina/GitHub/EnglishApp/cakephpws/app/Controller/PagesController.php(68): Controller->render('home')
+#5 [internal function]: PagesController->display('home')
+#6 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/Controller/Controller.php(490): ReflectionMethod->invokeArgs(Object(PagesController), Array)
+#7 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/Routing/Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#8 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(PagesController), Object(CakeRequest))
+#9 /Users/karina/GitHub/EnglishApp/cakephpws/app/webroot/index.php(110): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#10 {main}
+2016-01-05 18:11:30 Error: [NotFoundException] Not Found
+Request URL: /EnglishApp/cakephpws/
+Stack Trace:
+#0 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/View/View.php(971): include()
+#1 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/View/View.php(933): View->_evaluate('/Users/karina/G...', Array)
+#2 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/View/View.php(473): View->_render('/Users/karina/G...')
+#3 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/Controller/Controller.php(960): View->render('home', NULL)
+#4 /Users/karina/GitHub/EnglishApp/cakephpws/app/Controller/PagesController.php(68): Controller->render('home')
+#5 [internal function]: PagesController->display('home')
+#6 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/Controller/Controller.php(490): ReflectionMethod->invokeArgs(Object(PagesController), Array)
+#7 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/Routing/Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#8 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(PagesController), Object(CakeRequest))
+#9 /Users/karina/GitHub/EnglishApp/cakephpws/app/webroot/index.php(110): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#10 {main}
+2016-01-05 18:11:44 Error: [NotFoundException] Not Found
+Request URL: /EnglishApp/cakephpws/
+Stack Trace:
+#0 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/View/View.php(971): include()
+#1 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/View/View.php(933): View->_evaluate('/Users/karina/G...', Array)
+#2 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/View/View.php(473): View->_render('/Users/karina/G...')
+#3 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/Controller/Controller.php(960): View->render('home', NULL)
+#4 /Users/karina/GitHub/EnglishApp/cakephpws/app/Controller/PagesController.php(68): Controller->render('home')
+#5 [internal function]: PagesController->display('home')
+#6 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/Controller/Controller.php(490): ReflectionMethod->invokeArgs(Object(PagesController), Array)
+#7 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/Routing/Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#8 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(PagesController), Object(CakeRequest))
+#9 /Users/karina/GitHub/EnglishApp/cakephpws/app/webroot/index.php(110): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#10 {main}
+2016-01-05 18:15:28 Error: [NotFoundException] Not Found
+Request URL: /EnglishApp/cakephpws/
+Stack Trace:
+#0 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/View/View.php(971): include()
+#1 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/View/View.php(933): View->_evaluate('/Users/karina/G...', Array)
+#2 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/View/View.php(473): View->_render('/Users/karina/G...')
+#3 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/Controller/Controller.php(960): View->render('home', NULL)
+#4 /Users/karina/GitHub/EnglishApp/cakephpws/app/Controller/PagesController.php(68): Controller->render('home')
+#5 [internal function]: PagesController->display('home')
+#6 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/Controller/Controller.php(490): ReflectionMethod->invokeArgs(Object(PagesController), Array)
+#7 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/Routing/Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#8 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(PagesController), Object(CakeRequest))
+#9 /Users/karina/GitHub/EnglishApp/cakephpws/app/webroot/index.php(110): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#10 {main}
+2016-01-05 18:15:53 Error: [NotFoundException] Not Found
+Request URL: /EnglishApp/cakephpws/
+Stack Trace:
+#0 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/View/View.php(971): include()
+#1 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/View/View.php(933): View->_evaluate('/Users/karina/G...', Array)
+#2 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/View/View.php(473): View->_render('/Users/karina/G...')
+#3 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/Controller/Controller.php(960): View->render('home', NULL)
+#4 /Users/karina/GitHub/EnglishApp/cakephpws/app/Controller/PagesController.php(68): Controller->render('home')
+#5 [internal function]: PagesController->display('home')
+#6 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/Controller/Controller.php(490): ReflectionMethod->invokeArgs(Object(PagesController), Array)
+#7 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/Routing/Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#8 /Users/karina/GitHub/EnglishApp/cakephpws/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(PagesController), Object(CakeRequest))
+#9 /Users/karina/GitHub/EnglishApp/cakephpws/app/webroot/index.php(110): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#10 {main}

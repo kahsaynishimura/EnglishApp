@@ -33,7 +33,7 @@ CREATE TABLE users (
 	name	varchar(20) NOT NULL,
 	password VARCHAR(255),
     role VARCHAR(20),
-	email	varchar(255) NOT NULL,
+	username	varchar(255) NOT NULL,
 	code	INTEGER UNIQUE,
 	last_completed_lesson	INTEGER, 
 	created DATETIME DEFAULT NULL,
