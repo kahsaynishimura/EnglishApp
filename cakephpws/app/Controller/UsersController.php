@@ -17,22 +17,33 @@ class UsersController extends AppController {
      */
     public $components = array('Paginator', 'RequestHandler');
 
-  
-
-    public function login_api() {
-        if ($this->request->is('post')) {
-            if ($this->Auth->login()) {
-                return $this->redirect($this->Auth->redirectUrl());
-            }
-            $this->Flash->error(__('Invalid username or password, try again'));
-        }
-    }
-
-    public function logout_api() {
-        return $this->redirect($this->Auth->logout());
+    public function beforeFilter() {
+        parent::beforeFilter();
+        // Allow users to register and logout.
+        $this->Auth->allow('add', 'login', 'login_api');
     }
 
     /*     * ********************************Rest API********************************** */
+
+    public function login_api() {
+        // $this->request->data['User']['username']
+        // $this->request->data['User']['password']
+        $this->Auth->login();
+        $user = $this->Auth->user();
+        $this->set(array(
+            'user' => $user,
+            '_serialize' => array('user')
+        ));
+    }
+
+    public function logout_api() {
+        $message = $this->Auth->logout();
+        $this->set(array(
+            'message' => $message,
+            '_serialize' => array('message')
+        ));
+        //  return $this->redirect($message);
+    }
 
     /**
      * index method
