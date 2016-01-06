@@ -13,8 +13,20 @@ class BooksController extends AppController {
  *
  * @var array
  */
-	public $components = array('Paginator');
-
+	public $components = array('Paginator','RequestHandler');
+ /**
+     * index method
+     *
+     * @return void
+     */
+    public function index_api() {
+        $this->Book->recursive = 0;
+        if ($this->request->is('xml')) {
+            $this->set(array(
+                'books' => $users = $this->Book->find('all'),
+                '_serialize' => array('books')));
+        }
+    }
 /**
  * index method
  *

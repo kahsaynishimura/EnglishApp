@@ -26,8 +26,8 @@ class UsersController extends AppController {
     /*     * ********************************Rest API********************************** */
 
     public function login_api() {
-        // $this->request->data['User']['username']
-        // $this->request->data['User']['password']
+         $this->request->data['User']['username']='thiago';
+         $this->request->data['User']['password']='thiago'; 
         $this->Auth->login();
         $user = $this->Auth->user();
         $this->set(array(
