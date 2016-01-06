@@ -26,14 +26,16 @@ class UsersController extends AppController {
     /*     * ********************************Rest API********************************** */
 
     public function login_api() {
-         $this->request->data['User']['username']='thiago';
-         $this->request->data['User']['password']='thiago'; 
-        $this->Auth->login();
-        $user = $this->Auth->user();
-        $this->set(array(
-            'user' => $user,
-            '_serialize' => array('user')
-        ));
+        if ($this->request->is(array('post', 'xml'))) {
+            $this->request->data['User']['username'] = 'thiago';
+            $this->request->data['User']['password'] = 'thiago';
+            $this->Auth->login();
+            $user = $this->Auth->user();
+            $this->set(array(
+                'user' => $user,
+                '_serialize' => array('user')
+            ));
+        }
     }
 
     public function logout_api() {
@@ -42,7 +44,6 @@ class UsersController extends AppController {
             'message' => $message,
             '_serialize' => array('message')
         ));
-        //  return $this->redirect($message);
     }
 
     /**
