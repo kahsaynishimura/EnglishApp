@@ -23,8 +23,8 @@ class BooksController extends AppController {
         $this->Book->recursive = 0;
         if ($this->request->is('xml')) {
             $this->set(array(
-                'books' => $books = $this->Book->find('all'),
-                '_serialize' => array('books')));
+                'books' =>  $this->Book->find('all'),
+                '_serialize' => 'books'));
         }
     }
 /**
