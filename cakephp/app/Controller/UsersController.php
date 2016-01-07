@@ -27,8 +27,6 @@ class UsersController extends AppController {
 
     public function login_api() {
         if ($this->request->is(array('post', 'xml'))) {
-            $this->request->data['User']['username'] = 'thiago';
-            $this->request->data['User']['password'] = 'thiago';
             $this->Auth->login();
             $user = $this->Auth->user();
             $this->set(array(
