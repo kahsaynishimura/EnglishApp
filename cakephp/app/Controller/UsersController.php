@@ -36,14 +36,6 @@ class UsersController extends AppController {
         }
     }
 
-    public function logout_api() {
-        $message = $this->Auth->logout();
-        $this->set(array(
-            'message' => $message,
-            '_serialize' => array('message')
-        ));
-    }
-
     /**
      * index method
      *
