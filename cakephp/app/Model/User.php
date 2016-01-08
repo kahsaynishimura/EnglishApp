@@ -41,4 +41,11 @@ class User extends AppModel {
         return true;
     }
 
+    public function getMaxCode() {
+        $tmpUser = $this->find('first', array(
+            'limit' => 1,
+            'fields' => array('MAX(User.code) AS max_code')));
+        return $tmpUser[0]['max_code'];
+    }
+
 }
