@@ -5,11 +5,10 @@
 	<?php
 		echo $this->Form->input('id');
 		echo $this->Form->input('name');
+		echo $this->Form->input('current_password');
 		echo $this->Form->input('password');
 		echo $this->Form->input('role');
 		echo $this->Form->input('username');
-		echo $this->Form->input('code');
-		echo $this->Form->input('last_completed_lesson');
 	?>
 	</fieldset>
 <?php echo $this->Form->end(__('Submit')); ?>

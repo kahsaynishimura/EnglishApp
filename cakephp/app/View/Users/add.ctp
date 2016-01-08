@@ -9,8 +9,6 @@
             'options' => array('admin' => 'Admin', 'student' => 'Student', 'author' => 'Author')
         ));
         echo $this->Form->input('username');
-        echo $this->Form->input('code');
-        echo $this->Form->input('last_completed_lesson');
         ?>
     </fieldset>
     <?php echo $this->Form->end(__('Submit')); ?>

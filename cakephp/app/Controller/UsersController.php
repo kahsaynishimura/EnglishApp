@@ -79,6 +79,7 @@ class UsersController extends AppController {
     public function add_api() {
         if ($this->request->is('post')) {//need to check if the request is xml? set content type to xml?
             $this->User->create();
+            $this->request->data['User']['last_completed_lesson']=0;
             if ($this->User->save($this->request->data)) {
                 $message = __('The user has been saved.');
             } else {
@@ -187,6 +188,7 @@ class UsersController extends AppController {
     public function add() {
         if ($this->request->is('post')) {
             $this->User->create();
+            $this->request->data['User']['last_completed_lesson']=0;
             if ($this->User->save($this->request->data)) {
                 $this->Flash->success(__('The user has been saved.'));
                 return $this->redirect(array('action' => 'index'));
