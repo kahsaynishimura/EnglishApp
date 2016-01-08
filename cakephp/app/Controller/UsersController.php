@@ -20,7 +20,7 @@ class UsersController extends AppController {
     public function beforeFilter() {
         parent::beforeFilter();
         // Allow users to register and logout.
-        $this->Auth->allow('add', 'login', 'add_api', 'login_api');
+        $this->Auth->allow('add', 'login', 'login_api');
     }
 
     /*     * ********************************Rest API********************************** */
@@ -77,26 +77,21 @@ class UsersController extends AppController {
      * @return void
      */
     public function add_api() {
-        //testing how to get the max code and create other
-        
-        $this->Flash->success(__('max code:' . $this->User->getMaxCode()));
-       
-        /*
-          if ($this->request->is(array('post', 'xml'))) {//need to check if the request is xml? set content type to xml?
-          $this->User->create();
-          if ($this->User->save($this->request->data)) {
-          $message = __('The user has been saved.');
-          } else {
-          $message = __('The user could not be saved. Please, try again.');
-          }
-          $this->set(array(
-          'message' => $message,
-          '_serialize' => array('message')
-          ));
-          } */
+        if ($this->request->is('post')) {//need to check if the request is xml? set content type to xml?
+            $this->User->create();
+            if ($this->User->save($this->request->data)) {
+                $message = __('The user has been saved.');
+            } else {
+                $message = __('The user could not be saved. Please, try again.');
+            }
+            $this->set(array(
+                'message' => $message,
+                '_serialize' => array('message')
+            ));
+        }
     }
 
-/**
+    /**
      * edit method
      *
      * @throws NotFoundException
