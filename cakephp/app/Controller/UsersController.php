@@ -79,7 +79,7 @@ class UsersController extends AppController {
     public function add_api() {
         //testing how to get the max code and create other
         
-        $this->Flash->success(__('max code:' . $this->User->getNextCode()));
+        $this->Flash->success(__('max code:' . $this->User->getMaxCode()));
        
         /*
           if ($this->request->is(array('post', 'xml'))) {//need to check if the request is xml? set content type to xml?
