@@ -24,13 +24,8 @@
 		<dt><?php echo __('Username'); ?></dt>
 		<dd>
 			<?php echo h($user['User']['username']); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Code'); ?></dt>
-		<dd>
-			<?php echo h($user['User']['code']); ?>
-			&nbsp;
-		</dd>
+			&nbsp; 
+		</dd> 
 		<dt><?php echo __('Last Completed Lesson'); ?></dt>
 		<dd>
 			<?php echo h($user['User']['last_completed_lesson']); ?>
