@@ -36,11 +36,7 @@ class UsersController extends AppController {
         }
     }
 
-    /**
-     * index method
-     *
-     * @return void
-     */
+    
     public function index_api() {
         $this->User->recursive = 0;
         if ($this->request->is('xml')) {
@@ -50,13 +46,7 @@ class UsersController extends AppController {
         }
     }
 
-    /**
-     * view method
-     *
-     * @throws NotFoundException
-     * @param string $id
-     * @return void
-     */
+   
     public function view_api($id = null) {
         if (!$this->User->exists($id)) {
             throw new NotFoundException(__('Invalid user'));
@@ -71,11 +61,7 @@ class UsersController extends AppController {
         }
     }
 
-    /**
-     * add method
-     *
-     * @return void
-     */
+   
     public function add_api() {
         if ($this->request->is(array('post', 'xml'))) {
             $this->User->create();
@@ -119,13 +105,6 @@ class UsersController extends AppController {
         }
     }
 
-    /**
-     * delete method
-     *
-     * @throws NotFoundException
-     * @param string $id
-     * @return void
-     */
     public function delete_api($id = null) {
         $this->User->id = $id;
         if (!$this->User->exists()) {

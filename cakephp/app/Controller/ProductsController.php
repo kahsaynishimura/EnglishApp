@@ -1,5 +1,7 @@
 <?php
+
 App::uses('AppController', 'Controller');
+
 /**
  * Products Controller
  *
@@ -8,101 +10,111 @@ App::uses('AppController', 'Controller');
  */
 class ProductsController extends AppController {
 
-/**
- * Components
- *
- * @var array
- */
-	public $components = array('Paginator');
+    /**
+     * Components
+     *
+     * @var array
+     */
+    public $components = array('Paginator','RequestHandler');
 
-/**
- * index method
- *
- * @return void
- */
-	public function index() {
-		$this->Product->recursive = 0;
-		$this->set('products', $this->Paginator->paginate());
-	}
+    public function index_api() {
+        $this->Product->recursive = 0;
+        if ($this->request->is('xml')) {
+           $this->set(array(
+               'products' => $this->Product->find('all'),
+              '_serialize' => array('products')));
+        }
+    }
 
-/**
- * view method
- *
- * @throws NotFoundException
- * @param string $id
- * @return void
- */
-	public function view($id = null) {
-		if (!$this->Product->exists($id)) {
-			throw new NotFoundException(__('Invalid product'));
-		}
-		$options = array('conditions' => array('Product.' . $this->Product->primaryKey => $id));
-		$this->set('product', $this->Product->find('first', $options));
-	}
+    /**
+     * index method
+     *
+     * @return void
+     */
+    public function index() {
+        $this->Product->recursive = 0;
+        $this->set('products', $this->Paginator->paginate());
+    }
 
-/**
- * add method
- *
- * @return void
- */
-	public function add() {
-		if ($this->request->is('post')) {
-			$this->Product->create();
-			if ($this->Product->save($this->request->data)) {
-				$this->Flash->success(__('The product has been saved.'));
-				return $this->redirect(array('action' => 'index'));
-			} else {
-				$this->Flash->error(__('The product could not be saved. Please, try again.'));
-			}
-		}
-		$partners = $this->Product->Partner->find('list');
-		$this->set(compact('partners'));
-	}
+    /**
+     * view method
+     *
+     * @throws NotFoundException
+     * @param string $id
+     * @return void
+     */
+    public function view($id = null) {
+        if (!$this->Product->exists($id)) {
+            throw new NotFoundException(__('Invalid product'));
+        }
+        $options = array('conditions' => array('Product.' . $this->Product->primaryKey => $id));
+        $this->set('product', $this->Product->find('first', $options));
+    }
 
-/**
- * edit method
- *
- * @throws NotFoundException
- * @param string $id
- * @return void
- */
-	public function edit($id = null) {
-		if (!$this->Product->exists($id)) {
-			throw new NotFoundException(__('Invalid product'));
-		}
-		if ($this->request->is(array('post', 'put'))) {
-			if ($this->Product->save($this->request->data)) {
-				$this->Flash->success(__('The product has been saved.'));
-				return $this->redirect(array('action' => 'index'));
-			} else {
-				$this->Flash->error(__('The product could not be saved. Please, try again.'));
-			}
-		} else {
-			$options = array('conditions' => array('Product.' . $this->Product->primaryKey => $id));
-			$this->request->data = $this->Product->find('first', $options);
-		}
-		$partners = $this->Product->Partner->find('list');
-		$this->set(compact('partners'));
-	}
+    /**
+     * add method
+     *
+     * @return void
+     */
+    public function add() {
+        if ($this->request->is('post')) {
+            $this->Product->create();
+            if ($this->Product->save($this->request->data)) {
+                $this->Flash->success(__('The product has been saved.'));
+                return $this->redirect(array('action' => 'index'));
+            } else {
+                $this->Flash->error(__('The product could not be saved. Please, try again.'));
+            }
+        }
+        $partners = $this->Product->Partner->find('list');
+        $this->set(compact('partners'));
+    }
 
-/**
- * delete method
- *
- * @throws NotFoundException
- * @param string $id
- * @return void
- */
-	public function delete($id = null) {
-		$this->Product->id = $id;
-		if (!$this->Product->exists()) {
-			throw new NotFoundException(__('Invalid product'));
-		}
-		$this->request->allowMethod('post', 'delete');
-		if ($this->Product->delete()) {
-			$this->Flash->success(__('The product has been deleted.'));
-		} else {
-			$this->Flash->error(__('The product could not be deleted. Please, try again.'));
-		}
-		return $this->redirect(array('action' => 'index'));
-	}
+    /**
+     * edit method
+     *
+     * @throws NotFoundException
+     * @param string $id
+     * @return void
+     */
+    public function edit($id = null) {
+        if (!$this->Product->exists($id)) {
+            throw new NotFoundException(__('Invalid product'));
+        }
+        if ($this->request->is(array('post', 'put'))) {
+            if ($this->Product->save($this->request->data)) {
+                $this->Flash->success(__('The product has been saved.'));
+                return $this->redirect(array('action' => 'index'));
+            } else {
+                $this->Flash->error(__('The product could not be saved. Please, try again.'));
+            }
+        } else {
+            $options = array('conditions' => array('Product.' . $this->Product->primaryKey => $id));
+            $this->request->data = $this->Product->find('first', $options);
+        }
+        $partners = $this->Product->Partner->find('list');
+        $this->set(compact('partners'));
+    }
+
+    /**
+     * delete method
+     *
+     * @throws NotFoundException
+     * @param string $id
+     * @return void
+     */
+    public function delete($id = null) {
+        $this->Product->id = $id;
+        if (!$this->Product->exists()) {
+            throw new NotFoundException(__('Invalid product'));
+        }
+        $this->request->allowMethod('post', 'delete');
+        if ($this->Product->delete()) {
+            $this->Flash->success(__('The product has been deleted.'));
+        } else {
+            $this->Flash->error(__('The product could not be deleted. Please, try again.'));
+        }
+        return $this->redirect(array('action' => 'index'));
+    }
+
 }
