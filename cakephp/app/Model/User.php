@@ -9,7 +9,13 @@ App::uses('BlowfishPasswordHasher', 'Controller/Component/Auth');
  */
 class User extends AppModel {
 
-    public $validate = array(
+    public $validate = array('name' => array(
+            'required' => array(
+                'rule' => 'notBlank',
+                'message' => 'A name is required',
+                'on' => 'create'
+            )
+        ),
         'username' => array(
             'required' => array(
                 'rule' => 'notBlank',
