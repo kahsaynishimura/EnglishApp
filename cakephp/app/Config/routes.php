@@ -38,7 +38,7 @@
 	CakePlugin::routes();
 
 
-Router::mapResources(array('users','products','books')); 
+Router::mapResources(array('users','products','books','practices')); 
 Router::parseExtensions('xml');
 /**
  * Load the CakePHP default routes. Only remove this if you do not want to use
