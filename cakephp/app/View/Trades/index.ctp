@@ -1,5 +1,5 @@
-<div class="sales index">
-	<h2><?php echo __('Sales'); ?></h2>
+<div class="trades index">
+	<h2><?php echo __('Trades'); ?></h2>
 	<table cellpadding="0" cellspacing="0">
 	<thead>
 	<tr>
@@ -13,22 +13,22 @@
 	</tr>
 	</thead>
 	<tbody>
-	<?php foreach ($sales as $sale): ?>
+	<?php foreach ($trades as $trade): ?>
 	<tr>
 		<td>
-			<?php echo $this->Html->link($sale['Product']['name'], array('controller' => 'products', 'action' => 'view', $sale['Product']['id'])); ?>
+			<?php echo $this->Html->link($trade['Product']['name'], array('controller' => 'products', 'action' => 'view', $trade['Product']['id'])); ?>
 		</td>
 		<td>
-			<?php echo $this->Html->link($sale['User']['name'], array('controller' => 'users', 'action' => 'view', $sale['User']['id'])); ?>
+			<?php echo $this->Html->link($trade['User']['name'], array('controller' => 'users', 'action' => 'view', $trade['User']['id'])); ?>
 		</td>
-		<td><?php echo h($sale['Sale']['qr_code']); ?>&nbsp;</td>
-		<td><?php echo h($sale['Sale']['validated']); ?>&nbsp;</td>
-		<td><?php echo h($sale['Sale']['created']); ?>&nbsp;</td>
-		<td><?php echo h($sale['Sale']['modified']); ?>&nbsp;</td>
+		<td><?php echo h($trade['Trade']['qr_code']); ?>&nbsp;</td>
+		<td><?php echo h($trade['Trade']['validated']); ?>&nbsp;</td>
+		<td><?php echo h($trade['Trade']['created']); ?>&nbsp;</td>
+		<td><?php echo h($trade['Trade']['modified']); ?>&nbsp;</td>
 		<td class="actions">
-			<?php echo $this->Html->link(__('View'), array('action' => 'view', $sale['Sale']['id'])); ?>
-			<?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $sale['Sale']['id'])); ?>
-			<?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $sale['Sale']['id']), array('confirm' => __('Are you sure you want to delete # %s?', $sale['Sale']['id']))); ?>
+			<?php echo $this->Html->link(__('View'), array('action' => 'view', $trade['Trade']['id'])); ?>
+			<?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $trade['Trade']['id'])); ?>
+			<?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $trade['Trade']['id']), array('confirm' => __('Are you sure you want to delete # %s?', $trade['Trade']['id']))); ?>
 		</td>
 	</tr>
 <?php endforeach; ?>
@@ -51,7 +51,7 @@
 <div class="actions">
 	<h3><?php echo __('Actions'); ?></h3>
 	<ul>
-		<li><?php echo $this->Html->link(__('New Sale'), array('action' => 'add')); ?></li>
+		<li><?php echo $this->Html->link(__('New Trade'), array('action' => 'add')); ?></li>
 		<li><?php echo $this->Html->link(__('List Products'), array('controller' => 'products', 'action' => 'index')); ?> </li>
 		<li><?php echo $this->Html->link(__('New Product'), array('controller' => 'products', 'action' => 'add')); ?> </li>
 		<li><?php echo $this->Html->link(__('List Users'), array('controller' => 'users', 'action' => 'index')); ?> </li>

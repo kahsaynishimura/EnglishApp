@@ -1,12 +1,12 @@
 <?php
 App::uses('AppModel', 'Model');
 /**
- * Sale Model
+ * Trade Model
  *
  * @property Product $Product
  * @property User $User
  */
-class Sale extends AppModel {
+class Trade extends AppModel {
 
 /**
  * Validation rules
