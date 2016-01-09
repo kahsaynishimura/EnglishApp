@@ -35,8 +35,8 @@ class Trade extends AppModel {
 			),
 		),
 		'qr_code' => array(
-			'numeric' => array(
-				'rule' => array('numeric'),
+			'notBlank' => array(
+				'rule' => array('notBlank'),
 				//'message' => 'Your custom message here',
 				//'allowEmpty' => false,
 				//'required' => false,

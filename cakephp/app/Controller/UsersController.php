@@ -66,7 +66,7 @@ class UsersController extends AppController {
         if ($this->request->is(array('post', 'xml'))) {
             $this->User->create();
 
-            $this->request->data['User']['last_completed_lesson'] = 0;
+            $this->request->data['User']['last_completed_lesson']=$this->request->data['User']['total_points'] = 0;
             $this->request->data['User']['role'] = 'student'; //only students are allowed to be added via app
 
             if ($this->User->save($this->request->data)) {
