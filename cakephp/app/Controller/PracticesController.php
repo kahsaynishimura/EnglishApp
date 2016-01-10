@@ -29,6 +29,8 @@ class PracticesController extends AppController {
             $this->Practice->create();
 
             if ($this->Practice->save($this->request->data)) {
+                $this->Practice->User->id = $this->request->data['Practice']['user_id'];
+                $this->Practice->User->saveField('total_points', $this->request->data['Practice']['points'] + $this->Practice->User->field('total_points'));
                 $message = __('The practice has been saved.');
             } else {
                 $message = __('The practice could not be saved. Please, try again.');
