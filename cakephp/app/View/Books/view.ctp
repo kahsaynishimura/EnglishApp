@@ -11,6 +11,11 @@
 			<?php echo h($book['Book']['name']); ?>
 			&nbsp;
 		</dd>
+                <dt><?php echo __('Author'); ?></dt>
+		<dd>
+			<?php echo h($book['Book']['user_id']); ?>
+			&nbsp;
+		</dd>
 	</dl>
 </div>
 <div class="actions">

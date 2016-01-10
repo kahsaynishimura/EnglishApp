@@ -3,7 +3,8 @@ App::uses('AppModel', 'Model');
 /**
  * Book Model
  *
- * @property Lesson $Lesson
+ * @property Lesson $Lesson 
+ * @property User $User
  */
 class Book extends AppModel {
 
@@ -28,6 +29,16 @@ class Book extends AppModel {
 			'exclusive' => '',
 			'finderQuery' => '',
 			'counterQuery' => ''
+		)
+	);
+        public $belongsTo = array(
+		
+		'User' => array(
+			'className' => 'User',
+			'foreignKey' => 'user_id',
+			'conditions' => '',
+			'fields' => '',
+			'order' => ''
 		)
 	);
 
