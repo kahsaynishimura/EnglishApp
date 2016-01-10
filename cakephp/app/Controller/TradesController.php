@@ -36,6 +36,7 @@ class TradesController extends AppController {
 
             if (($user_total > $cost) && $this->Trade->save($this->request->data)) {
                 $this->Trade->User->saveField('total_points', ($user_total - $cost));
+                $this->Trade->Product->saveField('quantity_available', $this->Trade->Product->field('quantity_available') - 1);
                 $message = array(__('The trade has been saved.'));
             } else {
                 $message = array(__('The trade could not be saved. Please, try again.'));
