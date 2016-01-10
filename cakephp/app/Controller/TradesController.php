@@ -30,17 +30,23 @@ class TradesController extends AppController {
             $this->Trade->create();
             $this->Trade->User->id = $this->request->data['Trade']['user_id'];
             $this->Trade->Product->id = $this->request->data['Trade']['product_id'];
-
             $cost = $this->Trade->Product->field('points_value');
             $user_total = $this->Trade->User->field('total_points');
 
             if (($user_total > $cost) && $this->Trade->save($this->request->data)) {
                 $this->Trade->User->saveField('total_points', ($user_total - $cost));
                 $this->Trade->Product->saveField('quantity_available', $this->Trade->Product->field('quantity_available') - 1);
+
+                $qrCode = $this->Trade->id . $this->request->data['Trade']['user_id'] . $this->request->data['Trade']['product_id'] . $this->Trade->field('created');
+                $passwordHasher = new BlowfishPasswordHasher();
+                $qrCode = $passwordHasher->hash($qrCode);
+                $this->Trade->saveField('qr_code', $qrCode);
+
                 $message = array(__('The trade has been saved.'));
             } else {
                 $message = array(__('The trade could not be saved. Please, try again.'));
             }
+
             $this->set(array(
                 'message' => $message,
                 '_serialize' => array('message')
