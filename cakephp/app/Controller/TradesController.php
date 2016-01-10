@@ -27,13 +27,18 @@ class TradesController extends AppController {
     public function add_api() {
         if ($this->request->is(array('post', 'xml')) &&
                 $this->request->data['Trade']['product_id'] > 0 && $this->request->data['Trade']['user_id'] > 0) {
-
             $this->Trade->create();
+            $this->Trade->User->id = $this->request->data['Trade']['user_id'];
+            $this->Trade->Product->id = $this->request->data['Trade']['product_id'];
 
-            if ($this->Trade->save($this->request->data)) {
-                $message = __('The trade has been saved.');
+            $cost = $this->Trade->Product->field('points_value');
+            $user_total = $this->Trade->User->field('total_points');
+
+            if (($user_total > $cost) && $this->Trade->save($this->request->data)) {
+                $this->Trade->User->saveField('total_points', ($user_total - $cost));
+                $message = array(__('The trade has been saved.'));
             } else {
-                $message = __('The trade could not be saved. Please, try again.');
+                $message = array(__('The trade could not be saved. Please, try again.'));
             }
             $this->set(array(
                 'message' => $message,

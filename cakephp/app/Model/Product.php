@@ -4,7 +4,7 @@ App::uses('AppModel', 'Model');
  * Product Model
  *
  * @property Partner $Partner
- * @property Sale $Sale
+ * @property Trade $Trade
  */
 class Product extends AppModel {
 
@@ -109,8 +109,8 @@ class Product extends AppModel {
  * @var array
  */
 	public $hasMany = array(
-		'Sale' => array(
-			'className' => 'Sale',
+		'Trade' => array(
+			'className' => 'Trade',
 			'foreignKey' => 'product_id',
 			'dependent' => false,
 			'conditions' => '',
