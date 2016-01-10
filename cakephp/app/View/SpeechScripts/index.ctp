@@ -58,7 +58,5 @@
 		<li><?php echo $this->Html->link(__('New Speech Function'), array('controller' => 'speech_functions', 'action' => 'add')); ?> </li>
 		<li><?php echo $this->Html->link(__('List Exercises'), array('controller' => 'exercises', 'action' => 'index')); ?> </li>
 		<li><?php echo $this->Html->link(__('New Exercise'), array('controller' => 'exercises', 'action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Scripts Users'), array('controller' => 'scripts_users', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Scripts User'), array('controller' => 'scripts_users', 'action' => 'add')); ?> </li>
 	</ul>
 </div>
