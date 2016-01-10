@@ -164,9 +164,9 @@ class UsersController extends AppController {
             if ($this->User->save($this->request->data)) {
                 $this->Flash->success(__('Your account has been created.'));
                 if ($this->request->data['User']['role'] == "partner") {
-                    return $this->redirect(array('controller'=>'partners','action' => 'add'));
+                    return $this->redirect(array('controller' => 'partners', 'action' => 'add'));
                 } else {
-                     return $this->redirect(array('controller'=>'books','action' => 'index'));//TODO:baixe o app
+                    return $this->redirect(array('controller' => 'books', 'action' => 'index')); //TODO:baixe o app
                 }
             } else {
                 $this->Flash->error(__('The user could not be saved. Please, try again.'));
@@ -217,6 +217,22 @@ class UsersController extends AppController {
             $this->Flash->error(__('The user could not be deleted. Please, try again.'));
         }
         return $this->redirect(array('action' => 'index'));
+    }
+
+    public function isAuthorized($user) {
+        // All registered users can add posts
+        if (in_array($this->action, array('add', 'logout'))) {
+            return true;
+        }
+
+        // The owner of a post can edit and delete it
+        if (in_array($this->action, array('edit', 'delete'))) {
+            if ((int) $this->request->params['pass'][0] == (int) $user['id']) {
+                return true;
+            }
+        }
+
+        return parent::isAuthorized($user);
     }
 
 }
