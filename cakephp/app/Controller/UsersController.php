@@ -36,7 +36,6 @@ class UsersController extends AppController {
         }
     }
 
-    
     public function index_api() {
         $this->User->recursive = 0;
         if ($this->request->is('xml')) {
@@ -46,7 +45,6 @@ class UsersController extends AppController {
         }
     }
 
-   
     public function view_api($id = null) {
         if (!$this->User->exists($id)) {
             throw new NotFoundException(__('Invalid user'));
@@ -61,12 +59,11 @@ class UsersController extends AppController {
         }
     }
 
-   
     public function add_api() {
         if ($this->request->is(array('post', 'xml'))) {
             $this->User->create();
 
-            $this->request->data['User']['last_completed_lesson']=$this->request->data['User']['total_points'] = 0;
+            $this->request->data['User']['last_completed_lesson'] = $this->request->data['User']['total_points'] = 0;
             $this->request->data['User']['role'] = 'student'; //only students are allowed to be added via app
 
             if ($this->User->save($this->request->data)) {
@@ -81,7 +78,6 @@ class UsersController extends AppController {
         }
     }
 
-    
     public function edit_api($id = null) {
         if (!$this->User->exists($id)) {
             throw new NotFoundException(__('Invalid user'));
@@ -166,8 +162,12 @@ class UsersController extends AppController {
             $this->User->create();
             $this->request->data['User']['last_completed_lesson'] = 0;
             if ($this->User->save($this->request->data)) {
-                $this->Flash->success(__('The user has been saved.'));
-                return $this->redirect(array('action' => 'index'));
+                $this->Flash->success(__('Your account has been created.'));
+                if ($this->request->data['User']['role'] == "partner") {
+                    return $this->redirect(array('controller'=>'partners','action' => 'add'));
+                } else {
+                     return $this->redirect(array('controller'=>'books','action' => 'index'));//TODO:baixe o app
+                }
             } else {
                 $this->Flash->error(__('The user could not be saved. Please, try again.'));
             }
