@@ -117,4 +117,13 @@ class ProductsController extends AppController {
         return $this->redirect(array('action' => 'index'));
     }
 
+    public function isAuthorized($user) {
+        // All registered users can add posts
+        if (in_array($this->action, array('add', 'edit', 'delete'))) {
+            return true;
+        }
+
+        return parent::isAuthorized($user);
+    }
+
 }
