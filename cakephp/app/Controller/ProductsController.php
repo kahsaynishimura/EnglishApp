@@ -15,14 +15,14 @@ class ProductsController extends AppController {
      *
      * @var array
      */
-    public $components = array('Paginator','RequestHandler');
+    public $components = array('Paginator', 'RequestHandler');
 
     public function index_api() {
         $this->Product->recursive = 0;
         if ($this->request->is('xml')) {
-           $this->set(array(
-               'products' => $this->Product->find('all'),
-              '_serialize' => array('products')));
+            $this->set(array(
+                'products' => $this->Product->find('all'),
+                '_serialize' => array('products')));
         }
     }
 
@@ -103,7 +103,7 @@ class ProductsController extends AppController {
      * @param string $id
      * @return void
      */
-    public function delete($id = null) {
+    public function delete($id = null) {//checar se tem trades
         $this->Product->id = $id;
         if (!$this->Product->exists()) {
             throw new NotFoundException(__('Invalid product'));

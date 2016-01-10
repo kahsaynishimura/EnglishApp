@@ -88,25 +88,21 @@ class PartnersController extends AppController {
         $this->set(compact('users'));
     }
 
-    /**
-     * delete method
-     *
-     * @throws NotFoundException
-     * @param string $id
-     * @return void
-     */
-    public function delete($id = null) {
-        $this->Partner->id = $id;
-        if (!$this->Partner->exists()) {
-            throw new NotFoundException(__('Invalid partner'));
+    public function isAuthorized($user) {
+        // All registered users can add posts
+        if ($this->action === 'add') {
+            return true;
         }
-        $this->request->allowMethod('post', 'delete');
-        if ($this->Partner->delete()) {
-            $this->Flash->success(__('The partner has been deleted.'));
-        } else {
-            $this->Flash->error(__('The partner could not be deleted. Please, try again.'));
+
+        // The owner of a post can edit and delete it
+        if (in_array($this->action, array('edit'))) {
+            $partnerId = (int) $this->request->params['pass'][0];
+            if ($this->Partner->isOwnedBy($partnerId, $user['id'])) {
+                return true;
+            }
         }
-        return $this->redirect(array('action' => 'index'));
+
+        return parent::isAuthorized($user);
     }
 
 }

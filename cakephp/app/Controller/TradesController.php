@@ -34,7 +34,7 @@ class TradesController extends AppController {
             $cost = $this->Trade->Product->field('points_value');
             $user_total = $this->Trade->User->field('total_points');
             $available = $this->Trade->Product->field('quantity_available');
-            if (($user_total > $cost) && $this->Trade->save($this->request->data)&&$available>0) {
+            if (($user_total > $cost) && $this->Trade->save($this->request->data) && $available > 0) {
                 $this->Trade->User->saveField('total_points', ($user_total - $cost));
                 $this->Trade->Product->saveField('quantity_available', $this->Trade->Product->field('quantity_available') - 1);
                 $qrCode = $this->Trade->id . $this->request->data['Trade']['user_id'] . $this->request->data['Trade']['product_id'] . $this->Trade->field('created');
@@ -52,6 +52,10 @@ class TradesController extends AppController {
                 '_serialize' => array('general_response')
             ));
         }
+    }
+
+    public function validate() {
+//TODO
     }
 
     /**
@@ -97,54 +101,6 @@ class TradesController extends AppController {
         $products = $this->Trade->Product->find('list');
         $users = $this->Trade->User->find('list');
         $this->set(compact('products', 'users'));
-    }
-
-    /**
-     * edit method
-     *
-     * @throws NotFoundException
-     * @param string $id
-     * @return void
-     */
-    public function edit($id = null) {
-        if (!$this->Trade->exists($id)) {
-            throw new NotFoundException(__('Invalid trade'));
-        }
-        if ($this->request->is(array('post', 'put'))) {
-            if ($this->Trade->save($this->request->data)) {
-                $this->Flash->success(__('The trade has been saved.'));
-                return $this->redirect(array('action' => 'index'));
-            } else {
-                $this->Flash->error(__('The trade could not be saved. Please, try again.'));
-            }
-        } else {
-            $options = array('conditions' => array('Trade.' . $this->Trade->primaryKey => $id));
-            $this->request->data = $this->Trade->find('first', $options);
-        }
-        $products = $this->Trade->Product->find('list');
-        $users = $this->Trade->User->find('list');
-        $this->set(compact('products', 'users'));
-    }
-
-    /**
-     * delete method
-     *
-     * @throws NotFoundException
-     * @param string $id
-     * @return void
-     */
-    public function delete($id = null) {
-        $this->Trade->id = $id;
-        if (!$this->Trade->exists()) {
-            throw new NotFoundException(__('Invalid trade'));
-        }
-        $this->request->allowMethod('post', 'delete');
-        if ($this->Trade->delete()) {
-            $this->Flash->success(__('The trade has been deleted.'));
-        } else {
-            $this->Flash->error(__('The trade could not be deleted. Please, try again.'));
-        }
-        return $this->redirect(array('action' => 'index'));
     }
 
 }
