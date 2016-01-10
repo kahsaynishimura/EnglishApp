@@ -120,4 +120,21 @@ class BooksController extends AppController {
         return $this->redirect(array('action' => 'index'));
     }
 
+    public function isAuthorized($user) {
+        // All registered users can add posts
+        if ($this->action === 'add') {
+            return true;
+        }
+
+        // The owner of a post can edit and delete it
+        if (in_array($this->action, array('edit', 'delete'))) {
+            $bookId = (int) $this->request->params['pass'][0];
+            if ($this->Book->isOwnedBy($bookId, $user['id'])) {
+                return true;
+            }
+        }
+
+        return parent::isAuthorized($user);
+    }
+
 }
