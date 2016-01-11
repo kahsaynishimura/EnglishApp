@@ -19,7 +19,7 @@ class TradesController extends AppController {
 
     public function beforeFilter() {
         parent::beforeFilter();
-        $this->Auth->allow('add_api');
+        $this->Auth->allow('add_api', 'validateQR');
     }
 
     /*     * ********************************Rest API********************************** */
@@ -54,8 +54,28 @@ class TradesController extends AppController {
         }
     }
 
-    public function validate() {
-//TODO
+    public function validateQR() {
+        if ($this->request->is(array('post', 'xml')) &&
+                !empty($this->request->data['Trade']['qr_code'])) {
+            $trade = $this->Trade->find('first', array(
+                'fields' => array('id', 'Product.id', 'validated'),
+                'conditions' => array('qr_code' => $this->request->data['Trade']['qr_code'])));
+            if (sizeof($trade) == 2 && (int) $trade['Trade']['validated'] !== 1) {//sizeof($trade) == 2 means that there is a trade object and a product object
+                $this->Trade->id = $trade['Trade']['id'];
+
+                if ($this->Trade->saveField('validated', 1)) {
+                    $general_response = array('status' => 'success', 'data' => $trade['Product']['id'], 'message' => __('The code was validated'));
+                } else {
+                    $general_response = array('status' => 'failure', 'data' => null, 'message' => __('Error'));
+                }
+            } else {
+                $general_response = array('status' => 'failure', 'data' => '', 'message' => __('This item was not found or is already validated.'));
+            }
+            $this->set(array(
+                'general_response' => $general_response,
+                '_serialize' => array('general_response')
+            ));
+        }
     }
 
 }
