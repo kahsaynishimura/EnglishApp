@@ -1,7 +1,7 @@
 <div class="partners form">
-    <?php echo $this->Form->create('Partner'); ?>
+    <?php echo $this->Form->create('Company'); ?>
     <fieldset>
-        <legend><?php echo __('Add Partner'); ?></legend>
+        <legend><?php echo __('Add Company'); ?></legend>
         <?php
         echo $this->Form->input('name');
         echo $this->Form->input('phone');

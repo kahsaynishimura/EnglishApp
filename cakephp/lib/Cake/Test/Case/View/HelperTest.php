@@ -674,8 +674,8 @@ class HelperTest extends CakeTestCase {
 			'webroot' => '/cake_dev/app/webroot/',
 			'here' => '/cake_dev/index.php/tasks',
 		));
-		$result = $this->Helper->assetUrl('img/cake.icon.png', array('fullBase' => true));
-		$expected = FULL_BASE_URL . '/cake_dev/app/webroot/img/cake.icon.png';
+		$result = $this->Helper->assetUrl('img/icon.png', array('fullBase' => true));
+		$expected = FULL_BASE_URL . '/cake_dev/app/webroot/img/icon.png';
 		$this->assertEquals($expected, $result);
 	}
 
@@ -946,12 +946,12 @@ class HelperTest extends CakeTestCase {
 		$expected = '/theme/test_theme/img/test.jpg';
 		$this->assertEquals($expected, $result);
 
-		$result = $this->Helper->webroot('/img/cake.icon.gif');
-		$expected = '/img/cake.icon.gif';
+		$result = $this->Helper->webroot('/img/icon.gif');
+		$expected = '/img/icon.gif';
 		$this->assertEquals($expected, $result);
 
-		$result = $this->Helper->webroot('/img/cake.icon.gif?some=param');
-		$expected = '/img/cake.icon.gif?some=param';
+		$result = $this->Helper->webroot('/img/icon.gif?some=param');
+		$expected = '/img/icon.gif?some=param';
 		$this->assertEquals($expected, $result);
 
 		Configure::write('App.www_root', $webRoot);

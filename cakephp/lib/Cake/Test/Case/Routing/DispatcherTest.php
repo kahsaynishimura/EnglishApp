@@ -1505,8 +1505,8 @@ class DispatcherTest extends CakeTestCase {
 				'Plugin/TestPlugin/webroot/css/test_plugin_asset.css'
 			),
 			array(
-				'test_plugin/img/cake.icon.gif',
-				'Plugin/TestPlugin/webroot/img/cake.icon.gif'
+				'test_plugin/img/icon.gif',
+				'Plugin/TestPlugin/webroot/img/icon.gif'
 			),
 			array(
 				'plugin_js/js/plugin_js.js',

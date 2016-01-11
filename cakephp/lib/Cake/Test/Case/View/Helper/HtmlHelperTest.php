@@ -490,17 +490,17 @@ class HtmlHelperTest extends CakeTestCase {
 		Configure::write('Asset.timestamp', 'force');
 
 		$this->Html->request->webroot = '/';
-		$result = $this->Html->image('cake.icon.png');
+		$result = $this->Html->image('icon.png');
 		$this->assertTags($result, array('img' => array('src' => 'preg:/\/img\/cake\.icon\.png\?\d+/', 'alt' => '')));
 
 		Configure::write('debug', 0);
 		Configure::write('Asset.timestamp', 'force');
 
-		$result = $this->Html->image('cake.icon.png');
+		$result = $this->Html->image('icon.png');
 		$this->assertTags($result, array('img' => array('src' => 'preg:/\/img\/cake\.icon\.png\?\d+/', 'alt' => '')));
 
 		$this->Html->request->webroot = '/testing/longer/';
-		$result = $this->Html->image('cake.icon.png');
+		$result = $this->Html->image('icon.png');
 		$expected = array(
 			'img' => array('src' => 'preg:/\/testing\/longer\/img\/cake\.icon\.png\?[0-9]+/', 'alt' => '')
 		);
