@@ -55,6 +55,7 @@ class TradesController extends AppController {
     }
 
     public function validateQR() {
+        $this->Trade->recursive=0;
         if ($this->request->is(array('post', 'xml')) &&
                 !empty($this->request->data['Trade']['qr_code'])) {
             $trade = $this->Trade->find('first', array(

@@ -26,6 +26,23 @@ class ProductsController extends AppController {
         }
     }
 
+    public function view_api($id = null) {
+        $this->Product->recursive = 0;
+        if (!$this->Product->exists($id)) {
+            throw new NotFoundException(__('Invalid product'));
+        }
+        if ($this->request->is('xml')) {
+            $options = array(
+                'fields' => array('id', 'name', 'description', 'quantity_available', 'points_value'),
+                'conditions' => array('Product.' . $this->Product->primaryKey => $id));
+            $product = $this->Product->find('first', $options);
+            $this->set(array(
+                'product' => $product,
+                '_serialize' => array('product')
+            ));
+        }
+    }
+
     /**
      * index method
      *
