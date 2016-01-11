@@ -60,14 +60,9 @@ class TradesController extends AppController {
             $trade = $this->Trade->find('first', array(
                 'fields' => array('id', 'Product.id', 'validated'),
                 'conditions' => array('qr_code' => $this->request->data['Trade']['qr_code'])));
-            if (sizeof($trade) == 2 && (int) $trade['Trade']['validated'] !== 1) {//sizeof($trade) == 2 means that there is a trade object and a product object
-                $this->Trade->id = $trade['Trade']['id'];
-
-                if ($this->Trade->saveField('validated', 1)) {
-                    $general_response = array('status' => 'success', 'data' => $trade['Product']['id'], 'message' => __('The code was validated'));
-                } else {
-                    $general_response = array('status' => 'failure', 'data' => null, 'message' => __('Error'));
-                }
+            $this->Trade->id = $trade['Trade']['id'];
+            if (sizeof($trade) == 2 && (int) $trade['Trade']['validated'] !== 1 && $this->Trade->saveField('validated', 1)) {//sizeof($trade) == 2 means that there is a trade object and a product object
+                $general_response = array('status' => 'success', 'data' => $trade['Product']['id'], 'message' => __('The code was validated'));
             } else {
                 $general_response = array('status' => 'failure', 'data' => '', 'message' => __('This item was not found or is already validated.'));
             }
