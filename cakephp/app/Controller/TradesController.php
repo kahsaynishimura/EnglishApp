@@ -24,6 +24,25 @@ class TradesController extends AppController {
 
     /*     * ********************************Rest API********************************** */
 
+    public function index_api() {
+        $this->Trade->recursive = 0;
+        //params: user_id, 
+        if ($this->request->is('xml')) {
+            $this->Trade->Behaviors->load('Containable');
+            $this->set(array(
+                'trades' => $this->Trade->find('all', array(
+                    'conditions' => array('user_id' => 3), // $this->request->data['Trade']['user_id']),
+                    'fields' => array('id','qr_code', 'validated'),
+                    'contain' => array('Product' => array('fields' => array(
+                                'name'
+                            ), 'Partner' => array('fields' => array('name', 'address', 'phone')))),
+                        )
+                ),
+                '_serialize' => array('trades'))
+            );
+        }
+    }
+
     public function add_api() {
         if ($this->request->is(array('post', 'xml')) &&
                 $this->request->data['Trade']['product_id'] > 0 && $this->request->data['Trade']['user_id'] > 0) {
@@ -55,7 +74,7 @@ class TradesController extends AppController {
     }
 
     public function validateQR() {
-        $this->Trade->recursive=0;
+        $this->Trade->recursive = 0;
         if ($this->request->is(array('post', 'xml')) &&
                 !empty($this->request->data['Trade']['qr_code'])) {
             $trade = $this->Trade->find('first', array(
