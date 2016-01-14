@@ -15,7 +15,18 @@ class ExercisesController extends AppController {
      *
      * @var array
      */
-    public $components = array('Paginator');
+    public $components = array('Paginator', 'RequestHandler');
+
+    public function index_api() {
+        $this->Exercise->recursive = 0;
+        if ($this->request->is('xml')) {
+            $this->set(array(
+                'exercises' => $this->Exercise->find('all', array(
+                    'fields' => array('id', 'name', 'lesson_id', 'transition_image'),
+                    'conditions' => array('lesson_id' => $this->data['Exercise']['lesson_id']))),
+                '_serialize' => 'exercises'));
+        }
+    }
 
     /**
      * index method
