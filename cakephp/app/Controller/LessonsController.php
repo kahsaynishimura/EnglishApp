@@ -1,5 +1,7 @@
 <?php
+
 App::uses('AppController', 'Controller');
+
 /**
  * Lessons Controller
  *
@@ -8,110 +10,123 @@ App::uses('AppController', 'Controller');
  */
 class LessonsController extends AppController {
 
-/**
- * Components
- *
- * @var array
- */
-	public $components = array('Paginator');
+    /**
+     * Components
+     *
+     * @var array
+     */
+    public $components = array('Paginator', 'RequestHandler');
 
-/**
- * index method
- *
- * @return void
- */
-	public function index() {
-		$this->Lesson->recursive = 0;
-		$this->set('lessons', $this->Paginator->paginate());
-	}
+    public function index_api() {
+        $this->Lesson->recursive = 0;
+        if ($this->request->is('xml')) {
+            $this->set(array(
+                'lessons' => $this->Lesson->find('all', array(
+                    'fields' => array('id', 'name', 'book_id'),
+                    'conditions' => array('book_id' => $this->data['Lesson']['book_id']))), 
+                '_serialize' => 'lessons'));
+        }
+    }
 
-/**
- * view method
- *
- * @throws NotFoundException
- * @param string $id
- * @return void
- */
-	public function view($id = null) {
-		if (!$this->Lesson->exists($id)) {
-			throw new NotFoundException(__('Invalid lesson'));
-		}
-		$options = array('conditions' => array('Lesson.' . $this->Lesson->primaryKey => $id));
-		$this->set('lesson', $this->Lesson->find('first', $options));
-	}
+    /**
+     * index method
+     *
+     * @return void
+     */
+    public function index() {
+        $this->Lesson->recursive = 0;
+        $this->set('lessons', $this->Paginator->paginate());
+    }
 
-/**
- * add method
- *
- * @return void
- */
-	public function add() {
-		if ($this->request->is('post')) {
-			$this->Lesson->create();
-			if ($this->Lesson->save($this->request->data)) {
-				$this->Flash->success(__('The lesson has been saved.'));
-				return $this->redirect(array('action' => 'index'));
-			} else {
-				$this->Flash->error(__('The lesson could not be saved. Please, try again.'));
-			}
-		}
-		$books = $this->Lesson->Book->find('list');
-		$this->set(compact('books'));
-	}
+    /**
+     * view method
+     *
+     * @throws NotFoundException
+     * @param string $id
+     * @return void
+     */
+    public function view($id = null) {
+        if (!$this->Lesson->exists($id)) {
+            throw new NotFoundException(__('Invalid lesson'));
+        }
+        $options = array('conditions' => array('Lesson.' . $this->Lesson->primaryKey => $id));
+        $this->set('lesson', $this->Lesson->find('first', $options));
+    }
 
-/**
- * edit method
- *
- * @throws NotFoundException
- * @param string $id
- * @return void
- */
-	public function edit($id = null) {
-		if (!$this->Lesson->exists($id)) {
-			throw new NotFoundException(__('Invalid lesson'));
-		}
-		if ($this->request->is(array('post', 'put'))) {
-			if ($this->Lesson->save($this->request->data)) {
-				$this->Flash->success(__('The lesson has been saved.'));
-				return $this->redirect(array('action' => 'index'));
-			} else {
-				$this->Flash->error(__('The lesson could not be saved. Please, try again.'));
-			}
-		} else {
-			$options = array('conditions' => array('Lesson.' . $this->Lesson->primaryKey => $id));
-			$this->request->data = $this->Lesson->find('first', $options);
-		}
-		$books = $this->Lesson->Book->find('list');
-		$this->set(compact('books'));
-	}
+    /**
+     * add method
+     *
+     * @return void
+     */
+    public function add() {
+        if ($this->request->is('post')) {
+            $this->Lesson->create();
+            if ($this->Lesson->save($this->request->data)) {
+                $this->Flash->success(__('The lesson has been saved.'));
+                return $this->redirect(array('action' => 'index'));
+            } else {
+                $this->Flash->error(__('The lesson could not be saved. Please, try again.'));
+            }
+        }
+        $books = $this->Lesson->Book->find('list');
+        $this->set(compact('books'));
+    }
 
-/**
- * delete method
- *
- * @throws NotFoundException
- * @param string $id
- * @return void
- */
-	public function delete($id = null) {
-		$this->Lesson->id = $id;
-		if (!$this->Lesson->exists()) {
-			throw new NotFoundException(__('Invalid lesson'));
-		}
-		$this->request->allowMethod('post', 'delete');
-		if ($this->Lesson->delete()) {
-			$this->Flash->success(__('The lesson has been deleted.'));
-		} else {
-			$this->Flash->error(__('The lesson could not be deleted. Please, try again.'));
-		}
-		return $this->redirect(array('action' => 'index'));
-	}
-        public function isAuthorized($user) {
+    /**
+     * edit method
+     *
+     * @throws NotFoundException
+     * @param string $id
+     * @return void
+     */
+    public function edit($id = null) {
+        if (!$this->Lesson->exists($id)) {
+            throw new NotFoundException(__('Invalid lesson'));
+        }
+        if ($this->request->is(array('post', 'put'))) {
+            if ($this->Lesson->save($this->request->data)) {
+                $this->Flash->success(__('The lesson has been saved.'));
+                return $this->redirect(array('action' => 'index'));
+            } else {
+                $this->Flash->error(__('The lesson could not be saved. Please, try again.'));
+            }
+        } else {
+            $options = array('conditions' => array('Lesson.' . $this->Lesson->primaryKey => $id));
+            $this->request->data = $this->Lesson->find('first', $options);
+        }
+        $books = $this->Lesson->Book->find('list');
+        $this->set(compact('books'));
+    }
+
+    /**
+     * delete method
+     *
+     * @throws NotFoundException
+     * @param string $id
+     * @return void
+     */
+    public function delete($id = null) {
+        $this->Lesson->id = $id;
+        if (!$this->Lesson->exists()) {
+            throw new NotFoundException(__('Invalid lesson'));
+        }
+        $this->request->allowMethod('post', 'delete');
+        if ($this->Lesson->delete()) {
+            $this->Flash->success(__('The lesson has been deleted.'));
+        } else {
+            $this->Flash->error(__('The lesson could not be deleted. Please, try again.'));
+        }
+        return $this->redirect(array('action' => 'index'));
+    }
+
+    public function isAuthorized($user) {
         if (in_array($this->action, array('edit', 'delete', 'add'))) {
             return true;
         }
 
-      
+
 
         return parent::isAuthorized($user);
     }
+
 }
