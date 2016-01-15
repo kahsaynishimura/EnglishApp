@@ -15,7 +15,18 @@ class SpeechScriptsController extends AppController {
      *
      * @var array
      */
-    public $components = array('Paginator');
+    public $components = array('Paginator', 'RequestHandler');
+
+    public function index_api() {
+        $this->SpeechScript->recursive = 0;
+        if ($this->request->is('xml')) {
+            $this->set(array(
+                'speech_scripts' => $this->SpeechScript->find('all', array(
+                    'fields' => array('id', 'text_to_read', 'text_to_check', 'text_to_show', 'exercise_id', 'speech_function_id', 'script_index'),
+                    'conditions' => array('exercise_id' => $this->data['SpeechScript']['exercise_id']))),
+                '_serialize' => 'speech_scripts'));
+        }
+    }
 
     /**
      * index method
