@@ -60,15 +60,33 @@ class SpeechScriptsController extends AppController {
      */
     public function add() {
         if ($this->request->is('post')) {
-            $this->SpeechScript->create();
-            if ($this->SpeechScript->save($this->request->data)) {
-                $this->Flash->success(__('The speech script has been saved.'));
-                return $this->redirect(array('action' => 'index'));
-            } else {
-                $this->Flash->error(__('The speech script could not be saved. Please, try again.'));
+            $str = $this->request->data['SpeechScript']['complete_text'];
+            $arr = preg_split('/\R|,|\.|\?|!|-|:/', $str); //explode("\n", $str);
+            foreach ($arr as $key => $value) {
+                $arr[$key] = trim($arr[$key]);
+                if (empty($arr[$key]) || $arr[$key] == " ") {
+                    unset($arr[$key]);
+                }
             }
+            // var_dump($arr);
+            $i = 0;
+            foreach ($arr as $key => $value) {
+                $i++;
+                $speechScript = array(
+                    'text_to_show' => $arr[$key],
+                    'text_to_check' => $arr[$key],
+                    'text_to_read' => $arr[$key],
+                    'exercise_id' => $this->request->data['SpeechScript']['exercise_id'],
+                    'speech_function_id' => 2,
+                    'script_index' => $i
+                );
+                $this->SpeechScript->create();
+
+                $this->SpeechScript->save($speechScript);
+            }
+            return $this->redirect(array('action' => 'index'));
         }
-        $speechFunctions = $this->SpeechScript->SpeechFunction->find('list');
+        // $speechFunctions = $this->SpeechScript->SpeechFunction->find('list');
         $exercises = $this->SpeechScript->Exercise->find('list');
         $this->set(compact('speechFunctions', 'exercises'));
     }

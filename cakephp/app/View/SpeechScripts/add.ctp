@@ -3,12 +3,9 @@
 	<fieldset>
 		<legend><?php echo __('Add Speech Script'); ?></legend>
 	<?php
-		echo $this->Form->input('text_to_read');
-		echo $this->Form->input('text_to_check');
-		echo $this->Form->input('text_to_show');
-		echo $this->Form->input('speech_function_id');
+        
 		echo $this->Form->input('exercise_id');
-		echo $this->Form->input('script_index');
+		echo $this->Form->input('complete_text',array('type'=>'textarea','label'=>__('Type the complete text for a single exercise separating the practices by line break:')));
 	?>
 	</fieldset>
 <?php echo $this->Form->end(__('Submit')); ?>
