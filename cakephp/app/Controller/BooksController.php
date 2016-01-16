@@ -16,7 +16,6 @@ class BooksController extends AppController {
      * @var array
      */
     public $components = array('Paginator', 'RequestHandler');
-
     
     public function index_api() {
         $this->Book->recursive = 0;
@@ -34,7 +33,7 @@ class BooksController extends AppController {
      */
     public function index() {
         $this->Book->recursive = 0;
-        $this->set('books', $this->Paginator->paginate());
+        $this->set('books', $this->Paginator->paginate('Book', array('Book.user_id' => $this->Auth->user('id'))));
     }
 
     /**
@@ -60,6 +59,7 @@ class BooksController extends AppController {
     public function add() {
         if ($this->request->is('post')) {
             $this->Book->create();
+            $this->request->data['Book']['user_id']=$this->Auth->user('id');
             $this->Book->User->id = $this->Auth->user('id');
             $this->Book->User->saveField('role', 'author');
             if ($this->Book->save($this->request->data)) {
