@@ -20,7 +20,7 @@ class Book extends AppModel {
         'Lesson' => array(
             'className' => 'Lesson',
             'foreignKey' => 'book_id',
-            'dependent' => false,
+            'dependent' => true,
             'conditions' => '',
             'fields' => '',
             'order' => '',

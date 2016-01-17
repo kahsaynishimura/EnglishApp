@@ -39,7 +39,7 @@ class LessonsController extends AppController {
         if (!$this->Lesson->Book->exists($book_id)) {
             throw new NotFoundException(__('Invalid book'));
         }
-        $this->set('lessons', $this->Paginator->paginate('Lesson',array('Book.id' => $book_id)));
+        $this->set('lessons', $this->Paginator->paginate('Lesson', array('Book.id' => $book_id)));
     }
 
     /**
@@ -126,7 +126,7 @@ class LessonsController extends AppController {
         } else {
             $this->Flash->error(__('The lesson could not be deleted. Please, try again.'));
         }
-        return $this->redirect(array('action' => 'index'));
+        return $this->redirect(array('controller' => 'books', 'action' => 'index'));
     }
 
     public function isAuthorized($user) {

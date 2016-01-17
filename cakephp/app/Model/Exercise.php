@@ -35,7 +35,7 @@ class Exercise extends AppModel {
 		'SpeechScript' => array(
 			'className' => 'SpeechScript',
 			'foreignKey' => 'exercise_id',
-			'dependent' => false,
+			'dependent' => true,
 			'conditions' => '',
 			'fields' => '',
 			'order' => '',

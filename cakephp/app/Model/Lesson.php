@@ -35,7 +35,7 @@ class Lesson extends AppModel {
 		'Exercise' => array(
 			'className' => 'Exercise',
 			'foreignKey' => 'lesson_id',
-			'dependent' => false,
+			'dependent' => true,
 			'conditions' => '',
 			'fields' => '',
 			'order' => '',

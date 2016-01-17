@@ -16,9 +16,7 @@
 	<ul>
 
 		<li><?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $this->Form->value('Exercise.id')), array('confirm' => __('Are you sure you want to delete # %s?', $this->Form->value('Exercise.id')))); ?></li>
-		<li><?php echo $this->Html->link(__('List Exercises'), array('action' => 'index')); ?></li>
-		<li><?php echo $this->Html->link(__('List Lessons'), array('controller' => 'lessons', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Speech Scripts'), array('controller' => 'speech_scripts', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Speech Script'), array('controller' => 'speech_scripts', 'action' => 'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('List Speech Scripts'), array('controller' => 'speech_scripts', 'action' => 'index', $this->Form->value('Exercise.id'))); ?> </li>
+		<li><?php echo $this->Html->link(__('New Speech Script'), array('controller' => 'speech_scripts', 'action' => 'add',$this->Form->value('Exercise.lesson_id'))); ?> </li>
 	</ul>
 </div>

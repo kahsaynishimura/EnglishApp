@@ -25,7 +25,7 @@
 		<li><?php echo $this->Form->postLink(__('Delete Book'), array('action' => 'delete', $book['Book']['id']), array('confirm' => __('Are you sure you want to delete # %s?', $book['Book']['id']))); ?> </li>
 		<li><?php echo $this->Html->link(__('List Books'), array('action' => 'index')); ?> </li>
 		<li><?php echo $this->Html->link(__('New Book'), array('action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Lessons'), array('controller' => 'lessons', 'action' => 'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('List Lessons'), array('controller' => 'lessons', 'action' => 'index',$book['Book']['id'])); ?> </li>
 	</ul>
 </div>
 <div class="related">

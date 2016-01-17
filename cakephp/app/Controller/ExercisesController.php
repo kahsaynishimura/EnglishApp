@@ -33,9 +33,12 @@ class ExercisesController extends AppController {
      *
      * @return void
      */
-    public function index() {
+    public function index($lessonId=null) {
+        if (!$this->Exercise->Lesson->exists($lessonId)) {
+            throw new NotFoundException(__('Invalid exercise'));
+        }
         $this->Exercise->recursive = 0;
-        $this->set('exercises', $this->Paginator->paginate());
+        $this->set('exercises', $this->Paginator->paginate('Exercise',array('Exercise.lesson_id'=>$lessonId)));
     }
 
     /**

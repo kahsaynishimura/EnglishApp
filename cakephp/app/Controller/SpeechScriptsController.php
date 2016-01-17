@@ -33,9 +33,9 @@ class SpeechScriptsController extends AppController {
      *
      * @return void
      */
-    public function index() {
+    public function index($exerciseId) {
         $this->SpeechScript->recursive = 0;
-        $this->set('speechScripts', $this->Paginator->paginate());
+        $this->set('speechScripts', $this->Paginator->paginate('SpeechScript', array('SpeechScript.exercise_id' => $exerciseId)));
     }
 
     /**
@@ -58,37 +58,49 @@ class SpeechScriptsController extends AppController {
      *
      * @return void
      */
-    public function add() {
+    public function add($lessonId) {
         if ($this->request->is('post')) {
-            $str = $this->request->data['SpeechScript']['complete_text'];
-            $arr = preg_split('/\R|,|\.|\?|!|-|:/', $str); //explode("\n", $str);
-            foreach ($arr as $key => $value) {
-                $arr[$key] = trim($arr[$key]);
-                if (empty($arr[$key]) || $arr[$key] == " ") {
-                    unset($arr[$key]);
-                }
-            }
-            // var_dump($arr);
-            $i = 0;
-            foreach ($arr as $key => $value) {
-                $i++;
-                $speechScript = array(
-                    'text_to_show' => $arr[$key],
-                    'text_to_check' => $arr[$key],
-                    'text_to_read' => $arr[$key],
-                    'exercise_id' => $this->request->data['SpeechScript']['exercise_id'],
-                    'speech_function_id' => 2,
-                    'script_index' => $i
-                );
-                $this->SpeechScript->create();
+            $this->SpeechScript->Exercise->create();
+            $exercise = array(
+                'transition_image' => 'practice',
+                'name' => $this->request->data['SpeechScript']['exercise_name'],
+                'lesson_id' => $lessonId
+            );
+            if ($this->SpeechScript->Exercise->save($exercise)) {
+                $newExerciseId = $this->SpeechScript->Exercise->getLastInsertID();
+                $this->SpeechScript->Exercise->id = $newExerciseId;
 
-                $this->SpeechScript->save($speechScript);
+                $str = $this->request->data['SpeechScript']['complete_text'];
+                $arr = preg_split('/\R|,|\.|\?|!|-|:/', $str); //explode("\n", $str);
+                foreach ($arr as $key => $value) {
+                    $arr[$key] = trim($arr[$key]);
+                    if (empty($arr[$key]) || $arr[$key] == " ") {
+                        unset($arr[$key]);
+                    }
+                }
+                // var_dump($arr);
+                $i = 0;
+                foreach ($arr as $key => $value) {
+                    $i++;
+                    $speechScript = array(
+                        'text_to_show' => $arr[$key],
+                        'text_to_check' => $arr[$key],
+                        'text_to_read' => $arr[$key],
+                        'exercise_id' => $this->SpeechScript->Exercise->id,
+                        'speech_function_id' => 2,
+                        'script_index' => $i
+                    );
+                    $this->SpeechScript->create();
+
+                    $this->SpeechScript->save($speechScript);
+                }
+
+                return $this->redirect(array('action' => 'index', $newExerciseId));
             }
-            return $this->redirect(array('action' => 'index'));
         }
         // $speechFunctions = $this->SpeechScript->SpeechFunction->find('list');
-        $exercises = $this->SpeechScript->Exercise->find('list');
-        $this->set(compact('speechFunctions', 'exercises'));
+        //$exercises = $this->SpeechScript->Exercise->find('list');
+        // $this->set(compact('speechFunctions', 'exercises'));
     }
 
     /**
