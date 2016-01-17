@@ -8,7 +8,7 @@
         echo $this->Form->input('role', array(
             'options' => array('author' => __('Author'),'partner'=>__('Partner'))
         ));
-        echo $this->Form->input('username');
+        echo $this->Form->input('username',array('label'=>'Best Email'));
         ?>
     </fieldset>
     <?php echo $this->Form->end(__('Submit')); ?>

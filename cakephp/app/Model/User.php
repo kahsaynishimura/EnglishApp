@@ -20,17 +20,19 @@ class User extends AppModel {
             'required' => array(
                 'rule' => 'notBlank',
                 'message' => 'A username is required'
-            )
+            ),
+            'email' => array(
+                'rule' => 'email',
+                'message' => 'Please, enter a valid email'
+            ),
         ),
         'password' => array(
-            'required' => array(
-                'rule' => 'notBlank',
-                'message' => 'A password is required'
-            )
+            'rule' => array('minLength', '8'),
+            'message' => 'Minimum 8 characters long'
         ),
         'role' => array(
             'valid' => array(
-                'rule' => array('inList', array('admin', 'student', 'author','partner')),
+                'rule' => array('inList', array('admin', 'student', 'author', 'partner')),
                 'message' => 'Please enter a valid role',
                 'allowEmpty' => false
             )
