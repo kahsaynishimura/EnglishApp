@@ -31,13 +31,22 @@ $cakeVersion = __d('cake_dev', 'Echo Practice &copy; 2016');
 
         echo $this->fetch('meta');
         echo $this->fetch('css');
-        echo $this->fetch('script');
+        echo $this->fetch('script'); 
         ?>
     </head>
     <body>
         <div id="container">
             <div id="header">
                 <h1><?php echo $this->Html->link($cakeDescription, 'http://www.karinanishimura.com.br'); ?></h1>
+                <h1><?php
+                    if (AuthComponent::user()):
+                        // The user is logged in, show the logout link
+                        echo $this->Html->link('Log out', array('controller' => 'users', 'action' => 'logout'));
+                    else:
+                        // The user is not logged in, show login link
+                        echo $this->Html->link('Log in', array('controller' => 'users', 'action' => 'login'));
+                    endif;
+                    ?></h1>
             </div>
             <div id="content">
 
@@ -52,7 +61,7 @@ $cakeVersion = __d('cake_dev', 'Echo Practice &copy; 2016');
                 );
                 ?>
                 <p>
-                <?php echo $cakeVersion; ?>
+<?php echo $cakeVersion; ?>
                 </p>
             </div>
         </div>

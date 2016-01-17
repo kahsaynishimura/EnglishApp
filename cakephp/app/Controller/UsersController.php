@@ -22,7 +22,7 @@ class UsersController extends AppController {
         parent::beforeFilter();
         // Allow users to register and logout.
         $this->Auth->allow('add', 'login', 'add_api', 'login_api', 'confirmation');
-    } 
+    }
 
     public function confirmation() {
         $this->autoLayout = false;
@@ -30,21 +30,17 @@ class UsersController extends AppController {
         if ($this->request->query('email')) {
             $user = $this->User->find('first', array(
                 'fields' => array('id', 'name', 'username'),
-                'conditions' => array('User.email' => $this->request->query('email'))));
+                'conditions' => array('User.username' => $this->request->query('email'))));
             if (!empty($user)) {
                 $this->User->id = $user['User']['id'];
                 $this->User->saveField('is_confirmed', true);
 
-                $this->Session->setFlash(__('Your account is confirmed'));
-                $this->Auth->login($user['User']);
-                $this->redirect($this->Auth->redirect());
+                $this->Flash->success(__('Your account is active'));
             } else {
-                $this->Session->setFlash('Não foi possível confirmar seu cadastro.');
-                $this->redirect(array('controller' => 'users', 'action' => 'login'));
+                $this->Flash->error('Não foi possível confirmar seu cadastro.');
             }
-        } else {
-            $this->redirect(array('controller' => 'users', 'action' => 'login'));
         }
+        $this->redirect(array('controller' => 'users', 'action' => 'login'));
     }
 
     /*     * ********************************Rest API********************************** */
@@ -160,7 +156,7 @@ class UsersController extends AppController {
 //                }
                 return $this->redirect($this->Auth->redirectUrl());
             }
-            $this->Flash->error(__('Invalid username or password, try again'));
+            $this->Flash->error(__('Check: credentials and confirmation email'));
         }
     }
 
@@ -203,7 +199,7 @@ class UsersController extends AppController {
             $this->User->create();
             $this->request->data['User']['last_completed_lesson'] = 0;
             if ($this->User->save($this->request->data)) {
-                
+
                 //Email
                 $Email = new CakeEmail('smtp');
                 $Email->from(array('alicesadventures@karinanishimura.com.br' => 'Echo Practice'))
@@ -212,7 +208,7 @@ class UsersController extends AppController {
                         ->template('confirmation', 'default')
                         ->emailFormat('html')
                         ->viewVars(array(
-                            'activate_account'=>__('Activate Account'),
+                            'activate_account' => __('Activate Account'),
                             'oneMoreStep' => __('Only one more step to start having fun.'),
                             'userName' => $this->request->data['User']['name'],
                             'instructions' => __('Please, click the button bellow to activate your access and start using Echo Practice for free'),
