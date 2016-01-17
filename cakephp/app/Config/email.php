@@ -14,7 +14,7 @@
  * @license       http://www.opensource.org/licenses/mit-license.php MIT License
  */
 
-/**
+/** 
  * This is email configuration file.
  *
  * Use it to configure email transports of CakePHP.
@@ -45,12 +45,12 @@ class EmailConfig {
 
 	public $smtp = array(
 		'transport' => 'Smtp',
-		'from' => array('site@localhost' => 'My Site'),
-		'host' => 'localhost',
-		'port' => 25,
+		'from' => array('alicesadventures@karinanishimura.com.br' => 'Echo Practice'),
+		'host' => 'tls://send.one.com',
+		'port' => 465,
 		'timeout' => 30,
-		'username' => 'user',
-		'password' => 'secret',
+		'username' => 'alicesadventures@karinanishimura.com.br',
+		'password' => 'tkhsnishicom',
 		'client' => null,
 		'log' => false,
 		//'charset' => 'utf-8',

@@ -20,7 +20,7 @@
  * @license       http://www.opensource.org/licenses/mit-license.php MIT License
  */
 App::uses('Controller', 'Controller');
-
+ 
 /**
  * Application Controller
  *
@@ -45,7 +45,8 @@ class AppController extends Controller {
             ),
             'authenticate' => array(
                 'Form' => array(
-                    'passwordHasher' => 'Blowfish'
+                    'passwordHasher' => 'Blowfish',
+                    'scope' => array('is_confirmed' => '1')
                 )
             ),
             'authorize' => array('Controller'),

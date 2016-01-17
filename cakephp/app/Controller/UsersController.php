@@ -1,6 +1,7 @@
 <?php
 
 App::uses('AppController', 'Controller');
+App::uses('CakeEmail', 'Network/Email');
 
 /**
  * Users Controller
@@ -20,7 +21,30 @@ class UsersController extends AppController {
     public function beforeFilter() {
         parent::beforeFilter();
         // Allow users to register and logout.
-        $this->Auth->allow('add', 'login', 'add_api', 'login_api');
+        $this->Auth->allow('add', 'login', 'add_api', 'login_api', 'confirmation');
+    } 
+
+    public function confirmation() {
+        $this->autoLayout = false;
+        $this->autoRender = false;
+        if ($this->request->query('email')) {
+            $user = $this->User->find('first', array(
+                'fields' => array('id', 'name', 'username'),
+                'conditions' => array('User.email' => $this->request->query('email'))));
+            if (!empty($user)) {
+                $this->User->id = $user['User']['id'];
+                $this->User->saveField('is_confirmed', true);
+
+                $this->Session->setFlash(__('Your account is confirmed'));
+                $this->Auth->login($user['User']);
+                $this->redirect($this->Auth->redirect());
+            } else {
+                $this->Session->setFlash('Não foi possível confirmar seu cadastro.');
+                $this->redirect(array('controller' => 'users', 'action' => 'login'));
+            }
+        } else {
+            $this->redirect(array('controller' => 'users', 'action' => 'login'));
+        }
     }
 
     /*     * ********************************Rest API********************************** */
@@ -67,7 +91,21 @@ class UsersController extends AppController {
             $this->request->data['User']['role'] = 'student'; //only students are allowed to be added via app
 
             if ($this->User->save($this->request->data)) {
-                $message = __('The user has been saved.');
+                //Email
+
+                $Email = new CakeEmail('smtp');
+                $Email->from(array('alicesadventures@karinanishimura.com.br' => 'Echo Practice'))
+                        ->to($this->request->data['User']['email'] . '')
+                        ->subject(__('Echo Practice - Account confirmation. Start improving your pronunciation'))
+                        ->template('confirmation', 'default')
+                        ->emailFormat('html')
+                        ->viewVars(array(
+                            'oneMoreStep' => __('Only one more step to start having fun.'),
+                            'userName' => $this->request->data['User']['name'],
+                            'instructions' => __("Please, click the button bellow to activate your access and start using Echo Practice for free"),
+                            'email' => $this->request->data['User']['email']))
+                        ->send();
+                $message = __('Access the link we sent to your email in order to activate your account.');
             } else {
                 $message = __('The user could not be saved. Please, try again.');
             }
@@ -117,6 +155,9 @@ class UsersController extends AppController {
     public function login() {
         if ($this->request->is('post')) {
             if ($this->Auth->login()) {
+//                if ($this->Auth->user('is_confirmed') == false) {
+//                    $this->Auth->logout();
+//                }
                 return $this->redirect($this->Auth->redirectUrl());
             }
             $this->Flash->error(__('Invalid username or password, try again'));
@@ -162,12 +203,24 @@ class UsersController extends AppController {
             $this->User->create();
             $this->request->data['User']['last_completed_lesson'] = 0;
             if ($this->User->save($this->request->data)) {
-                $this->Flash->success(__('Your account has been created.'));
-                if ($this->request->data['User']['role'] == "partner") {
-                    return $this->redirect(array('controller' => 'partners', 'action' => 'add'));
-                } else {
-                    return $this->redirect(array('controller' => 'books', 'action' => 'index')); //TODO:baixe o app
-                }
+                
+                //Email
+                $Email = new CakeEmail('smtp');
+                $Email->from(array('alicesadventures@karinanishimura.com.br' => 'Echo Practice'))
+                        ->to($this->request->data['User']['username'] . '')
+                        ->subject(__('Echo Practice - Account confirmation. Start improving your pronunciation'))
+                        ->template('confirmation', 'default')
+                        ->emailFormat('html')
+                        ->viewVars(array(
+                            'activate_account'=>__('Activate Account'),
+                            'oneMoreStep' => __('Only one more step to start having fun.'),
+                            'userName' => $this->request->data['User']['name'],
+                            'instructions' => __('Please, click the button bellow to activate your access and start using Echo Practice for free'),
+                            'email' => $this->request->data['User']['username']))
+                        ->send();
+                $this->Flash->success(__('Access the link we sent to your email in order to activate your account.'));
+
+                $this->redirect(array('action' => 'login'));
             } else {
                 $this->Flash->error(__('The user could not be saved. Please, try again.'));
             }

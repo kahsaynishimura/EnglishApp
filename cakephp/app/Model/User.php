@@ -25,6 +25,10 @@ class User extends AppModel {
                 'rule' => 'email',
                 'message' => 'Please, enter a valid email'
             ),
+            'isUnique' => array(
+                'rule' => 'isUnique',
+                'message' => 'This username has already been taken.'
+            )
         ),
         'password' => array(
             'rule' => array('minLength', '8'),
