@@ -16,6 +16,7 @@
 		<td class="actions">
 			<?php echo $this->Html->link(__('View'), array('action' => 'view', $book['Book']['id'])); ?>
 			<?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $book['Book']['id'])); ?>
+			<?php echo $this->Html->link(__('Add lessons'), array('controller'=>'lessons','action' => 'add', $book['Book']['id'])); ?>
 			<?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $book['Book']['id']), array('confirm' => __('Are you sure you want to delete # %s?', $book['Book']['id']))); ?>
 		</td>
 	</tr>
@@ -41,6 +42,5 @@
 	<ul>
 		<li><?php echo $this->Html->link(__('New Book'), array('action' => 'add')); ?></li>
 		<li><?php echo $this->Html->link(__('List Lessons'), array('controller' => 'lessons', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Lesson'), array('controller' => 'lessons', 'action' => 'add')); ?> </li>
 	</ul>
 </div>

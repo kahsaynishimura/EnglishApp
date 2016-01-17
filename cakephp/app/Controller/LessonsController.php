@@ -23,7 +23,7 @@ class LessonsController extends AppController {
             $this->set(array(
                 'lessons' => $this->Lesson->find('all', array(
                     'fields' => array('id', 'name', 'book_id'),
-                    'conditions' => array('book_id' => $this->data['Lesson']['book_id']))), 
+                    'conditions' => array('book_id' => $this->data['Lesson']['book_id']))),
                 '_serialize' => 'lessons'));
         }
     }
@@ -33,9 +33,13 @@ class LessonsController extends AppController {
      *
      * @return void
      */
-    public function index() {
+    public function index($book_id = null) {
         $this->Lesson->recursive = 0;
-        $this->set('lessons', $this->Paginator->paginate());
+        $this->Lesson->Book->id = $book_id;
+        if (!$this->Lesson->Book->exists($book_id)) {
+            throw new NotFoundException(__('Invalid book'));
+        }
+        $this->set('lessons', $this->Paginator->paginate('Lesson',array('Book.id' => $book_id)));
     }
 
     /**
@@ -58,12 +62,18 @@ class LessonsController extends AppController {
      *
      * @return void
      */
-    public function add() {
+    public function add($book_id = null) {
+
         if ($this->request->is('post')) {
+            $this->Lesson->Book->id = $book_id;
+            if (!$this->Lesson->Book->exists($book_id)) {
+                throw new NotFoundException(__('Invalid book'));
+            }
+            $this->request->data['Lesson']['book_id'] = $book_id;
             $this->Lesson->create();
             if ($this->Lesson->save($this->request->data)) {
                 $this->Flash->success(__('The lesson has been saved.'));
-                return $this->redirect(array('action' => 'index'));
+                return $this->redirect(array('action' => 'index', $book_id));
             } else {
                 $this->Flash->error(__('The lesson could not be saved. Please, try again.'));
             }

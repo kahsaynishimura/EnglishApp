@@ -4,7 +4,6 @@
 		<legend><?php echo __('Add Lesson'); ?></legend>
 	<?php
 		echo $this->Form->input('name');
-		echo $this->Form->input('book_id');
 	?>
 	</fieldset>
 <?php echo $this->Form->end(__('Submit')); ?>
