@@ -99,7 +99,7 @@ class PartnersController extends AppController {
             $partnerId = (int) $this->request->params['pass'][0];
             if ($this->Partner->isOwnedBy($partnerId, $user['id'])) {
                 return true;
-            }
+            } 
         }
 
         return parent::isAuthorized($user);

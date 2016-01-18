@@ -61,7 +61,7 @@
                         <?php echo $this->Html->link(__('Edit'), array('controller' => 'speech_scripts', 'action' => 'edit', $speechScript['id'])); ?>
                         <?php echo $this->Form->postLink(__('Delete'), array('controller' => 'speech_scripts', 'action' => 'delete', $speechScript['id']), array('confirm' => __('Are you sure you want to delete # %s?', $speechScript['id']))); ?>
                     </td>
-                </tr>
+                </tr> 
             <?php endforeach; ?>
         </table>
     <?php endif; ?>

@@ -29,13 +29,26 @@ class Book extends AppModel {
             'exclusive' => '',
             'finderQuery' => '',
             'counterQuery' => ''
+        ),
+        'UsersBook' => array(
+            'className' => 'UsersBook',
+            'foreignKey' => 'book_id',
+            'dependent' => true,
+            'conditions' => '',
+            'fields' => '',
+            'order' => '',
+            'limit' => '',
+            'offset' => '',
+            'exclusive' => '',
+            'finderQuery' => '',
+            'counterQuery' => ''
         )
     );
     public $belongsTo = array(
         'User' => array(
             'className' => 'User',
             'foreignKey' => 'user_id',
-            'conditions' => '',
+            'conditions' => '', 
             'fields' => '',
             'order' => ''
         )

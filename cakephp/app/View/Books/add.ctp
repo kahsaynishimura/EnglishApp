@@ -2,10 +2,10 @@
 <?php echo $this->Form->create('Book'); ?>
 	<fieldset>
 		<legend><?php echo __('Add Book'); ?></legend>
-	<?php
-		echo $this->Form->input('name');
-	?>
-	</fieldset>
+	<?php echo $this->Form->input('name');?>
+	 
+	<?php echo $this->Form->input('is_free');?>
+        </fieldset>
 <?php echo $this->Form->end(__('Submit')); ?>
 </div>
 <div class="actions">

@@ -23,7 +23,8 @@ class ExercisesController extends AppController {
             $this->set(array(
                 'exercises' => $this->Exercise->find('all', array(
                     'fields' => array('id', 'name', 'lesson_id', 'transition_image'),
-                    'conditions' => array('lesson_id' => $this->data['Exercise']['lesson_id']))),
+                    'conditions' => array('lesson_id' => $this->data['Exercise']['lesson_id']),
+                    'order' => array('Exercise.id ASC'),)),
                 '_serialize' => 'exercises'));
         }
     }

@@ -51,8 +51,3 @@
     </div>
 
 </div>
-<div class="actions">
-    <ul>
-        <li><?php echo $this->Html->link(__('New Speech Script'), array('controller' => 'speech_scripts', 'action' => 'add', $this->request->params['pass'][0])); ?> </li>
-    </ul>
-</div>

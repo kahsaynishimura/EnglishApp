@@ -6,7 +6,7 @@
                 <th><?php echo $this->Paginator->sort('id'); ?></th>
                 <th><?php echo $this->Paginator->sort('name'); ?></th>
                 <th class="actions"><?php echo __('Actions'); ?></th>
-            </tr>
+            </tr> 
         </thead>
         <tbody>
             <?php foreach ($books as $book): ?>
@@ -18,6 +18,7 @@
                         <?php echo $this->Html->link(__('View Lessons'), array('controller' => 'lessons', 'action' => 'index', $book['Book']['id'])); ?>
                         <?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $book['Book']['id'])); ?>
                         <?php echo $this->Html->link(__('Add lessons'), array('controller' => 'lessons', 'action' => 'add', $book['Book']['id'])); ?>
+                        <?php echo $this->Html->link(__('Add Users'), array('controller' => 'usersBooks', 'action' => 'add', $book['Book']['id'])); ?>
                         <?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $book['Book']['id']), array('confirm' => __('Are you sure you want to delete # %s?', $book['Book']['id']))); ?>
                     </td>
                 </tr>
