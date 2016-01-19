@@ -21,7 +21,7 @@
                     <td><?php echo h($speechScript['SpeechScript']['text_to_check']); ?>&nbsp;</td>
                     <td><?php echo h($speechScript['SpeechScript']['text_to_show']); ?>&nbsp;</td>
                     <td>
-                        <?php echo $this->Html->link($speechScript['SpeechFunction']['name'], array('controller' => 'speech_functions', 'action' => 'view', $speechScript['SpeechFunction']['id'])); ?>
+                        <?php echo $this->Html->link($speechScript['SpeechScript']['speech_function_id'], array('controller' => 'speech_functions', 'action' => 'view', $speechScript['SpeechFunction']['id'])); ?>
                     </td>
                     <td>
                         <?php echo $this->Html->link($speechScript['Exercise']['name'], array('controller' => 'exercises', 'action' => 'view', $speechScript['Exercise']['id'])); ?>

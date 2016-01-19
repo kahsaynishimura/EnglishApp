@@ -89,17 +89,20 @@ class UsersController extends AppController {
             if ($this->User->save($this->request->data)) {
                 //Email
 
+               
+                //Email
                 $Email = new CakeEmail('smtp');
                 $Email->from(array('alicesadventures@karinanishimura.com.br' => 'Echo Practice'))
-                        ->to($this->request->data['User']['email'] . '')
+                        ->to($this->request->data['User']['username'] . '')
                         ->subject(__('Echo Practice - Account confirmation. Start improving your pronunciation'))
                         ->template('confirmation', 'default')
                         ->emailFormat('html')
-                        ->viewVars(array(
+                        ->viewVars(array( 
+                            'activate_account' => __('Activate Account'),
                             'oneMoreStep' => __('Only one more step to start having fun.'),
                             'userName' => $this->request->data['User']['name'],
-                            'instructions' => __("Please, click the button bellow to activate your access and start using Echo Practice for free"),
-                            'email' => $this->request->data['User']['email']))
+                            'instructions' => __('Please, click the button bellow to activate your access and start using Echo Practice for free'),
+                            'email' => $this->request->data['User']['username']))
                         ->send();
                 $message = __('Access the link we sent to your email in order to activate your account.');
             } else {

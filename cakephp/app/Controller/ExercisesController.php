@@ -120,7 +120,7 @@ class ExercisesController extends AppController {
         } else {
             $this->Flash->error(__('The exercise could not be deleted. Please, try again.'));
         }
-        return $this->redirect(array('action' => 'index'));
+        return $this->redirect(array('controller'=>'books','action' => 'index'));
     }
 
     public function isAuthorized($user) {

@@ -117,7 +117,7 @@ class SpeechScriptsController extends AppController {
         if ($this->request->is(array('post', 'put'))) {
             if ($this->SpeechScript->save($this->request->data)) {
                 $this->Flash->success(__('The speech script has been saved.'));
-                return $this->redirect(array('action' => 'index'));
+                return $this->redirect(array('controller' => 'books', 'action' => 'index'));
             } else {
                 $this->Flash->error(__('The speech script could not be saved. Please, try again.'));
             }
