@@ -107,6 +107,17 @@ class UsersController extends AppController {
                     'user' => $this->request->data['User'],
                     '_serialize' => array('user')
                 ));
+            } else {
+                $user = $this->User->find('first', array(
+                    'fields' => array('id', 'username', 'name', 'is_confirmed','last_completed_lesson'),
+                    'conditions' => array('username' => $this->request->data['User']['username'])
+                ));
+                if (!empty($user['User'])) {
+                    $this->set(array(
+                        'user' => $user['User'],
+                        '_serialize' => array('user')
+                    ));
+                }
             }
         }
     }
