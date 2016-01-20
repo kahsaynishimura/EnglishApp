@@ -21,7 +21,7 @@ class UsersController extends AppController {
     public function beforeFilter() {
         parent::beforeFilter();
         // Allow users to register and logout.
-        $this->Auth->allow('add', 'login', 'add_api', 'login_api', 'confirmation');
+        $this->Auth->allow('add', 'login', 'add_api', 'add_fb_api', 'login_api', 'confirmation');
     }
 
     public function confirmation() {
@@ -79,6 +79,38 @@ class UsersController extends AppController {
         }
     }
 
+    public function add_fb_api() {
+        if ($this->request->is(array('post', 'xml'))) {
+            $this->User->create();
+
+            $this->request->data['User']['last_completed_lesson'] = $this->request->data['User']['total_points'] = 0;
+            $this->request->data['User']['role'] = 'student'; //only students are allowed to be added via app
+            $this->request->data['User']['password'] = '00000000000000000000';
+            $this->request->data['User']['is_confirmed'] = true;
+            if ($this->User->save($this->request->data)) {
+                //Email
+                $Email = new CakeEmail('smtp');
+                $Email->from(array('alicesadventures@karinanishimura.com.br' => 'Echo Practice'))
+                        ->to($this->request->data['User']['username'] . '')
+                        ->subject(__('Echo Practice - Account confirmation. Start improving your pronunciation'))
+                        ->template('confirmation', 'default')
+                        ->emailFormat('html')
+                        ->viewVars(array(
+                            'activate_account' => __('Activate Account'),
+                            'oneMoreStep' => __('Only one more step to start having fun.'),
+                            'userName' => $this->request->data['User']['name'],
+                            'instructions' => __('Please, click the button bellow to activate your access and start using Echo Practice for free'),
+                            'email' => $this->request->data['User']['username']))
+                        ->send();
+                $this->request->data['User']['id'] = $this->User->getLastInsertID();
+                $this->set(array(
+                    'user' => $this->request->data['User'],
+                    '_serialize' => array('user')
+                ));
+            }
+        }
+    }
+
     public function add_api() {
         if ($this->request->is(array('post', 'xml'))) {
             $this->User->create();
@@ -88,8 +120,6 @@ class UsersController extends AppController {
 
             if ($this->User->save($this->request->data)) {
                 //Email
-
-               
                 //Email
                 $Email = new CakeEmail('smtp');
                 $Email->from(array('alicesadventures@karinanishimura.com.br' => 'Echo Practice'))
@@ -97,7 +127,7 @@ class UsersController extends AppController {
                         ->subject(__('Echo Practice - Account confirmation. Start improving your pronunciation'))
                         ->template('confirmation', 'default')
                         ->emailFormat('html')
-                        ->viewVars(array( 
+                        ->viewVars(array(
                             'activate_account' => __('Activate Account'),
                             'oneMoreStep' => __('Only one more step to start having fun.'),
                             'userName' => $this->request->data['User']['name'],
