@@ -5,6 +5,9 @@
         <?php
         echo $this->Form->input('id');
         echo $this->Form->input('text_to_read');
+        ?>
+        <p>if your content contains the words "live" as a verb, use "liv" instead</p>
+            <?php
         echo $this->Form->input('text_to_check');
         echo $this->Form->input('text_to_show');
         echo $this->Form->input('speech_function_id', array(

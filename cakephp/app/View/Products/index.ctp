@@ -9,8 +9,6 @@
 			<th><?php echo $this->Paginator->sort('description'); ?></th>
 			<th><?php echo $this->Paginator->sort('quantity_available'); ?></th>
 			<th><?php echo $this->Paginator->sort('points_value'); ?></th>
-			<th><?php echo $this->Paginator->sort('payment_status'); ?></th>
-			<th><?php echo $this->Paginator->sort('thumb'); ?></th>
 			<th><?php echo $this->Paginator->sort('created'); ?></th>
 			<th><?php echo $this->Paginator->sort('modified'); ?></th>
 			<th class="actions"><?php echo __('Actions'); ?></th>
@@ -27,8 +25,6 @@
 		<td><?php echo h($product['Product']['description']); ?>&nbsp;</td>
 		<td><?php echo h($product['Product']['quantity_available']); ?>&nbsp;</td>
 		<td><?php echo h($product['Product']['points_value']); ?>&nbsp;</td>
-		<td><?php echo h($product['Product']['payment_status']); ?>&nbsp;</td>
-		<td><?php echo h($product['Product']['thumb']); ?>&nbsp;</td>
 		<td><?php echo h($product['Product']['created']); ?>&nbsp;</td>
 		<td><?php echo h($product['Product']['modified']); ?>&nbsp;</td>
 		<td class="actions">

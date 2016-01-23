@@ -31,16 +31,6 @@
 			<?php echo h($product['Product']['points_value']); ?>
 			&nbsp;
 		</dd>
-		<dt><?php echo __('Payment Status'); ?></dt>
-		<dd>
-			<?php echo h($product['Product']['payment_status']); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Thumb'); ?></dt>
-		<dd>
-			<?php echo h($product['Product']['thumb']); ?>
-			&nbsp;
-		</dd>
 		<dt><?php echo __('Created'); ?></dt>
 		<dd>
 			<?php echo h($product['Product']['created']); ?>
