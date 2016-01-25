@@ -18,8 +18,7 @@
  * @license       http://www.opensource.org/licenses/mit-license.php MIT License
  */
 
-//setLocale(LC_ALL, 'deu');
-//Configure::write('Config.language', 'deu');
+//setLocale(LC_ALL, 'por');
 
 /**
  * CakePHP Debug Level:
@@ -35,7 +34,6 @@
  * In development mode, you need to click the flash message to continue.
  */  
 	Configure::write('debug', 0); 
-
 /**
  * Configure the Error handler used to handle errors for your application. By default
  * ErrorHandler::handleError() is used. It will display errors using Debugger, when debug > 0
@@ -383,3 +381,5 @@ Cache::config('_cake_model_', array(
 	'serialize' => ($engine === 'File'),
 	'duration' => $duration
 ));
+
+Configure::write('Config.language', 'por');

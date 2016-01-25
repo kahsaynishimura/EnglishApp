@@ -3,6 +3,7 @@
     <fieldset>
         <legend><?php echo __('Edit Lesson'); ?></legend>
         <?php
+        echo $this->Form->input('id');
         echo $this->Form->input('name');
         ?>
     </fieldset>

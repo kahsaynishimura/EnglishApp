@@ -94,9 +94,10 @@ class LessonsController extends AppController {
             throw new NotFoundException(__('Invalid lesson'));
         }
         if ($this->request->is(array('post', 'put'))) {
-            if ($this->Lesson->save($this->request->data)) {
+            $this->Lesson->id=$id;
+            if ($this->Lesson->saveField('name',$this->request->data['Lesson']['name'])) {
                 $this->Flash->success(__('The lesson has been saved.'));
-                return $this->redirect(array('action' => 'index'));
+                return $this->redirect(array('controller'=>'books','action' => 'index'));
             } else {
                 $this->Flash->error(__('The lesson could not be saved. Please, try again.'));
             }
@@ -136,7 +137,6 @@ class LessonsController extends AppController {
 
 
 
-        return parent::isAuthorized($user);
     }
 
 }

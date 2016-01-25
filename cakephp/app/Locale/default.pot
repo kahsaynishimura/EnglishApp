@@ -1,0 +1,1024 @@
+# LANGUAGE translation of CakePHP Application
+# Copyright YEAR NAME <EMAIL@ADDRESS>
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"PO-Revision-Date: YYYY-mm-DD HH:MM+ZZZZ\n"
+"Last-Translator: NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+
+#: Controller/BooksController.php:60;95;120
+#: Controller/LessonsController.php:40;70
+msgid "Invalid book"
+msgstr ""
+
+#: Controller/BooksController.php:78;99
+msgid "The book has been saved."
+msgstr ""
+
+#: Controller/BooksController.php:81;102
+msgid "The book could not be saved. Please, try again."
+msgstr ""
+
+#: Controller/BooksController.php:124
+msgid "The book has been deleted."
+msgstr ""
+
+#: Controller/BooksController.php:126
+msgid "The book could not be deleted. Please, try again."
+msgstr ""
+
+#: Controller/ExercisesController.php:39;54;88;115
+msgid "Invalid exercise"
+msgstr ""
+
+#: Controller/ExercisesController.php:69;92
+msgid "The exercise has been saved."
+msgstr ""
+
+#: Controller/ExercisesController.php:72;95
+msgid "The exercise could not be saved. Please, try again."
+msgstr ""
+
+#: Controller/ExercisesController.php:119
+msgid "The exercise has been deleted."
+msgstr ""
+
+#: Controller/ExercisesController.php:121
+msgid "The exercise could not be deleted. Please, try again."
+msgstr ""
+
+#: Controller/LessonsController.php:54;94;121
+msgid "Invalid lesson"
+msgstr ""
+
+#: Controller/LessonsController.php:75;98
+msgid "The lesson has been saved."
+msgstr ""
+
+#: Controller/LessonsController.php:78;101
+msgid "The lesson could not be saved. Please, try again."
+msgstr ""
+
+#: Controller/LessonsController.php:125
+msgid "The lesson has been deleted."
+msgstr ""
+
+#: Controller/LessonsController.php:127
+msgid "The lesson could not be deleted. Please, try again."
+msgstr ""
+
+#: Controller/PartnersController.php:39;74
+msgid "Invalid partner"
+msgstr ""
+
+#: Controller/PartnersController.php:55;78
+msgid "The partner has been saved."
+msgstr ""
+
+#: Controller/PartnersController.php:58;81
+msgid "The partner could not be saved. Please, try again."
+msgstr ""
+
+#: Controller/PracticesController.php:34
+msgid "The practice has been saved."
+msgstr ""
+
+#: Controller/PracticesController.php:36
+msgid "The practice could not be saved. Please, try again."
+msgstr ""
+
+#: Controller/PracticesController.php:64
+msgid "Invalid practice"
+msgstr ""
+
+#: Controller/ProductsController.php:32;65;100;127
+msgid "Invalid product"
+msgstr ""
+
+#: Controller/ProductsController.php:81;104
+msgid "The product has been saved."
+msgstr ""
+
+#: Controller/ProductsController.php:84;107
+msgid "The product could not be saved. Please, try again."
+msgstr ""
+
+#: Controller/ProductsController.php:131
+msgid "The product has been deleted."
+msgstr ""
+
+#: Controller/ProductsController.php:133
+msgid "The product could not be deleted. Please, try again."
+msgstr ""
+
+#: Controller/SpeechScriptsController.php:50;115;143
+msgid "Invalid speech script"
+msgstr ""
+
+#: Controller/SpeechScriptsController.php:119
+msgid "The speech script has been saved."
+msgstr ""
+
+#: Controller/SpeechScriptsController.php:122
+msgid "The speech script could not be saved. Please, try again."
+msgstr ""
+
+#: Controller/SpeechScriptsController.php:147
+msgid "The speech script has been deleted."
+msgstr ""
+
+#: Controller/SpeechScriptsController.php:149
+msgid "The speech script could not be deleted. Please, try again."
+msgstr ""
+
+#: Controller/TradesController.php:63
+msgid "The trade has been saved."
+msgstr ""
+
+#: Controller/TradesController.php:66
+msgid "The trade could not be saved. Please, try again."
+msgstr ""
+
+#: Controller/TradesController.php:98
+msgid "The code was validated."
+msgstr ""
+
+#: Controller/TradesController.php:100
+msgid "There was an error during the validation process."
+msgstr ""
+
+#: Controller/UsersBooksController.php:27
+msgid "Invalid book."
+msgstr ""
+
+#: Controller/UsersBooksController.php:44
+msgid "Success. "
+msgstr ""
+
+#: Controller/UsersBooksController.php:48
+msgid "The users book could not be saved. Please, try again."
+msgstr ""
+
+#: Controller/UsersBooksController.php:52
+msgid "This book is already unlocked for this user"
+msgstr ""
+
+#: Controller/UsersBooksController.php:55
+msgid "The user is not registered yet"
+msgstr ""
+
+#: Controller/UsersBooksController.php:73
+msgid "Invalid users book"
+msgstr ""
+
+#: Controller/UsersBooksController.php:77
+msgid "The users book has been deleted."
+msgstr ""
+
+#: Controller/UsersBooksController.php:79
+msgid "The users book could not be deleted. Please, try again."
+msgstr ""
+
+#: Controller/UsersController.php:38
+msgid "Your account is active"
+msgstr ""
+
+#: Controller/UsersController.php:71;162;180;228;277;302
+msgid "Invalid user"
+msgstr ""
+
+#: Controller/UsersController.php:96;139;249
+msgid "Echo Practice - Account confirmation. Start improving your pronunciation"
+msgstr ""
+
+#: Controller/UsersController.php:100;143;253
+msgid "Activate Account"
+msgstr ""
+
+#: Controller/UsersController.php:101;144;254
+msgid "Only one more step to start having fun."
+msgstr ""
+
+#: Controller/UsersController.php:103;146;256
+msgid "Please, click the button bellow to activate your access and start using Echo Practice for free"
+msgstr ""
+
+#: Controller/UsersController.php:149;259
+msgid "Access the link we sent to your email in order to activate your account."
+msgstr ""
+
+#: Controller/UsersController.php:151;168;263;284
+msgid "The user could not be saved. Please, try again."
+msgstr ""
+
+#: Controller/UsersController.php:166;281
+msgid "The user has been saved."
+msgstr ""
+
+#: Controller/UsersController.php:184;306
+msgid "The user has been deleted."
+msgstr ""
+
+#: Controller/UsersController.php:186;308
+msgid "The user could not be deleted. Please, try again."
+msgstr ""
+
+#: Controller/UsersController.php:201
+msgid "Check: credentials and confirmation email"
+msgstr ""
+
+#: View/Books/add.ctp:4
+msgid "Add Book"
+msgstr ""
+
+#: View/Books/add.ctp:9
+#: View/Books/edit.ctp:12
+#: View/Exercises/edit.ctp:12
+#: View/Lessons/add.ctp:9
+#: View/Lessons/edit.ctp:9
+#: View/Partners/add.ctp:11
+#: View/Partners/edit.ctp:13
+#: View/Practices/add.ctp:12
+#: View/Practices/edit.ctp:13
+#: View/Products/add.ctp:12
+#: View/Products/edit.ctp:13
+#: View/SpeechScripts/add.ctp:13
+#: View/SpeechScripts/edit.ctp:20
+#: View/Users/add.ctp:14
+#: View/Users/admin_add.ctp:13
+#: View/Users/admin_edit.ctp:14
+#: View/Users/edit.ctp:14
+#: View/UsersBooks/add.ctp:9
+msgid "Submit"
+msgstr ""
+
+#: View/Books/add.ctp:12
+#: View/Books/edit.ctp:15
+#: View/Books/index.ctp:8;43
+#: View/Books/view.ctp:22;41
+#: View/Exercises/edit.ctp:15
+#: View/Exercises/index.ctp:10;48
+#: View/Exercises/view.ctp:27;48
+#: View/Lessons/add.ctp:12
+#: View/Lessons/edit.ctp:12
+#: View/Lessons/index.ctp:11;50
+#: View/Lessons/view.ctp:32;51
+#: View/Partners/add.ctp:14
+#: View/Partners/edit.ctp:16
+#: View/Partners/index.ctp:11;48
+#: View/Partners/view.ctp:32;59
+#: View/Practices/add.ctp:15
+#: View/Practices/edit.ctp:16
+#: View/Practices/index.ctp:11;48
+#: View/Practices/view.ctp:32
+#: View/Products/add.ctp:15
+#: View/Products/edit.ctp:16
+#: View/Products/index.ctp:14;54
+#: View/Products/view.ctp:47
+#: View/SpeechScripts/add.ctp:16
+#: View/SpeechScripts/edit.ctp:23
+#: View/SpeechScripts/index.ctp:13
+#: View/SpeechScripts/view.ctp:42
+#: View/Users/add.ctp:17
+#: View/Users/admin_add.ctp:16
+#: View/Users/admin_edit.ctp:17
+#: View/Users/admin_index.ctp:14;52
+#: View/Users/admin_view.ctp:47
+#: View/Users/edit.ctp:17
+#: View/Users/index.ctp:7;38
+#: View/Users/login.ctp:18
+#: View/Users/view.ctp:47
+#: View/UsersBooks/add.ctp:13;26
+msgid "Actions"
+msgstr ""
+
+#: View/Books/add.ctp:15
+#: View/Books/edit.ctp:19
+#: View/Books/view.ctp:26
+#: View/Lessons/add.ctp:16
+#: View/Lessons/edit.ctp:16
+#: View/Lessons/index.ctp:53
+#: View/Lessons/view.ctp:38
+#: View/UsersBooks/add.ctp:16
+msgid "List Books"
+msgstr ""
+
+#: View/Books/edit.ctp:4
+#: View/Books/view.ctp:24
+msgid "Edit Book"
+msgstr ""
+
+#: View/Books/edit.ctp:8
+msgid "Free"
+msgstr ""
+
+#: View/Books/edit.ctp:18
+#: View/Books/index.ctp:22
+#: View/Books/view.ctp:53
+#: View/Exercises/edit.ctp:18
+#: View/Exercises/index.ctp:27
+#: View/Exercises/view.ctp:62
+#: View/Lessons/edit.ctp:15
+#: View/Lessons/index.ctp:29
+#: View/Lessons/view.ctp:62
+#: View/Partners/edit.ctp:19
+#: View/Partners/index.ctp:27
+#: View/Partners/view.ctp:76
+#: View/Practices/edit.ctp:19
+#: View/Practices/index.ctp:27
+#: View/Products/edit.ctp:19
+#: View/Products/index.ctp:33
+#: View/SpeechScripts/edit.ctp:26
+#: View/SpeechScripts/index.ctp:33
+#: View/Users/admin_edit.ctp:20
+#: View/Users/admin_index.ctp:31
+#: View/Users/edit.ctp:20
+#: View/Users/index.ctp:17
+#: View/UsersBooks/add.ctp:32
+msgid "Delete"
+msgstr ""
+
+#: View/Books/edit.ctp:18
+#: View/Books/index.ctp:22
+#: View/Books/view.ctp:25;53
+#: View/Exercises/edit.ctp:18
+#: View/Exercises/index.ctp:27
+#: View/Exercises/view.ctp:30;62
+#: View/Lessons/edit.ctp:15
+#: View/Lessons/index.ctp:29
+#: View/Lessons/view.ctp:35;62
+#: View/Partners/edit.ctp:19
+#: View/Partners/index.ctp:27
+#: View/Partners/view.ctp:35;76
+#: View/Practices/edit.ctp:19
+#: View/Practices/index.ctp:27
+#: View/Practices/view.ctp:35
+#: View/Products/edit.ctp:19
+#: View/Products/index.ctp:33
+#: View/Products/view.ctp:50
+#: View/SpeechScripts/edit.ctp:26
+#: View/SpeechScripts/index.ctp:33
+#: View/SpeechScripts/view.ctp:45
+#: View/Users/admin_edit.ctp:20
+#: View/Users/admin_index.ctp:31
+#: View/Users/admin_view.ctp:50
+#: View/Users/edit.ctp:20
+#: View/Users/index.ctp:17
+#: View/Users/view.ctp:50
+msgid "Are you sure you want to delete # %s?"
+msgstr ""
+
+#: View/Books/edit.ctp:20
+#: View/Books/view.ctp:28
+#: View/Lessons/add.ctp:15
+#: View/Lessons/view.ctp:36
+msgid "List Lessons"
+msgstr ""
+
+#: View/Books/index.ctp:2
+msgid "Books"
+msgstr ""
+
+#: View/Books/index.ctp:17
+#: View/Books/view.ctp:51
+#: View/Exercises/index.ctp:23
+#: View/Exercises/view.ctp:60
+#: View/Lessons/index.ctp:25
+#: View/Lessons/view.ctp:60
+#: View/Partners/index.ctp:25
+#: View/Partners/view.ctp:74
+#: View/Practices/index.ctp:25
+#: View/Products/index.ctp:31
+#: View/SpeechScripts/index.ctp:31
+#: View/Users/admin_index.ctp:29
+#: View/Users/index.ctp:15
+msgid "View"
+msgstr ""
+
+#: View/Books/index.ctp:18
+msgid "View Lessons"
+msgstr ""
+
+#: View/Books/index.ctp:19
+#: View/Books/view.ctp:52
+#: View/Exercises/index.ctp:24
+#: View/Exercises/view.ctp:61
+#: View/Lessons/index.ctp:26
+#: View/Lessons/view.ctp:61
+#: View/Partners/index.ctp:26
+#: View/Partners/view.ctp:75
+#: View/Practices/index.ctp:26
+#: View/Products/index.ctp:32
+#: View/SpeechScripts/index.ctp:32
+#: View/Users/admin_index.ctp:30
+#: View/Users/index.ctp:16
+msgid "Edit"
+msgstr ""
+
+#: View/Books/index.ctp:20
+msgid "Add lessons"
+msgstr ""
+
+#: View/Books/index.ctp:21
+msgid "Add Users"
+msgstr ""
+
+#: View/Books/index.ctp:31
+#: View/Exercises/index.ctp:36
+#: View/Lessons/index.ctp:38
+#: View/Partners/index.ctp:36
+#: View/Practices/index.ctp:36
+#: View/Products/index.ctp:42
+#: View/SpeechScripts/index.ctp:42
+#: View/Users/admin_index.ctp:40
+#: View/Users/index.ctp:26
+msgid "Page {:page} of {:pages}, showing {:current} records out of {:count} total, starting on record {:start}, ending on {:end}"
+msgstr ""
+
+#: View/Books/index.ctp:36
+#: View/Exercises/index.ctp:41
+#: View/Lessons/index.ctp:43
+#: View/Partners/index.ctp:41
+#: View/Practices/index.ctp:41
+#: View/Products/index.ctp:47
+#: View/SpeechScripts/index.ctp:47
+#: View/Users/admin_index.ctp:45
+#: View/Users/index.ctp:31
+msgid "previous"
+msgstr ""
+
+#: View/Books/index.ctp:38
+#: View/Exercises/index.ctp:43
+#: View/Lessons/index.ctp:45
+#: View/Partners/index.ctp:43
+#: View/Practices/index.ctp:43
+#: View/Products/index.ctp:49
+#: View/SpeechScripts/index.ctp:49
+#: View/Users/admin_index.ctp:47
+#: View/Users/index.ctp:33
+msgid "next"
+msgstr ""
+
+#: View/Books/index.ctp:45
+#: View/Books/view.ctp:27
+#: View/Lessons/add.ctp:17
+#: View/Lessons/edit.ctp:17
+#: View/Lessons/index.ctp:54
+#: View/Lessons/view.ctp:39
+msgid "New Book"
+msgstr ""
+
+#: View/Books/view.ctp:2
+#: View/Lessons/view.ctp:14
+msgid "Book"
+msgstr ""
+
+#: View/Books/view.ctp:4;36
+#: View/Exercises/view.ctp:4;41
+#: View/Lessons/view.ctp:4;47
+#: View/Partners/view.ctp:4;49
+#: View/Practices/view.ctp:4
+#: View/Products/view.ctp:4
+#: View/SpeechScripts/view.ctp:4
+#: View/Users/admin_view.ctp:4
+#: View/Users/view.ctp:4
+#: View/UsersBooks/add.ctp:24
+msgid "Id"
+msgstr ""
+
+#: View/Books/view.ctp:9;37
+#: View/Exercises/view.ctp:9
+#: View/Lessons/view.ctp:9;48
+#: View/Partners/view.ctp:9;51
+#: View/Products/view.ctp:14
+#: View/Users/admin_view.ctp:9
+#: View/Users/view.ctp:9
+#: View/UsersBooks/add.ctp:25
+msgid "Name"
+msgstr ""
+
+#: View/Books/view.ctp:14
+#: View/Users/add.ctp:9
+msgid "Author"
+msgstr ""
+
+#: View/Books/view.ctp:25
+msgid "Delete Book"
+msgstr ""
+
+#: View/Books/view.ctp:32
+msgid "Related Lessons"
+msgstr ""
+
+#: View/Books/view.ctp:38
+msgid "Book Id"
+msgstr ""
+
+#: View/Books/view.ctp:39
+#: View/Lessons/view.ctp:19
+#: View/Partners/view.ctp:57
+#: View/Products/view.ctp:34
+#: View/Users/admin_view.ctp:34
+#: View/Users/view.ctp:34
+msgid "Created"
+msgstr ""
+
+#: View/Books/view.ctp:40
+#: View/Lessons/view.ctp:24
+#: View/Partners/view.ctp:58
+#: View/Products/view.ctp:39
+#: View/Users/admin_view.ctp:39
+#: View/Users/view.ctp:39
+msgid "Modified"
+msgstr ""
+
+#: View/Books/view.ctp:62
+#: View/Lessons/index.ctp:52
+#: View/Lessons/view.ctp:37
+msgid "New Lesson"
+msgstr ""
+
+#: View/Exercises/edit.ctp:4
+#: View/Exercises/view.ctp:29
+msgid "Edit Exercise"
+msgstr ""
+
+#: View/Exercises/edit.ctp:19
+#: View/Exercises/index.ctp:25
+#: View/Exercises/view.ctp:32
+#: View/SpeechScripts/edit.ctp:27
+#: View/SpeechScripts/view.ctp:46
+msgid "List Speech Scripts"
+msgstr ""
+
+#: View/Exercises/edit.ctp:20
+#: View/Exercises/index.ctp:50
+#: View/Exercises/view.ctp:33;71
+#: View/SpeechScripts/view.ctp:47
+msgid "New Speech Script"
+msgstr ""
+
+#: View/Exercises/index.ctp:2
+msgid "Exercises"
+msgstr ""
+
+#: View/Exercises/view.ctp:2
+#: View/SpeechScripts/view.ctp:29
+msgid "Exercise"
+msgstr ""
+
+#: View/Exercises/view.ctp:14
+#: View/Lessons/view.ctp:2
+msgid "Lesson"
+msgstr ""
+
+#: View/Exercises/view.ctp:19
+#: View/Lessons/view.ctp:50
+msgid "Transition Image"
+msgstr ""
+
+#: View/Exercises/view.ctp:30
+msgid "Delete Exercise"
+msgstr ""
+
+#: View/Exercises/view.ctp:31
+#: View/Lessons/edit.ctp:18
+#: View/Lessons/index.ctp:27
+#: View/SpeechScripts/add.ctp:18
+msgid "List Exercises"
+msgstr ""
+
+#: View/Exercises/view.ctp:37
+msgid "Related Speech Scripts"
+msgstr ""
+
+#: View/Exercises/view.ctp:42
+#: View/SpeechScripts/view.ctp:9
+msgid "Text To Read"
+msgstr ""
+
+#: View/Exercises/view.ctp:43
+#: View/SpeechScripts/view.ctp:14
+msgid "Text To Check"
+msgstr ""
+
+#: View/Exercises/view.ctp:44
+#: View/SpeechScripts/view.ctp:19
+msgid "Text To Show"
+msgstr ""
+
+#: View/Exercises/view.ctp:45
+msgid "Speech Function Id"
+msgstr ""
+
+#: View/Exercises/view.ctp:46
+msgid "Exercise Id"
+msgstr ""
+
+#: View/Exercises/view.ctp:47
+#: View/SpeechScripts/view.ctp:34
+msgid "Script Index"
+msgstr ""
+
+#: View/Lessons/add.ctp:4
+msgid "Add Lesson"
+msgstr ""
+
+#: View/Lessons/edit.ctp:4
+#: View/Lessons/view.ctp:34
+msgid "Edit Lesson"
+msgstr ""
+
+#: View/Lessons/index.ctp:2
+msgid "Lessons"
+msgstr ""
+
+#: View/Lessons/index.ctp:28
+msgid "Add Practices"
+msgstr ""
+
+#: View/Lessons/view.ctp:35
+msgid "Delete Lesson"
+msgstr ""
+
+#: View/Lessons/view.ctp:43
+msgid "Related Exercises"
+msgstr ""
+
+#: View/Lessons/view.ctp:49
+msgid "Lesson Id"
+msgstr ""
+
+#: View/Pages/home.ctp:8
+msgid "Thank you for signing up."
+msgstr ""
+
+#: View/Pages/home.ctp:10
+msgid "Go back to your app and start practicing!"
+msgstr ""
+
+#: View/Partners/add.ctp:4
+msgid "Add Company"
+msgstr ""
+
+#: View/Partners/add.ctp:16
+#: View/Partners/edit.ctp:23
+#: View/Partners/index.ctp:53
+#: View/Partners/view.ctp:40
+#: View/Products/add.ctp:17
+#: View/Products/edit.ctp:20
+#: View/Products/view.ctp:51
+msgid "List Products"
+msgstr ""
+
+#: View/Partners/edit.ctp:4
+#: View/Partners/view.ctp:34
+msgid "Edit Partner"
+msgstr ""
+
+#: View/Partners/edit.ctp:20
+#: View/Partners/view.ctp:36
+#: View/Products/add.ctp:18
+#: View/Products/edit.ctp:21
+#: View/Products/index.ctp:57
+#: View/Products/view.ctp:53
+msgid "List Partners"
+msgstr ""
+
+#: View/Partners/edit.ctp:21
+#: View/Partners/index.ctp:51
+#: View/Partners/view.ctp:38
+#: View/Practices/add.ctp:19
+#: View/Practices/edit.ctp:21
+#: View/Practices/index.ctp:51
+#: View/Practices/view.ctp:38
+#: View/Users/add.ctp:20
+#: View/Users/admin_add.ctp:19
+#: View/Users/admin_edit.ctp:21
+#: View/Users/admin_view.ctp:51
+#: View/Users/edit.ctp:21
+#: View/Users/view.ctp:51
+msgid "List Users"
+msgstr ""
+
+#: View/Partners/edit.ctp:22
+#: View/Partners/index.ctp:52
+#: View/Partners/view.ctp:39
+#: View/Practices/add.ctp:20
+#: View/Practices/edit.ctp:22
+#: View/Practices/index.ctp:52
+#: View/Practices/view.ctp:39
+#: View/Users/admin_index.ctp:54
+#: View/Users/admin_view.ctp:52
+#: View/Users/index.ctp:40
+#: View/Users/view.ctp:52
+msgid "New User"
+msgstr ""
+
+#: View/Partners/edit.ctp:24
+#: View/Partners/index.ctp:54
+#: View/Partners/view.ctp:41;85
+#: View/Products/index.ctp:56
+#: View/Products/view.ctp:52
+msgid "New Product"
+msgstr ""
+
+#: View/Partners/index.ctp:2
+msgid "Partners"
+msgstr ""
+
+#: View/Partners/index.ctp:50
+#: View/Partners/view.ctp:37
+#: View/Products/index.ctp:58
+msgid "New Partner"
+msgstr ""
+
+#: View/Partners/view.ctp:2
+#: View/Products/view.ctp:9
+#: View/Users/add.ctp:9
+msgid "Partner"
+msgstr ""
+
+#: View/Partners/view.ctp:14
+msgid "Phone"
+msgstr ""
+
+#: View/Partners/view.ctp:19
+msgid "Address"
+msgstr ""
+
+#: View/Partners/view.ctp:24
+#: View/Practices/view.ctp:9
+#: View/Users/admin_view.ctp:2
+#: View/Users/view.ctp:2
+msgid "User"
+msgstr ""
+
+#: View/Partners/view.ctp:35
+msgid "Delete Partner"
+msgstr ""
+
+#: View/Partners/view.ctp:45
+msgid "Related Products"
+msgstr ""
+
+#: View/Partners/view.ctp:50
+msgid "Partner Id"
+msgstr ""
+
+#: View/Partners/view.ctp:52
+#: View/Products/view.ctp:19
+msgid "Description"
+msgstr ""
+
+#: View/Partners/view.ctp:53
+#: View/Products/view.ctp:24
+msgid "Quantity Available"
+msgstr ""
+
+#: View/Partners/view.ctp:54
+#: View/Products/view.ctp:29
+msgid "Points Value"
+msgstr ""
+
+#: View/Partners/view.ctp:55
+msgid "Payment Status"
+msgstr ""
+
+#: View/Partners/view.ctp:56
+msgid "Thumb"
+msgstr ""
+
+#: View/Practices/add.ctp:4
+msgid "Add Practice"
+msgstr ""
+
+#: View/Practices/add.ctp:18
+#: View/Practices/edit.ctp:20
+#: View/Practices/view.ctp:36
+msgid "List Practices"
+msgstr ""
+
+#: View/Practices/edit.ctp:4
+#: View/Practices/view.ctp:34
+msgid "Edit Practice"
+msgstr ""
+
+#: View/Practices/index.ctp:2
+msgid "Practices"
+msgstr ""
+
+#: View/Practices/index.ctp:50
+#: View/Practices/view.ctp:37
+msgid "New Practice"
+msgstr ""
+
+#: View/Practices/view.ctp:2
+msgid "Practice"
+msgstr ""
+
+#: View/Practices/view.ctp:14
+msgid "Start Time"
+msgstr ""
+
+#: View/Practices/view.ctp:19
+msgid "Finish Time"
+msgstr ""
+
+#: View/Practices/view.ctp:24
+msgid "Points"
+msgstr ""
+
+#: View/Practices/view.ctp:35
+msgid "Delete Practice"
+msgstr ""
+
+#: View/Products/add.ctp:4
+msgid "Add Product"
+msgstr ""
+
+#: View/Products/edit.ctp:4
+#: View/Products/view.ctp:49
+msgid "Edit Product"
+msgstr ""
+
+#: View/Products/index.ctp:2
+msgid "Products"
+msgstr ""
+
+#: View/Products/index.ctp:59
+msgid "List Sales"
+msgstr ""
+
+#: View/Products/index.ctp:60
+msgid "New Sale"
+msgstr ""
+
+#: View/Products/view.ctp:2
+msgid "Product"
+msgstr ""
+
+#: View/Products/view.ctp:50
+msgid "Delete Product"
+msgstr ""
+
+#: View/SpeechScripts/add.ctp:4
+msgid "Add Speech Script"
+msgstr ""
+
+#: View/SpeechScripts/add.ctp:10
+msgid "Type the complete text for a single exercise separating the practices by line break:"
+msgstr ""
+
+#: View/SpeechScripts/edit.ctp:4
+#: View/SpeechScripts/view.ctp:44
+msgid "Edit Speech Script"
+msgstr ""
+
+#: View/SpeechScripts/edit.ctp:14
+msgid "Just Speak"
+msgstr ""
+
+#: View/SpeechScripts/edit.ctp:14
+msgid "Speak and Check"
+msgstr ""
+
+#: View/SpeechScripts/index.ctp:2
+msgid "Speech Scripts"
+msgstr ""
+
+#: View/SpeechScripts/view.ctp:2
+msgid "Speech Script"
+msgstr ""
+
+#: View/SpeechScripts/view.ctp:24
+msgid "Speech Function"
+msgstr ""
+
+#: View/SpeechScripts/view.ctp:45
+msgid "Delete Speech Script"
+msgstr ""
+
+#: View/Users/add.ctp:4
+msgid "Add User"
+msgstr ""
+
+#: View/Users/admin_add.ctp:4
+msgid "Admin Add User"
+msgstr ""
+
+#: View/Users/admin_edit.ctp:4
+msgid "Admin Edit User"
+msgstr ""
+
+#: View/Users/admin_index.ctp:2
+#: View/Users/index.ctp:2
+msgid "Users"
+msgstr ""
+
+#: View/Users/admin_view.ctp:14
+#: View/Users/view.ctp:14
+msgid "Password"
+msgstr ""
+
+#: View/Users/admin_view.ctp:19
+#: View/Users/view.ctp:19
+msgid "Role"
+msgstr ""
+
+#: View/Users/admin_view.ctp:24
+#: View/Users/view.ctp:24
+msgid "Username"
+msgstr ""
+
+#: View/Users/admin_view.ctp:29
+#: View/Users/view.ctp:29
+msgid "Last Completed Lesson"
+msgstr ""
+
+#: View/Users/admin_view.ctp:49
+#: View/Users/edit.ctp:4
+#: View/Users/view.ctp:49
+msgid "Edit User"
+msgstr ""
+
+#: View/Users/admin_view.ctp:50
+#: View/Users/view.ctp:50
+msgid "Delete User"
+msgstr ""
+
+#: View/Users/login.ctp:7
+msgid "Please enter your email and password"
+msgstr ""
+
+#: View/Users/login.ctp:14
+msgid "Login"
+msgstr ""
+
+#: View/Users/login.ctp:20
+msgid "Sign up"
+msgstr ""
+
+#: View/UsersBooks/add.ctp:4
+msgid "Unlock book to:"
+msgstr ""
+
+#: View/UsersBooks/add.ctp:20
+msgid "Related Users"
+msgstr ""
+
+#: View/UsersBooks/add.ctp:32
+msgid "Are you sure you want to remove the access for this user?"
+msgstr ""
+
+#: Model/Partner.php:validation for field name;validation for field phone;validation for field address
+#: Model/Product.php:validation for field name;validation for field description;validation for field thumb
+#: Model/Trade.php:validation for field qr_code
+msgid "notBlank"
+msgstr ""
+
+#: Model/Partner.php:validation for field user_id
+#: Model/Practice.php:validation for field user_id;validation for field points
+#: Model/Product.php:validation for field partner_id;validation for field quantity_available;validation for field points_value;validation for field payment_status
+#: Model/ScriptsUser.php:validation for field user_id;validation for field speech_script_id;validation for field number_attempts
+#: Model/Trade.php:validation for field product_id;validation for field user_id;validation for field validated
+#: Model/UsersBook.php:validation for field user_id;validation for field book_id
+msgid "numeric"
+msgstr ""
+
+#: Model/Practice.php:validation for field start_time;validation for field finish_time
+#: Model/ScriptsUser.php:validation for field start_time;validation for field finish_time
+msgid "datetime"
+msgstr ""
+
+#: Model/User.php:validation for field name
+msgid "A name is required"
+msgstr ""
+
+#: Model/User.php:validation for field username
+msgid "A username is required"
+msgstr ""
+
+#: Model/User.php:validation for field username
+msgid "Please, enter a valid email"
+msgstr ""
+
+#: Model/User.php:validation for field username
+msgid "This username has already been taken."
+msgstr ""
+
+#: Model/User.php:validation for field password
+msgid "Minimum 8 characters long"
+msgstr ""
+
+#: Model/User.php:validation for field role
+msgid "Please enter a valid role"
+msgstr ""
+
