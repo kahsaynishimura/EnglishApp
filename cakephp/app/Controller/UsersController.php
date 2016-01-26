@@ -21,7 +21,7 @@ class UsersController extends AppController {
     public function beforeFilter() {
         parent::beforeFilter();
         // Allow users to register and logout.
-        $this->Auth->allow('add', 'login', 'add_api', 'add_fb_api', 'login_api', 'confirmation');
+        $this->Auth->allow('add', 'login', 'save_last_lesson_api', 'add_api', 'add_fb_api', 'login_api', 'confirmation');
     }
 
     public function confirmation() {
@@ -36,7 +36,7 @@ class UsersController extends AppController {
                 $this->User->saveField('is_confirmed', true);
 
                 $this->Flash->success(__('Your account is active'));
-                $this->redirect(array('controller' => 'pages', 'action' => 'display','home'));
+                $this->redirect(array('controller' => 'pages', 'action' => 'display', 'home'));
             } else {
                 $this->Flash->error('Não foi possível confirmar seu cadastro.');
             }
@@ -110,7 +110,7 @@ class UsersController extends AppController {
                 ));
             } else {
                 $user = $this->User->find('first', array(
-                    'fields' => array('id', 'username', 'name', 'is_confirmed','last_completed_lesson'),
+                    'fields' => array('id', 'username', 'name', 'is_confirmed', 'last_completed_lesson'),
                     'conditions' => array('username' => $this->request->data['User']['username'])
                 ));
                 if (!empty($user['User'])) {
@@ -119,6 +119,18 @@ class UsersController extends AppController {
                         '_serialize' => array('user')
                     ));
                 }
+            }
+        }
+    }
+
+    public function save_last_lesson_api() {
+        if ($this->request->is(array('post', 'xml'))) {
+            $this->User->id = $this->request->data['User']['id'];
+            if ($this->User->saveField('last_completed_lesson', $this->request->data['User']['last_completed_lesson'])) {
+                $this->set(array(
+                    'message' => __('Your progress was updated'),
+                    '_serialize' => array('message')
+                ));
             }
         }
     }
