@@ -42,20 +42,33 @@ class EmailConfig {
 		//'charset' => 'utf-8',
 		//'headerCharset' => 'utf-8',
 	);
-
-	public $smtp = array(
+        public $smtp = array(
 		'transport' => 'Smtp',
-		'from' => array('alicesadventures@karinanishimura.com.br' => 'Echo Practice'),
+		'from' => array('robot@echopractice.com' => 'Echo Practice'),
 		'host' => 'tls://send.one.com',
 		'port' => 465,
 		'timeout' => 30,
-		'username' => 'alicesadventures@karinanishimura.com.br',
+		'username' => 'robot@echopractice.com',
 		'password' => 'tkhsnishicom',
 		'client' => null,
 		'log' => false,
 		//'charset' => 'utf-8',
 		//'headerCharset' => 'utf-8',
 	);
+
+//	public $smtp = array(
+//		'transport' => 'Smtp',
+//		'from' => array('alicesadventures@karinanishimura.com.br' => 'Echo Practice'),
+//		'host' => 'tls://send.one.com',
+//		'port' => 465,
+//		'timeout' => 30,
+//		'username' => 'alicesadventures@karinanishimura.com.br',
+//		'password' => 'tkhsnishicom',
+//		'client' => null,
+//		'log' => false,
+//		//'charset' => 'utf-8',
+//		//'headerCharset' => 'utf-8',
+//	);
 
 	public $fast = array(
 		'from' => 'you@localhost',

@@ -91,7 +91,7 @@ class UsersController extends AppController {
             if ($this->User->save($this->request->data)) {
                 //Email
                 $Email = new CakeEmail('smtp');
-                $Email->from(array('alicesadventures@karinanishimura.com.br' => 'Echo Practice'))
+                $Email->from(array('robot@echopractice.com' => 'Echo Practice'))
                         ->to($this->request->data['User']['username'] . '')
                         ->subject(__('Echo Practice - Account confirmation. Start improving your pronunciation'))
                         ->template('confirmation', 'default')
@@ -146,7 +146,7 @@ class UsersController extends AppController {
                 //Email
                 //Email
                 $Email = new CakeEmail('smtp');
-                $Email->from(array('alicesadventures@karinanishimura.com.br' => 'Echo Practice'))
+                $Email->from(array('robot@echopractice.com' => 'Echo Practice'))
                         ->to($this->request->data['User']['username'] . '')
                         ->subject(__('Echo Practice - Account confirmation. Start improving your pronunciation'))
                         ->template('confirmation', 'default')
@@ -256,7 +256,7 @@ class UsersController extends AppController {
 
                 //Email
                 $Email = new CakeEmail('smtp');
-                $Email->from(array('alicesadventures@karinanishimura.com.br' => 'Echo Practice'))
+                $Email->from(array('robot@echopractice.com' => 'Echo Practice'))
                         ->to($this->request->data['User']['username'] . '')
                         ->subject(__('Echo Practice - Account confirmation. Start improving your pronunciation'))
                         ->template('confirmation', 'default')
