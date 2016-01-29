@@ -3,11 +3,12 @@ App::uses('AppModel', 'Model');
 /**
  * Exercise Model
  *
- * @property Lesson $Lesson
  * @property SpeechScript $SpeechScript
+ * @property Lesson $Lesson
+ * @property Practice $Practice
  */
 class Exercise extends AppModel {
-
+ 
 
 	// The Associations below have been created with all possible keys, those that are not needed can be removed
 
@@ -34,6 +35,19 @@ class Exercise extends AppModel {
 	public $hasMany = array(
 		'SpeechScript' => array(
 			'className' => 'SpeechScript',
+			'foreignKey' => 'exercise_id',
+			'dependent' => true,
+			'conditions' => '',
+			'fields' => '',
+			'order' => '',
+			'limit' => '',
+			'offset' => '',
+			'exclusive' => '',
+			'finderQuery' => '',
+			'counterQuery' => ''
+		),
+		'Practice' => array(
+			'className' => 'Practice',
 			'foreignKey' => 'exercise_id',
 			'dependent' => true,
 			'conditions' => '',

@@ -4,6 +4,7 @@ App::uses('AppModel', 'Model');
  * Practice Model
  *
  * @property User $User
+ *  @property Exercise $Exercise
  */
 class Practice extends AppModel {
 
@@ -65,6 +66,14 @@ class Practice extends AppModel {
 	public $belongsTo = array(
 		'User' => array(
 			'className' => 'User',
+			'foreignKey' => 'user_id',
+			'conditions' => '',
+			'fields' => '',
+			'order' => ''
+		),
+            
+		'Exercise' => array(
+			'className' => 'Exercise',
 			'foreignKey' => 'user_id',
 			'conditions' => '',
 			'fields' => '',
