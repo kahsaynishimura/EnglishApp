@@ -1,5 +1,5 @@
 <div class="partners form">
-    <?php echo $this->Form->create('Company'); ?>
+    <?php echo $this->Form->create('Partner'); ?>
     <fieldset>
         <legend><?php echo __('Add Company'); ?></legend>
         <?php

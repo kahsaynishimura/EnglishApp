@@ -76,7 +76,12 @@ class ProductsController extends AppController {
     public function add() {
         if ($this->request->is('post')) {
             $this->Product->create();
-            $this->request->data['Product']['partner_id'] = $this->Auth->user('id');
+ $partner=$this->Product->Partner->find('first',
+                    array('fields'=>array('id'),
+                        'condition'=>array('Partner.user_id'=>$this->Auth->user('id'))));
+                    
+                    
+            $this->request->data['Product']['partner_id'] = $partner['Partner']['id'] ;
             if ($this->Product->save($this->request->data)) {
                 $this->Flash->success(__('The product has been saved.'));
                 return $this->redirect(array('action' => 'index'));

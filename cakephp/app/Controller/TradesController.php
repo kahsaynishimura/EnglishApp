@@ -31,7 +31,7 @@ class TradesController extends AppController {
             $this->Trade->Behaviors->load('Containable');
             $this->set(array(
                 'trades' => $this->Trade->find('all', array(
-                    'conditions' => array('user_id' => 3), // $this->request->data['Trade']['user_id']),
+                    'conditions' => array('user_id' => $this->request->data['Trade']['user_id']),
                     'fields' => array('id', 'qr_code', 'validated'),
                     'contain' => array('Product' => array('fields' => array(
                                 'name'
