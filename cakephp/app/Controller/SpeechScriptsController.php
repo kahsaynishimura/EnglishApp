@@ -71,7 +71,7 @@ class SpeechScriptsController extends AppController {
                 $this->SpeechScript->Exercise->id = $newExerciseId;
 
                 $str = $this->request->data['SpeechScript']['complete_text'];
-                $arr = preg_split('/\R|,|\.|\/|!|;|:/', $str); //explode("\n", $str);
+                $arr = preg_split('/\R|\.|\/|!|;|:/', $str); //explode("\n", $str);
                 foreach ($arr as $key => $value) {
                     $arr[$key] = trim($arr[$key]);
                     if (empty($arr[$key]) || $arr[$key] == " ") {
@@ -98,9 +98,6 @@ class SpeechScriptsController extends AppController {
                 return $this->redirect(array('action' => 'index', $newExerciseId));
             }
         }
-        // $speechFunctions = $this->SpeechScript->SpeechFunction->find('list');
-        //$exercises = $this->SpeechScript->Exercise->find('list');
-        // $this->set(compact('speechFunctions', 'exercises'));
     }
 
     /**
