@@ -21,17 +21,19 @@ class BooksController extends AppController {
         $this->Book->recursive = 0;
         if ($this->request->is('xml')) {
             $booksWithPermission = $this->Book->UsersBook->find('all', array(
-                'fields'=>array('Book.id','Book.name'),
-                'conditions' => array('UsersBook.user_id' => $this->request->data['User']['id'],'Book.is_free'=>false), 
+                'fields' => array('Book.id', 'Book.name'),
+                'order' => array('difficulty_level', 'name' => 'asc'),
+                'conditions' => array('UsersBook.user_id' => $this->request->data['User']['id'], 'Book.is_free' => false),
             ));
             $books = $this->Book->find('all', array(
-                        'fields' => array('id', 'name'),
-                        'conditions' => array('is_free' => true),
+                'fields' => array('id', 'name'),
+                'order' => array('difficulty_level', 'name' => 'asc'),
+                'conditions' => array('is_free' => true),
             ));
             foreach ($booksWithPermission as $usersBook) {
                 array_push($books, $usersBook);
             }
-            
+
             $this->set(array(
                 'books' => $books,
                 '_serialize' => 'books'));
@@ -45,6 +47,11 @@ class BooksController extends AppController {
      */
     public function index() {
         $this->Book->recursive = 0;
+        $this->Paginator->settings = array(
+            'Book' => array(
+                'order' => array('difficulty_level', 'name' => 'asc'),
+            )
+        );
         $this->set('books', $this->Paginator->paginate('Book', array('Book.user_id' => $this->Auth->user('id'))));
     }
 
@@ -72,8 +79,8 @@ class BooksController extends AppController {
         if ($this->request->is('post')) {
             $this->Book->create();
             $this->request->data['Book']['user_id'] = $this->Auth->user('id');
-            $this->Book->User->id = $this->Auth->user('id');
-            $this->Book->User->saveField('role', 'author');
+            // $this->Book->User->id = $this->Auth->user('id');
+            //$this->Book->User->saveField('role', 'author');
             if ($this->Book->save($this->request->data)) {
                 $this->Flash->success(__('The book has been saved.'));
                 return $this->redirect(array('action' => 'index'));

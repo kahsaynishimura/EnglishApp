@@ -5,7 +5,9 @@
 	<?php
 		echo $this->Form->input('id');
 		echo $this->Form->input('name'); 
-                 echo $this->Form->input('is_free',array('label'=>__('Free')));
+                 echo $this->Form->input('is_free',array('label'=>__('Free'))); echo $this->Form->input('difficulty_level', array(
+            'options' => array('1' => __('easy'),'2'=>__('normal'),'3'=>__('hard'))
+        ));
 
 	?>
 	</fieldset>

@@ -17,12 +17,12 @@
  * @since         CakePHP(tm) v 0.2.9
  * @license       http://www.opensource.org/licenses/mit-license.php MIT License
  */
-
-//setLocale(LC_ALL, 'por');
-
-/**
+ 
+//setLocale(LC_ALL, 'por');  
+ 
+/** 
  * CakePHP Debug Level:
- *
+ * 
  * Production Mode:
  * 	0: No error messages, errors, or warnings shown. Flash messages redirect.
  *

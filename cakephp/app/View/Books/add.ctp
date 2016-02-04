@@ -4,7 +4,11 @@
         <legend><?php echo __('Add Book'); ?></legend>
         <?php echo $this->Form->input('name'); ?>
 
-        <?php echo $this->Form->input('is_free', array('label' => 'Free')); ?>
+        <?php echo $this->Form->input('is_free', array('label' => 'Free'));
+        echo $this->Form->input('difficulty_level', array(
+            'options' => array('1' => __('easy'),'2'=>__('normal'),'3'=>__('hard'))
+        ));
+        ?>
     </fieldset>
     <?php echo $this->Form->end(__('Submit')); ?>
 </div>

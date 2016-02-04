@@ -23,7 +23,8 @@
                         <?php echo $this->Html->link(__('View'), array('action' => 'view', $exercise['Exercise']['id'])); ?>
                         <?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $exercise['Exercise']['id'])); ?>
                         <?php echo $this->Html->link(__('List Speech Scripts'), array('controller' => 'speech_scripts', 'action' => 'index', $exercise['Exercise']['id'])); ?> 
-                        
+                        <?php echo $this->Html->link(__('Add Sentence'), array('controller'=>'speech_scripts','action' => 'add_one', $exercise['Exercise']['id'])); ?>
+
                         <?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $exercise['Exercise']['id']), array('confirm' => __('Are you sure you want to delete # %s?', $exercise['Exercise']['id']))); ?>
                     </td>
                 </tr>
