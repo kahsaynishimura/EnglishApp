@@ -128,12 +128,13 @@ class ExercisesController extends AppController {
             throw new NotFoundException(__('Invalid exercise'));
         }
         $this->request->allowMethod('post', 'delete');
+        $lesson_id=$this->Exercise->field("lesson_id");
         if ($this->Exercise->delete()) {
             $this->Flash->success(__('The exercise has been deleted.'));
         } else {
             $this->Flash->error(__('The exercise could not be deleted. Please, try again.'));
         }
-        return $this->redirect(array('controller' => 'books', 'action' => 'index'));
+        return $this->redirect(array( 'action' => 'index',$lesson_id));
     }
 
     public function isAuthorized($user) {
