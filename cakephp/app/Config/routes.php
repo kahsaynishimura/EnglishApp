@@ -25,7 +25,8 @@
  * its action called 'display', and we pass a param to select the view file
  * to use (in this case, /app/View/Pages/home.ctp)...
  */
-Router::connect('/', array('controller' => 'pages', 'action' => 'display', 'home'));
+Router::connect('/thank-you', array('controller' => 'pages', 'action' => 'display', 'thank-you-for-subscribing'));
+Router::connect('/', array('controller' => 'books', 'action' => 'index'));
 
 /**
  * ...and connect the rest of 'Pages' controller's URLs.
@@ -39,7 +40,7 @@ Router::connect('/pages/*', array('controller' => 'pages', 'action' => 'home'));
 CakePlugin::routes();
 
 
-Router::mapResources(array('users', 'products', 'books', 'practices', 'trades'));
+Router::mapResources(array('Users', 'Products', 'Books', 'Practices', 'Trades'));
 Router::parseExtensions('xml');
 /**
  * Load the CakePHP default routes. Only remove this if you do not want to use
