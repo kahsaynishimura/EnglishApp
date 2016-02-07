@@ -139,7 +139,7 @@ class ExercisesController extends AppController {
 
     public function isAuthorized($user) {
         // All registered users can add posts
-        if (in_array($this->action, array('edit', 'delete', 'add'))) {
+        if (in_array($this->action, array('edit', 'delete', 'add','index'))) {
             return true;
         }
 

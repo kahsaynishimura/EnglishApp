@@ -136,8 +136,7 @@ class BooksController extends AppController {
     }
 
     public function isAuthorized($user) {
-        // All registered users can add posts
-        if ($this->action === 'add') {
+        if (in_array($this->action, array('add', 'index'))) {
             return true;
         }
 

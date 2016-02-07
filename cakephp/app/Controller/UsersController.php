@@ -327,7 +327,7 @@ class UsersController extends AppController {
 
     public function isAuthorized($user) {
         // All registered users can add posts
-        if (in_array($this->action, array('add', 'logout'))) {
+        if (in_array($this->action, array('add', 'logout','index'))) {
             return true;
         }
 

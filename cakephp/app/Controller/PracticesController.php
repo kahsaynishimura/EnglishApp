@@ -52,6 +52,61 @@ class PracticesController extends AppController {
         $this->set('practices', $this->Paginator->paginate());
     }
 
+    public function ranking($bookId = null) {
+        $this->Practice->Behaviors->load('Containable');
+
+        $this->Practice->Exercise->Lesson->recursive = 0;
+
+        if ($bookId != null) {
+
+            //find lessons
+            $lessons = $this->Practice->Exercise->Lesson->find('all', array(
+                'conditions' => array('Lesson.book_id' => $bookId),
+                'fields' => array('Lesson.id')
+            ));
+            $lessonIds = array();
+            foreach ($lessons as $key => $lesson) {
+                array_push($lessonIds, $lesson['Lesson']['id']);
+            }
+
+            //find exercises
+            $exercises = $this->Practice->Exercise->find('all', array(
+                'conditions' => array('Exercise.lesson_id' => $lessonIds),
+                'fields' => array('Exercise.id')
+            ));
+            $exerciseIds = array();
+
+            foreach ($exercises as $key => $exercise) {
+                array_push($exerciseIds, $exercise['Exercise']['id']);
+            }
+            $this->Paginator->settings = array(
+                'Practice' => array(
+                    'limit' => 20,
+                    'conditions' => array(
+                        'Practice.exercise_id' => $exerciseIds
+                    ),
+                    'contain' => array(
+                        'User' => array('name')),
+                    'fields' => array('(SUM(Practice.points)) as total_points', 'Practice.user_id'),
+                    'order' => array('total_points' => 'desc'),
+                    'group' => array('user_id')
+            ));
+        } else {
+            $this->Paginator->settings = array(
+                'Practice' => array(
+                    'limit' => 20,
+                    'contain' => array(
+                        'User' => array('name'),
+                    ),
+                    'fields' => array('(SUM(Practice.points)) as total_points', 'Practice.user_id'),
+                    'order' => array('total_points' => 'desc'),
+                    'group' => array('user_id')
+                )
+            );
+        }
+        $this->set('practices', $this->Paginator->paginate());
+    }
+
     /**
      * view method
      *
@@ -65,6 +120,15 @@ class PracticesController extends AppController {
         }
         $options = array('conditions' => array('Practice.' . $this->Practice->primaryKey => $id));
         $this->set('practice', $this->Practice->find('first', $options));
+    }
+
+    public function isAuthorized($user) {
+        // All registered users can add posts
+        if (in_array($this->action, array('index', 'ranking'))) {
+            return true;
+        }
+
+        return parent::isAuthorized($user);
     }
 
 }

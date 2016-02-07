@@ -112,7 +112,6 @@ class SpeechScriptsController extends AppController {
                 $this->Flash->error(__('The speech script could not be saved. Please, try again.'));
             }
         }
-
     }
 
     /**
@@ -149,7 +148,7 @@ class SpeechScriptsController extends AppController {
      * @param string $id
      * @return void
      */
-    public function delete($id = null,$exercise_id=null) {
+    public function delete($id = null, $exercise_id = null) {
         $this->SpeechScript->id = $id;
         if (!$this->SpeechScript->exists()) {
             throw new NotFoundException(__('Invalid speech script'));
@@ -160,11 +159,11 @@ class SpeechScriptsController extends AppController {
         } else {
             $this->Flash->error(__('The speech script could not be deleted. Please, try again.'));
         }
-        return $this->redirect(array('action' => 'index',$exercise_id));
+        return $this->redirect(array('action' => 'index', $exercise_id));
     }
 
     public function isAuthorized($user) {
-        if (in_array($this->action, array('edit', 'delete', 'add','add_one'))) {
+        if (in_array($this->action, array('edit', 'delete', 'add', 'add_one', 'index'))) {
             return true;
         }
 

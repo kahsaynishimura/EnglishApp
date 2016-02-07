@@ -90,7 +90,7 @@ class PartnersController extends AppController {
 
     public function isAuthorized($user) {
         // All registered users can add posts
-        if ($this->action === 'add') {
+        if (in_array($this->action, array('add', 'index'))) {
             return true;
         }
 
@@ -99,7 +99,7 @@ class PartnersController extends AppController {
             $partnerId = (int) $this->request->params['pass'][0];
             if ($this->Partner->isOwnedBy($partnerId, $user['id'])) {
                 return true;
-            } 
+            }
         }
 
         return parent::isAuthorized($user);

@@ -6,6 +6,7 @@ App::uses('BlowfishPasswordHasher', 'Controller/Component/Auth');
 /**
  * User Model
  *
+ *   @property UsersBook $UsersBook
  */
 class User extends AppModel {
 
@@ -53,4 +54,25 @@ class User extends AppModel {
         return true;
     }
 
+/**
+ * hasMany associations
+ *
+ * @var array
+ */
+	public $hasMany = array(
+		
+		'UsersBook' => array(
+			'className' => 'UsersBook',
+			'foreignKey' => 'user_id',
+			'dependent' => true,
+			'conditions' => '',
+			'fields' => '',
+			'order' => '',
+			'limit' => '',
+			'offset' => '',
+			'exclusive' => '',
+			'finderQuery' => '',
+			'counterQuery' => ''
+		)
+	);
 }

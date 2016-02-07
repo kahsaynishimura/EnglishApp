@@ -131,7 +131,7 @@ class LessonsController extends AppController {
     }
 
     public function isAuthorized($user) {
-        if (in_array($this->action, array('edit', 'delete', 'add'))) {
+        if (in_array($this->action, array('edit', 'delete', 'add','index'))) {
             return true;
         }
 
