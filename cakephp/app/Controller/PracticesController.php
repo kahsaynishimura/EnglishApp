@@ -19,7 +19,7 @@ class PracticesController extends AppController {
 
     public function beforeFilter() {
         parent::beforeFilter();
-        $this->Auth->allow('add_api');
+        $this->Auth->allow('add_api', 'ranking');
     }
 
     /*     * ********************************Rest API********************************** */
@@ -54,7 +54,7 @@ class PracticesController extends AppController {
 
     public function ranking($bookId = null) {
         $this->Practice->Behaviors->load('Containable');
-
+        $this->layout = 'simple';
         $this->Practice->Exercise->Lesson->recursive = 0;
 
         if ($bookId != null) {
@@ -124,7 +124,7 @@ class PracticesController extends AppController {
 
     public function isAuthorized($user) {
         // All registered users can add posts
-        if (in_array($this->action, array('index', 'ranking'))) {
+        if (in_array($this->action, array('index'))) {
             return true;
         }
 

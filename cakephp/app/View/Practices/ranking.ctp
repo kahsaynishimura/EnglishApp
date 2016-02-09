@@ -1,6 +1,6 @@
-<div class="practices index">
+<div class="practices index" style="width: 100%">
 
-    <h2><?php echo __('Practices');?></h2>
+    <h2><?php echo __('Ranking'); ?></h2>
     <table cellpadding="0" cellspacing="0">
         <thead>
             <tr>
@@ -9,15 +9,15 @@
             </tr>
         </thead>
         <tbody>
-<?php foreach ($practices as $practice): ?>
+            <?php foreach ($practices as $practice): ?>
                 <tr>
                     <td>
-    <?php echo $this->Html->link($practice['User']['name'], array('controller' => 'users', 'action' => 'view', $practice['User']['id'])); ?>
+                        <?php echo __($practice['User']['name']); ?>
                     </td>
                     <td><?php echo h($practice[0]['total_points']); ?>&nbsp;</td>
-                   
+
                 </tr>
-<?php endforeach; ?>
+            <?php endforeach; ?>
         </tbody>
     </table>
     <p>
@@ -33,12 +33,4 @@
         echo $this->Paginator->next(__('next') . ' >', array(), null, array('class' => 'next disabled'));
         ?>
     </div>
-</div>
-<div class="actions">
-    <h3><?php echo __('Actions'); ?></h3>
-    <ul>
-        <li><?php echo $this->Html->link(__('New Practice'), array('action' => 'add')); ?></li>
-        <li><?php echo $this->Html->link(__('List Users'), array('controller' => 'users', 'action' => 'index')); ?> </li>
-        <li><?php echo $this->Html->link(__('New User'), array('controller' => 'users', 'action' => 'add')); ?> </li>
-    </ul>
 </div>

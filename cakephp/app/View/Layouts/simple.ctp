@@ -13,7 +13,7 @@
  * @since         CakePHP(tm) v 0.10.0.1076
  * @license       http://www.opensource.org/licenses/mit-license.php MIT License
  */
-$cakeDescription = __('Echo Practice: the best way to practice English');
+$cakeDescription = __( 'Echo Practice: the best way to practice English');
 $cakeVersion = __('Echo Practice &copy; 2016');
 ?>
 <!DOCTYPE html>
@@ -31,22 +31,13 @@ $cakeVersion = __('Echo Practice &copy; 2016');
 
         echo $this->fetch('meta');
         echo $this->fetch('css');
-        echo $this->fetch('script');
+        echo $this->fetch('script'); 
         ?>
     </head>
     <body>
         <div id="container">
             <div id="header">
-                <h1><?php echo $this->Html->link($cakeDescription, 'http://www.echopractice.com'); ?></h1>
-                <h1><?php
-                    if (AuthComponent::user()):
-                        // The user is logged in, show the logout link
-                        echo $this->Html->link('Log out', array('controller' => 'users', 'action' => 'logout'));
-                    else:
-                        // The user is not logged in, show login link
-                        echo $this->Html->link('Log in', array('controller' => 'users', 'action' => 'login'));
-                    endif;
-                    ?></h1>
+               
             </div>
             <div id="content">
 
@@ -61,10 +52,10 @@ $cakeVersion = __('Echo Practice &copy; 2016');
                 );
                 ?>
                 <p>
-                    <?php echo $cakeVersion; ?>
+<?php echo $cakeVersion; ?>
                 </p>
             </div>
         </div>
-        <?php echo $this->element('sql_dump'); ?>
+<?php echo $this->element('sql_dump'); ?>
     </body>
 </html>

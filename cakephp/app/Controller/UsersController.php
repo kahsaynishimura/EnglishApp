@@ -242,7 +242,9 @@ class UsersController extends AppController {
         if (!$this->User->exists($id)) {
             throw new NotFoundException(__('Invalid user'));
         }
-        $options = array('conditions' => array('User.' . $this->User->primaryKey => $id));
+        $options = array(
+            'fields'=>array('name','created'),
+            'conditions' => array('User.' . $this->User->primaryKey => $id));
         $this->set('user', $this->User->find('first', $options));
     }
 
