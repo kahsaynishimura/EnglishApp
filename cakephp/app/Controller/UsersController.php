@@ -123,13 +123,15 @@ class UsersController extends AppController {
         }
     }
 
+    //must return the user's available score
     public function save_last_lesson_api() {
         if ($this->request->is(array('post', 'xml'))) {
             $this->User->id = $this->request->data['User']['id'];
             if ($this->User->saveField('last_completed_lesson', $this->request->data['User']['last_completed_lesson'])) {
+                $general_response = array('status' => 'success', 'data' => $this->User->field("total_points"), 'message' => __('Your progress was updated'));
                 $this->set(array(
-                    'message' => __('Your progress was updated'),
-                    '_serialize' => array('message')
+                    'general_response' => $general_response,
+                    '_serialize' => array('general_response')
                 ));
             }
         }
@@ -243,7 +245,7 @@ class UsersController extends AppController {
             throw new NotFoundException(__('Invalid user'));
         }
         $options = array(
-            'fields'=>array('name','created'),
+            'fields' => array('name', 'created'),
             'conditions' => array('User.' . $this->User->primaryKey => $id));
         $this->set('user', $this->User->find('first', $options));
     }
@@ -329,7 +331,7 @@ class UsersController extends AppController {
 
     public function isAuthorized($user) {
         // All registered users can add posts
-        if (in_array($this->action, array('add', 'logout','index'))) {
+        if (in_array($this->action, array('add', 'logout', 'index'))) {
             return true;
         }
 
