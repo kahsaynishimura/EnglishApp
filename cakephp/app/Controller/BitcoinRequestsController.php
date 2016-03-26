@@ -63,12 +63,13 @@ class BitcoinRequestsController extends AppController {
  * @throws NotFoundException
  * @param string $id
  * @return void
- */
+ */ 
 	public function edit($id = null) {
 		if (!$this->BitcoinRequest->exists($id)) {
 			throw new NotFoundException(__('Invalid bitcoin request'));
 		}
 		if ($this->request->is(array('post', 'put'))) {
+                 
 			if ($this->BitcoinRequest->save($this->request->data)) {
 				$this->Flash->success(__('The bitcoin request has been saved.'));
 				return $this->redirect(array('action' => 'index'));

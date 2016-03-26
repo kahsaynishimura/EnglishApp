@@ -5,6 +5,7 @@
 	<tr>
 			<th><?php echo $this->Paginator->sort('id'); ?></th>
 			<th><?php echo $this->Paginator->sort('wallet'); ?></th>
+			<th><?php echo $this->Paginator->sort('total_btc'); ?></th>
 			<th><?php echo $this->Paginator->sort('status'); ?></th>
 			<th class="actions"><?php echo __('Actions'); ?></th>
 	</tr>
@@ -12,8 +13,10 @@
 	<tbody>
 	<?php foreach ($bitcoinRequests as $bitcoinRequest): ?>
 	<tr>
+            
 		<td><?php echo h($bitcoinRequest['BitcoinRequest']['id']); ?>&nbsp;</td>
 		<td><?php echo h($bitcoinRequest['BitcoinRequest']['wallet']); ?>&nbsp;</td>
+		<td><?php echo h($bitcoinRequest['BitcoinRequest']['total_btc']); ?>&nbsp;</td>
 		<td><?php echo h($bitcoinRequest['BitcoinRequest']['status']); ?>&nbsp;</td>
 		<td class="actions">
 			<?php echo $this->Html->link(__('View'), array('action' => 'view', $bitcoinRequest['BitcoinRequest']['id'])); ?>

@@ -11,6 +11,11 @@
 			<?php echo h($bitcoinRequest['BitcoinRequest']['wallet']); ?>
 			&nbsp;
 		</dd>
+		<dt><?php echo __('Total Btc'); ?></dt>
+		<dd>
+			<?php echo h($bitcoinRequest['BitcoinRequest']['total_btc']); ?>
+			&nbsp;
+		</dd>
 		<dt><?php echo __('Status'); ?></dt>
 		<dd>
 			<?php echo h($bitcoinRequest['BitcoinRequest']['status']); ?>

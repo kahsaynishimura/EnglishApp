@@ -5,6 +5,7 @@
 	<?php
 		echo $this->Form->input('id');
 		echo $this->Form->input('wallet');
+		echo $this->Form->input('total_btc');
 		echo $this->Form->input('status');
 	?>
 	</fieldset>
