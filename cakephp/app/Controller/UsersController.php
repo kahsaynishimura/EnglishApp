@@ -89,8 +89,16 @@ class UsersController extends AppController {
             $this->request->data['User']['password'] = '00000000000000000000';
             $this->request->data['User']['is_confirmed'] = true;
             if ($this->User->save($this->request->data)) {
-                //Email
+              
+                $this->request->data['User']['id'] = $this->User->getLastInsertID();
+                $this->set(array(
+                    'user' => $this->request->data['User'],
+                    '_serialize' => array('user')
+                ));
+                
+                  //Email
                 $Email = new CakeEmail('smtp');
+                
                 $Email->from(array('robot@echopractice.com' => 'Echo Practice'))
                         ->to($this->request->data['User']['username'] . '')
                         ->subject(__('Echo Practice - Account confirmation. Start improving your pronunciation'))
@@ -103,11 +111,6 @@ class UsersController extends AppController {
                             'instructions' => __('Please, click the button bellow to activate your access and start using Echo Practice for free'),
                             'email' => $this->request->data['User']['username']))
                         ->send();
-                $this->request->data['User']['id'] = $this->User->getLastInsertID();
-                $this->set(array(
-                    'user' => $this->request->data['User'],
-                    '_serialize' => array('user')
-                ));
             } else {
                 $user = $this->User->find('first', array(
                     'fields' => array('id', 'username', 'name', 'is_confirmed', 'last_completed_lesson'),
@@ -141,11 +144,11 @@ class UsersController extends AppController {
         if ($this->request->is(array('post', 'xml'))) {
             $this->User->create();
 
-            $this->request->data['User']['last_completed_lesson'] = $this->request->data['User']['total_points'] = 0;
+            $this->request->data['User']['last_completed_lesson'] = 0;
+            $this->request->data['User']['total_points'] = 0;
             $this->request->data['User']['role'] = 'student'; //only students are allowed to be added via app
 
             if ($this->User->save($this->request->data)) {
-                //Email
                 //Email
                 $Email = new CakeEmail('smtp');
                 $Email->from(array('robot@echopractice.com' => 'Echo Practice'))
