@@ -113,7 +113,7 @@ class UsersController extends AppController {
                         ->send();
             } else {
                 $user = $this->User->find('first', array(
-                    'fields' => array('id', 'username', 'name', 'is_confirmed', 'last_completed_lesson'),
+                    'fields' => array('id', 'username', 'name', 'is_confirmed', 'last_completed_lesson','total_points'),
                     'conditions' => array('username' => $this->request->data['User']['username'])
                 ));
                 if (!empty($user['User'])) {
