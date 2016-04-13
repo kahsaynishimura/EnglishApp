@@ -28,10 +28,12 @@
                     </td>
                     <td><?php echo h($speechScript['SpeechScript']['script_index']); ?>&nbsp;</td>
                     <td class="actions">
+                        <?php echo $this->Html->link(__('Add alternate check word'), array('controller'=>'speechScriptChecks','action' => 'add', $speechScript['SpeechScript']['id'])); ?>
+                        
                         <?php echo $this->Html->link(__('View'), array('action' => 'view', $speechScript['SpeechScript']['id'])); ?>
                         <?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $speechScript['SpeechScript']['id'])); ?>
                         <?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $speechScript['SpeechScript']['id'],$speechScript['SpeechScript']['exercise_id']), array('confirm' => __('Are you sure you want to delete # %s?', $speechScript['SpeechScript']['id']))); ?>
-                    </td>
+                    </td> 
                 </tr>
             <?php endforeach; ?>
         </tbody>
