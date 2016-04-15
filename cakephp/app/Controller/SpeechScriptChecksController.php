@@ -54,7 +54,6 @@ class SpeechScriptChecksController extends AppController {
             $this->request->data['SpeechScriptCheck']['speech_script_id'] = $speechScriptId;
 
             if ($this->SpeechScriptCheck->save($this->request->data)) {
-                $this->SpeechScriptCheck->SpeechScript->updateAll(array('has_more_checks'=>1),'SpeechScript.id='.$speechScriptId );
                 $this->Flash->success(__('The speech script check has been saved.'));
                 return $this->redirect(array('action' => 'index'));
             } else {

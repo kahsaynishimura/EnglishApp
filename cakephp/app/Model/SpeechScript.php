@@ -5,6 +5,7 @@ App::uses('AppModel', 'Model');
  *
  * @property SpeechFunction $SpeechFunction
  * @property Exercise $Exercise
+ * @property SpeechScriptCheck SpeechScriptCheck
  */
 class SpeechScript extends AppModel {
 
@@ -32,5 +33,25 @@ class SpeechScript extends AppModel {
 			'order' => ''
 		)
 	);
+         /**
+     * hasMany associations
+     *
+     * @var array
+     */
+    public $hasMany = array(
+        'SpeechScriptCheck' => array(
+            'className' => 'SpeechScriptCheck',
+            'foreignKey' => 'speech_script_id',
+            'dependent' => false,
+            'conditions' => '',
+            'fields' => '',
+            'order' => '',
+            'limit' => '',
+            'offset' => '',
+            'exclusive' => '',
+            'finderQuery' => '',
+            'counterQuery' => ''
+        )
+    );
 
 }

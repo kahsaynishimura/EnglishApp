@@ -19,10 +19,14 @@ class SpeechScriptsController extends AppController {
 
     public function index_api() {
         $this->SpeechScript->recursive = 0;
+        $this->SpeechScript->Behaviors->load('Containable');
         if ($this->request->is('xml')) {
             $this->set(array(
                 'speech_scripts' => $this->SpeechScript->find('all', array(
                     'fields' => array('id', 'text_to_read', 'text_to_check', 'text_to_show', 'exercise_id', 'speech_function_id', 'script_index'),
+                    'contain'=>array('SpeechScriptCheck'=>  array(
+                        'fields'=>array('id','speech_script_id','text_to_check')
+                    )),
                     'conditions' => array('exercise_id' => $this->data['SpeechScript']['exercise_id']))),
                 '_serialize' => 'speech_scripts'));
         }
