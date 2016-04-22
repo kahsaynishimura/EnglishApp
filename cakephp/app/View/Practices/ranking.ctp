@@ -4,17 +4,17 @@
     <table cellpadding="0" cellspacing="0">
         <thead>
             <tr>
-                <th><?php echo $this->Paginator->sort('user_id'); ?></th>
-                <th><?php echo $this->Paginator->sort('total_points'); ?></th>
+                <th><?php echo $this->Paginator->sort('User.name'); ?></th>
+                <th><?php echo $this->Paginator->sort('Practice.practice_total_points'); ?></th>
             </tr>
         </thead>
         <tbody>
-            <?php foreach ($practices as $practice): ?>
+            <?php foreach ($practices as $key=>$practice): ?>
                 <tr>
                     <td>
                         <?php echo __($practice['User']['name']); ?>
                     </td>
-                    <td><?php echo h($practice[0]['total_points']); ?>&nbsp;</td>
+                    <td><?php echo h($practice['Practice']['practice_total_points']); ?>&nbsp;</td>
 
                 </tr>
             <?php endforeach; ?>

@@ -95,16 +95,17 @@ class PracticesController extends AppController {
             $this->Paginator->settings = array(
                 'Practice' => array(
                     'limit' => 20,
+                    'fields' => array('(SUM(Practice.points)) as Practice__practice_total_points', 'Practice.user_id'),
+                    'group' => array('user_id'),
+                    'order' => array('Practice.practice_total_points' => 'DESC'),
                     'contain' => array(
                         'User' => array('name'),
                     ),
-                    'fields' => array('(SUM(Practice.points)) as total_points', 'Practice.user_id'),
-                    'order' => array('total_points' => 'desc'),
-                    'group' => array('user_id')
                 )
             );
         }
-        $this->set('practices', $this->Paginator->paginate());
+        $resultingPractices = $this->Paginator->paginate();
+        $this->set('practices', $resultingPractices);
     }
 
     /**
