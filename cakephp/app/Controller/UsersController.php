@@ -89,16 +89,16 @@ class UsersController extends AppController {
             $this->request->data['User']['password'] = '00000000000000000000';
             $this->request->data['User']['is_confirmed'] = true;
             if ($this->User->save($this->request->data)) {
-              
+
                 $this->request->data['User']['id'] = $this->User->getLastInsertID();
                 $this->set(array(
                     'user' => $this->request->data['User'],
                     '_serialize' => array('user')
                 ));
-                
-                  //Email
+
+                //Email
                 $Email = new CakeEmail('smtp');
-                
+
                 $Email->from(array('robot@echopractice.com' => 'Echo Practice'))
                         ->to($this->request->data['User']['username'] . '')
                         ->subject(__('Echo Practice - Account confirmation. Start improving your pronunciation'))
@@ -113,7 +113,7 @@ class UsersController extends AppController {
                         ->send();
             } else {
                 $user = $this->User->find('first', array(
-                    'fields' => array('id', 'username', 'name', 'is_confirmed', 'last_completed_lesson','total_points'),
+                    'fields' => array('id', 'username', 'name', 'is_confirmed', 'last_completed_lesson', 'total_points'),
                     'conditions' => array('username' => $this->request->data['User']['username'])
                 ));
                 if (!empty($user['User'])) {
@@ -227,11 +227,11 @@ class UsersController extends AppController {
     }
 
     /**
-     * index method
+     * admin_index method
      *
      * @return void
      */
-    public function index() {
+    public function admin_index() {
         $this->User->recursive = 0;
         $this->set('users', $this->Paginator->paginate());
     }
@@ -294,14 +294,14 @@ class UsersController extends AppController {
      * @param string $id
      * @return void
      */
-    public function edit($id = null) {
+    public function admin_edit($id = null) {
         if (!$this->User->exists($id)) {
             throw new NotFoundException(__('Invalid user'));
         }
         if ($this->request->is(array('post', 'put'))) {
             if ($this->User->save($this->request->data)) {
                 $this->Flash->success(__('The user has been saved.'));
-                return $this->redirect(array('action' => 'index'));
+                return $this->redirect(array('action' => 'admin_index'));
             } else {
                 $this->Flash->error(__('The user could not be saved. Please, try again.'));
             }
@@ -318,7 +318,7 @@ class UsersController extends AppController {
      * @param string $id
      * @return void
      */
-    public function delete($id = null) {
+    public function admin_delete($id = null) {
         $this->User->id = $id;
         if (!$this->User->exists()) {
             throw new NotFoundException(__('Invalid user'));
@@ -329,22 +329,13 @@ class UsersController extends AppController {
         } else {
             $this->Flash->error(__('The user could not be deleted. Please, try again.'));
         }
-        return $this->redirect(array('action' => 'index'));
+        return $this->redirect(array('action' => 'admin_index'));
     }
 
     public function isAuthorized($user) {
-        // All registered users can add posts
-        if (in_array($this->action, array('add', 'logout', 'index'))) {
+        if (in_array($this->action, array('add', 'logout'))) {
             return true;
         }
-
-        // The owner of a post can edit and delete it
-        if (in_array($this->action, array('edit', 'delete'))) {
-            if ((int) $this->request->params['pass'][0] == (int) $user['id']) {
-                return true;
-            }
-        }
-
         return parent::isAuthorized($user);
     }
 
