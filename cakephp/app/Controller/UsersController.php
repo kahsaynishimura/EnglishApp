@@ -97,20 +97,20 @@ class UsersController extends AppController {
                 ));
 
                 //Email
-                $Email = new CakeEmail('smtp');
-
-                $Email->from(array('robot@echopractice.com' => 'Echo Practice'))
-                        ->to($this->request->data['User']['username'] . '')
-                        ->subject(__('Echo Practice - Account confirmation. Start improving your pronunciation'))
-                        ->template('confirmation', 'default')
-                        ->emailFormat('html')
-                        ->viewVars(array(
-                            'activate_account' => __('Activate Account'),
-                            'oneMoreStep' => __('Only one more step to start having fun.'),
-                            'userName' => $this->request->data['User']['name'],
-                            'instructions' => __('Please, click the button bellow to activate your access and start using Echo Practice for free'),
-                            'email' => $this->request->data['User']['username']))
-                        ->send();
+//                $Email = new CakeEmail('smtp');
+//
+//                $Email->from(array('robot@echopractice.com' => 'Echo Practice'))
+//                        ->to($this->request->data['User']['username'] . '')
+//                        ->subject(__('Echo Practice - Account confirmation. Start improving your pronunciation'))
+//                        ->template('confirmation', 'default')
+//                        ->emailFormat('html')
+//                        ->viewVars(array(
+//                            'activate_account' => __('Activate Account'),
+//                            'oneMoreStep' => __('Only one more step to start having fun.'),
+//                            'userName' => $this->request->data['User']['name'],
+//                            'instructions' => __('Please, click the button bellow to activate your access and start using Echo Practice for free'),
+//                            'email' => $this->request->data['User']['username']))
+//                        ->send();
             } else {
                 $user = $this->User->find('first', array(
                     'fields' => array('id', 'username', 'name', 'is_confirmed', 'last_completed_lesson', 'total_points'),
@@ -147,23 +147,23 @@ class UsersController extends AppController {
             $this->request->data['User']['last_completed_lesson'] = 0;
             $this->request->data['User']['total_points'] = 0;
             $this->request->data['User']['role'] = 'student'; //only students are allowed to be added via app
-
+            $this->request->data['User']['is_confirmed'] = true;
             if ($this->User->save($this->request->data)) {
                 //Email
-                $Email = new CakeEmail('smtp');
-                $Email->from(array('robot@echopractice.com' => 'Echo Practice'))
-                        ->to($this->request->data['User']['username'] . '')
-                        ->subject(__('Echo Practice - Account confirmation. Start improving your pronunciation'))
-                        ->template('confirmation', 'default')
-                        ->emailFormat('html')
-                        ->viewVars(array(
-                            'activate_account' => __('Activate Account'),
-                            'oneMoreStep' => __('Only one more step to start having fun.'),
-                            'userName' => $this->request->data['User']['name'],
-                            'instructions' => __('Please, click the button bellow to activate your access and start using Echo Practice for free'),
-                            'email' => $this->request->data['User']['username']))
-                        ->send();
-                $message = __('Access the link we sent to your email in order to activate your account.');
+//                $Email = new CakeEmail('smtp');
+//                $Email->from(array('robot@echopractice.com' => 'Echo Practice'))
+//                        ->to($this->request->data['User']['username'] . '')
+//                        ->subject(__('Echo Practice - Account confirmation. Start improving your pronunciation'))
+//                        ->template('confirmation', 'default')
+//                        ->emailFormat('html')
+//                        ->viewVars(array(
+//                            'activate_account' => __('Activate Account'),
+//                            'oneMoreStep' => __('Only one more step to start having fun.'),
+//                            'userName' => $this->request->data['User']['name'],
+//                            'instructions' => __('Please, click the button bellow to activate your access and start using Echo Practice for free'),
+//                            'email' => $this->request->data['User']['username']))
+//                        ->send();
+                $message = __('Conta criada. Aproveite sua prática.');
             } else {
                 $message = __('The user could not be saved. Please, try again.');
             }
