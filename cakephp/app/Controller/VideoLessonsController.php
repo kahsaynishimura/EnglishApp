@@ -13,7 +13,37 @@ class VideoLessonsController extends AppController {
  *
  * @var array
  */
-	public $components = array('Paginator');
+	
+    public $components = array('Paginator', 'RequestHandler');
+
+    public function beforeFilter() {
+        parent::beforeFilter();
+        // Allow users to register and logout.
+        $this->Auth->allow('index_api');
+    }
+
+    public function index_api() {
+        $this->VideoLesson->recursive = 0;
+          $this->VideoLesson->Behaviors->load('Containable');
+        if ($this->request->is('xml')) {
+            $videoLesson = $this->VideoLesson->find('all', array(
+                'fields' =>array('VideoLesson.id','id_video','name'),
+                'contain'=>array( 
+                    'VideoLessonScript'=>array(
+                        'VideoLessonScript.id', 
+                        'text_to_show', 
+                        'text_to_check',
+                        'video_lesson_id',
+                        'stop_at_seconds')
+                    ),
+                'conditions' => array('VideoLesson.id' => 1),
+                'order' => array('VideoLesson.id ASC'),));
+            
+            $this->set(array(
+            'VideoLesson' =>$videoLesson,
+            '_serialize' => 'VideoLesson'));
+        }
+    }
 
 /**
  * index method

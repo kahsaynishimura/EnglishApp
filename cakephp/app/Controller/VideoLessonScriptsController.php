@@ -15,26 +15,7 @@ class VideoLessonScriptsController extends AppController {
      *
      * @var array
      */
-    public $components = array('Paginator', 'RequestHandler');
-
-    public function beforeFilter() {
-        parent::beforeFilter();
-        // Allow users to register and logout.
-        $this->Auth->allow('index_api');
-    }
-
-    public function index_api() {
-        $this->VideoLessonScript->recursive = 0;
-      //  $this->VideoLessonScript->Behaviors->load('Containable');
-        if ($this->request->is('xml')) {
-            $this->set(array(
-                'videoScripts' => $this->VideoLessonScript->find('all', array(
-                    'fields' => array('id', 'text_to_show', 'text_to_check', 'video_lesson_id','stop_at_seconds'),
-                    'conditions' => array('video_lesson_id' => 1),
-                    'order' => array('VideoLessonScript.id ASC'),)),
-                '_serialize' => 'videoScripts'));
-        }
-    }
+    public $components = array('Paginator');
 
     /**
      * index method
