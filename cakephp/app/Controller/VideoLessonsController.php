@@ -35,7 +35,8 @@ class VideoLessonsController extends AppController {
                         'text_to_show',
                         'text_to_check',
                         'video_lesson_id',
-                        'stop_at_seconds')
+                        'stop_at_seconds',
+                        'start_at_seconds')
                 ),
                 'conditions' => array('VideoLesson.id' => $this->request->data['VideoLesson']['id']),
                 'order' => array('VideoLesson.id ASC'),));
