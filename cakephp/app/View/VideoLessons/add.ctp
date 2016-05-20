@@ -4,7 +4,7 @@
 		<legend><?php echo __('Add Video Lesson'); ?></legend>
 	<?php
 		echo $this->Form->input('name');
-		echo $this->Form->input('link');
+		echo $this->Form->input('id_video');
 	?>
 	</fieldset>
 <?php echo $this->Form->end(__('Submit')); ?>

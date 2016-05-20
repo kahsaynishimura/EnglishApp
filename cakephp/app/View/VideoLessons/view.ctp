@@ -13,7 +13,7 @@
 		</dd>
 		<dt><?php echo __('Link'); ?></dt>
 		<dd>
-			<?php echo h($videoLesson['VideoLesson']['link']); ?>
+			<?php echo h($videoLesson['VideoLesson']['id_video']); ?>
 			&nbsp;
 		</dd>
 	</dl>
