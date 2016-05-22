@@ -21,14 +21,14 @@
 			<?php echo h($videoLessonScript['VideoLessonScript']['text_to_check']); ?>
 			&nbsp;
 		</dd>
-		<dt><?php echo __('Minute To Stop'); ?></dt>
+		<dt><?php echo __('Second to Stop'); ?></dt>
 		<dd>
-			<?php echo h($videoLessonScript['VideoLessonScript']['minute_to_stop']); ?>
+			<?php echo h($videoLessonScript['VideoLessonScript']['stop_at_seconds']); ?>
 			&nbsp;
 		</dd>
-		<dt><?php echo __('Second To Stop'); ?></dt>
+		<dt><?php echo __('Second To Start'); ?></dt>
 		<dd>
-			<?php echo h($videoLessonScript['VideoLessonScript']['second_to_stop']); ?>
+			<?php echo h($videoLessonScript['VideoLessonScript']['start_at_seconds']); ?>
 			&nbsp;
 		</dd>
 	</dl>

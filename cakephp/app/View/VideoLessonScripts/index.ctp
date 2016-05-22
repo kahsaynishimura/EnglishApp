@@ -7,8 +7,8 @@
 			<th><?php echo $this->Paginator->sort('video_lesson_id'); ?></th>
 			<th><?php echo $this->Paginator->sort('text_to_show'); ?></th>
 			<th><?php echo $this->Paginator->sort('text_to_check'); ?></th>
-			<th><?php echo $this->Paginator->sort('minute_to_stop'); ?></th>
-			<th><?php echo $this->Paginator->sort('second_to_stop'); ?></th>
+			<th><?php echo $this->Paginator->sort('stop_at_seconds'); ?></th>
+			<th><?php echo $this->Paginator->sort('start_at_seconds'); ?></th>
 			<th class="actions"><?php echo __('Actions'); ?></th>
 	</tr>
 	</thead>
@@ -21,8 +21,8 @@
 		</td>
 		<td><?php echo h($videoLessonScript['VideoLessonScript']['text_to_show']); ?>&nbsp;</td>
 		<td><?php echo h($videoLessonScript['VideoLessonScript']['text_to_check']); ?>&nbsp;</td>
-		<td><?php echo h($videoLessonScript['VideoLessonScript']['minute_to_stop']); ?>&nbsp;</td>
-		<td><?php echo h($videoLessonScript['VideoLessonScript']['second_to_stop']); ?>&nbsp;</td>
+		<td><?php echo h($videoLessonScript['VideoLessonScript']['stop_at_seconds']); ?>&nbsp;</td>
+		<td><?php echo h($videoLessonScript['VideoLessonScript']['start_at_seconds']); ?>&nbsp;</td>
 		<td class="actions">
 			<?php echo $this->Html->link(__('View'), array('action' => 'view', $videoLessonScript['VideoLessonScript']['id'])); ?>
 			<?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $videoLessonScript['VideoLessonScript']['id'])); ?>
