@@ -30,16 +30,18 @@ class VideoLessonsController extends AppController {
             $videoLesson = $this->VideoLesson->find('all', array(
                 'fields' => array('VideoLesson.id', 'id_video', 'name'),
                 'contain' => array(
-                    'VideoLessonScript' => array(   
-                        'id',
-                        'text_to_show',
-                        'text_to_check',
-                        'video_lesson_id',
-                        'stop_at_seconds',
-                        'start_at_seconds')
+                    'VideoLessonScript' => array(
+                        'fields' => array('id',
+                            'text_to_show',
+                            'text_to_check',
+                            'video_lesson_id',
+                            'stop_at_seconds',
+                            'start_at_seconds'),
+                        'order' => array('VideoLessonScript.stop_at_seconds')
+                    )
                 ),
                 'conditions' => array('VideoLesson.id' => $this->request->data['VideoLesson']['id']),
-                'order' => array('VideoLesson.id ASC'),));
+            ));
 
             $this->set(array(
                 'VideoLesson' => $videoLesson,
