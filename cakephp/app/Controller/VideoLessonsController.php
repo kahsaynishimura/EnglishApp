@@ -20,10 +20,19 @@ class VideoLessonsController extends AppController {
     public function beforeFilter() {
         parent::beforeFilter();
         // Allow users to register and logout.
-        $this->Auth->allow('index_api');
+        $this->Auth->allow('index_api', 'lesson_scripts_api');
     }
 
     public function index_api() {
+        $this->VideoLesson->recursive = 0;
+        if ($this->request->is('xml')) {
+            $this->set(array(
+                'VideoLessons' => $this->VideoLesson->find('all'),
+                '_serialize' => 'VideoLessons'));
+        }
+    }
+
+    public function lesson_scripts_api() {
         $this->VideoLesson->recursive = 0;
         $this->VideoLesson->Behaviors->load('Containable');
         if ($this->request->is('xml')) {
