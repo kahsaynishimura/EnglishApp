@@ -26,8 +26,9 @@ class VideoLessonsController extends AppController {
     public function index_api() {
         $this->VideoLesson->recursive = 0;
         if ($this->request->is('xml')) {
+            $freeVideoLEssons = $this->VideoLesson->find('all'); //is_free==1
             $this->set(array(
-                'VideoLessons' => $this->VideoLesson->find('all'),
+                'VideoLessons' => $freeVideoLEssons,
                 '_serialize' => 'VideoLessons'));
         }
     }

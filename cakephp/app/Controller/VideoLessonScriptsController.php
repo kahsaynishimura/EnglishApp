@@ -47,9 +47,10 @@ class VideoLessonScriptsController extends AppController {
      *
      * @return void
      */
-    public function add() {
+    public function add($lesson_id) {
         if ($this->request->is('post')) {
             $this->VideoLessonScript->create();
+            $this->request->data['VideoLessonScript']['video_lesson_id'] = $lesson_id;
             if ($this->VideoLessonScript->save($this->request->data)) {
                 $this->Flash->success(__('The video lesson script has been saved.'));
                 return $this->redirect(array('action' => 'index', $this->request->data['VideoLessonScript']['video_lesson_id']));
@@ -57,8 +58,9 @@ class VideoLessonScriptsController extends AppController {
                 $this->Flash->error(__('The video lesson script could not be saved. Please, try again.'));
             }
         }
-        $videoLessons = $this->VideoLessonScript->VideoLesson->find('list');
-        $this->set(compact('videoLessons'));
+        $options = array('conditions' => array('id' => $lesson_id));
+        $videoLesson = $this->VideoLessonScript->VideoLesson->find('first', $options);
+        $this->set(compact('videoLesson'));
     }
 
     /**
@@ -100,8 +102,8 @@ class VideoLessonScriptsController extends AppController {
         if (!$this->VideoLessonScript->exists()) {
             throw new NotFoundException(__('Invalid video lesson script'));
         }
-        $this->VideoLessonScript->id=$id;
-        $video_lesson_id = $this-> VideoLessonScript->field('video_lesson_id');
+        $this->VideoLessonScript->id = $id;
+        $video_lesson_id = $this->VideoLessonScript->field('video_lesson_id');
         $this->request->allowMethod('post', 'delete');
         if ($this->VideoLessonScript->delete()) {
             $this->Flash->success(__('The video lesson script has been deleted.'));

@@ -19,7 +19,7 @@
                         <?php echo $this->Html->link(__('View'), array('action' => 'view', $videoLesson['VideoLesson']['id'])); ?>
                         <?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $videoLesson['VideoLesson']['id'])); ?>
                         <?php echo $this->Html->link(__('List Video Lesson Scripts'), array('controller' => 'video_lesson_scripts', 'action' => 'index', $videoLesson['VideoLesson']['id'])); ?> 
-
+                        <?php echo $this->Html->link(__('Add Video Lesson Scripts'), array('controller' => 'video_lesson_scripts', 'action' => 'add', $videoLesson['VideoLesson']['id'])); ?> 
                         <?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $videoLesson['VideoLesson']['id']), array('confirm' => __('Are you sure you want to delete # %s?', $videoLesson['VideoLesson']['id']))); ?>
                     </td>
                 </tr>
