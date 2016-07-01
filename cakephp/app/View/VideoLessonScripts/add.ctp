@@ -6,9 +6,9 @@
         echo $this->Form->input('text_to_show');
         echo $this->Form->input('text_to_check');
         echo __('Stop should be greater than start');
-        echo $videoLesson['VideoLesson']['name'];
-        echo $this->Form->input('stop_at_seconds');
+        echo $videoLesson['VideoLesson']['name'];  
         echo $this->Form->input('start_at_seconds');
+        echo $this->Form->input('stop_at_seconds');
         ?>
     </fieldset>
     <?php echo $this->Form->end(__('Submit')); ?>

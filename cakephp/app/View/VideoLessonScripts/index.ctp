@@ -49,7 +49,7 @@
 <div class="actions">
 	<h3><?php echo __('Actions'); ?></h3>
 	<ul>
-		<li><?php echo $this->Html->link(__('New Video Lesson Script'), array('action' => 'add')); ?></li>
+		<li><?php echo $this->Html->link(__('New Video Lesson Script'), array('action' => 'add',$videoLessonScript['VideoLessonScript']['video_lesson_id'])); ?></li>
 		<li><?php echo $this->Html->link(__('List Video Lessons'), array('controller' => 'video_lessons', 'action' => 'index')); ?> </li>
 		<li><?php echo $this->Html->link(__('New Video Lesson'), array('controller' => 'video_lessons', 'action' => 'add')); ?> </li>
 	</ul>
