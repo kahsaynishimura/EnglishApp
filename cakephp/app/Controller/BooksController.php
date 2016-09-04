@@ -19,14 +19,21 @@ class BooksController extends AppController {
 
     public function index_api() {
         $this->Book->recursive = 0;
+        $this->Book->Behaviors->load('Containable');
         if ($this->request->is('xml')) {
             $booksWithPermission = $this->Book->UsersBook->find('all', array(
                 'fields' => array('Book.id', 'Book.name'),
+                'contain'=>array('Lesson'=>array(
+                    'fields'=>array('id','name')
+                )), 
                 'order' => array('difficulty_level', 'name' => 'asc'),
                 'conditions' => array('UsersBook.user_id' => $this->request->data['User']['id'], 'Book.is_free' => false),
             ));
             $books = $this->Book->find('all', array(
                 'fields' => array('id', 'name'),
+                'contain'=>array('Lesson'=>array(
+                    'fields'=>array('id','name')
+                )),
                 'order' => array('difficulty_level', 'name' => 'asc'),
                 'conditions' => array('is_free' => true),
             ));
