@@ -20,7 +20,7 @@ class VideoLessonsController extends AppController {
     public function beforeFilter() {
         parent::beforeFilter();
         // Allow users to register and logout.
-        $this->Auth->allow('index_api', 'lesson_scripts_api');
+        $this->Auth->allow('filtered_index_api', 'index_api', 'lesson_scripts_api');
     }
 
     public function index_api() {
@@ -29,6 +29,20 @@ class VideoLessonsController extends AppController {
             $freeVideoLEssons = $this->VideoLesson->find('all'); //is_free==1
             $this->set(array(
                 'VideoLessons' => $freeVideoLEssons,
+                '_serialize' => 'VideoLessons'));
+        }
+    }
+
+    public function filtered_index_api() {
+        $this->VideoLesson->recursive = 0;
+        if ($this->request->is('xml')) {
+            $categoryId = $this->request->data['VideoLesson']['video_category_id'];
+
+            $freeVideoLessons = $this->VideoLesson->find('all', array(
+                'conditions' => array('video_category_id' => $categoryId)
+            ));
+            $this->set(array(
+                'VideoLessons' => $freeVideoLessons,
                 '_serialize' => 'VideoLessons'));
         }
     }

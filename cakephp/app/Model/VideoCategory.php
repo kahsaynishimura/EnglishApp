@@ -3,11 +3,11 @@
 App::uses('AppModel', 'Model');
 
 /**
- * VideoLesson Model
+ * VideoCategory Model
  *
- * @property VideoLessonScript $VideoLessonScript
+ * @property VideoLesson $VideoLesson
  */
-class VideoLesson extends AppModel {
+class VideoCategory extends AppModel {
 
     /**
      * Validation rules
@@ -16,16 +16,6 @@ class VideoLesson extends AppModel {
      */
     public $validate = array(
         'name' => array(
-            'notBlank' => array(
-                'rule' => array('notBlank'),
-            //'message' => 'Your custom message here',
-            //'allowEmpty' => false,
-            //'required' => false,
-            //'last' => false, // Stop validation after this rule
-            //'on' => 'create', // Limit validation to 'create' or 'update' operations
-            ),
-        ),
-        'link' => array(
             'notBlank' => array(
                 'rule' => array('notBlank'),
             //'message' => 'Your custom message here',
@@ -45,9 +35,9 @@ class VideoLesson extends AppModel {
      * @var array
      */
     public $hasMany = array(
-        'VideoLessonScript' => array(
-            'className' => 'VideoLessonScript',
-            'foreignKey' => 'video_lesson_id',
+        'VideoLesson' => array(
+            'className' => 'VideoLesson',
+            'foreignKey' => 'video_category_id',
             'dependent' => false,
             'conditions' => '',
             'fields' => '',
@@ -57,21 +47,6 @@ class VideoLesson extends AppModel {
             'exclusive' => '',
             'finderQuery' => '',
             'counterQuery' => ''
-        )
-    );
-
-    /**
-     * belongsTo associations
-     *
-     * @var array
-     */
-    public $belongsTo = array(
-        'VideoCategory' => array(
-            'className' => 'VideoCategory',
-            'foreignKey' => 'video_category_id',
-            'conditions' => '',
-            'fields' => '',
-            'order' => ''
         )
     );
 
