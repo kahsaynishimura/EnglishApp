@@ -6,6 +6,7 @@ App::uses('AppModel', 'Model');
  * Book Model
  *
  * @property Lesson $Lesson 
+ * @property UsersBook $UsersBook  
  * @property User $User
  */
 class Book extends AppModel {
@@ -51,7 +52,7 @@ class Book extends AppModel {
             'conditions' => '', 
             'fields' => '',
             'order' => ''
-        )
+        ) 
     );
 
     public function isOwnedBy($bookId, $userId) {

@@ -20,26 +20,37 @@ class BooksController extends AppController {
     public function index_api() {
         $this->Book->recursive = 0;
         $this->Book->Behaviors->load('Containable');
+        $this->Book->UsersBook->Behaviors->load('Containable');
         if ($this->request->is('xml')) {
-            $booksWithPermission = $this->Book->UsersBook->find('all', array(
-                'fields' => array('Book.id', 'Book.name'),
-                'contain'=>array('Lesson'=>array(
-                    'fields'=>array('id','name')
-                )), 
+            $usersBook = $this->Book->UsersBook->find('all', array(
+                'contain' => array('Book' => array(
+                        'id', 'name',
+                        'Lesson' => array('fields' => array('id', 'name'))
+                    )),
                 'order' => array('difficulty_level', 'name' => 'asc'),
-                'conditions' => array('UsersBook.user_id' => $this->request->data['User']['id'], 'Book.is_free' => false),
+                'conditions' => array('UsersBook.user_id' => 62, 'Book.is_free' => false), //$this->request->data['User']['id']
             ));
             $books = $this->Book->find('all', array(
                 'fields' => array('id', 'name'),
-                'contain'=>array('Lesson'=>array(
-                    'fields'=>array('id','name')
-                )),
+                'contain' => array('Lesson' => array(
+                        'fields' => array('id', 'name')
+                    )),
                 'order' => array('difficulty_level', 'name' => 'asc'),
                 'conditions' => array('is_free' => true),
             ));
-            foreach ($booksWithPermission as $usersBook) {
-                array_push($books, $usersBook);
+            
+            //Hack:  manages premium lessons to have the same structure as the free lessons
+            for ($i = 0; $i < sizeof($usersBook); $i++) {
+                $lessons = $usersBook[$i]['Book']['Lesson'];
+                unset($usersBook[$i]['Book']['Lesson']);
+                $b['Book'] = $usersBook[$i]['Book'];
+                $b['Lesson']=$lessons;
+                
+                array_push($books, $b);
             }
+            //  array_push($books, $usersBook);
+//            foreach ($booksWithPermission as $usersBook) {
+//            }
 
             $this->set(array(
                 'books' => $books,
