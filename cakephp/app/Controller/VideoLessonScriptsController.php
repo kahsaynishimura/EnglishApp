@@ -58,7 +58,7 @@ class VideoLessonScriptsController extends AppController {
                 $this->Flash->error(__('The video lesson script could not be saved. Please, try again.'));
             }
         }
-        $options = array('conditions' => array('id' => $lesson_id));
+        $options = array('conditions' => array('VideoLesson.id' => $lesson_id));
         $videoLesson = $this->VideoLessonScript->VideoLesson->find('first', $options);
         $this->set(compact('videoLesson'));
     }

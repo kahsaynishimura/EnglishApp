@@ -24,9 +24,9 @@ class SpeechScriptsController extends AppController {
             $this->set(array(
                 'speech_scripts' => $this->SpeechScript->find('all', array(
                     'fields' => array('id', 'text_to_read', 'text_to_check', 'text_to_show', 'exercise_id', 'speech_function_id', 'script_index'),
-                    'contain'=>array('SpeechScriptCheck'=>  array(
-                        'fields'=>array('id','speech_script_id','text_to_check')
-                    )),
+                    'contain' => array('SpeechScriptCheck' => array(
+                            'fields' => array('id', 'speech_script_id', 'text_to_check')
+                        )),
                     'conditions' => array('exercise_id' => $this->data['SpeechScript']['exercise_id']))),
                 '_serialize' => 'speech_scripts'));
         }
@@ -70,12 +70,20 @@ class SpeechScriptsController extends AppController {
                 'name' => $this->request->data['SpeechScript']['exercise_name'],
                 'lesson_id' => $lessonId
             );
+
             if ($this->SpeechScript->Exercise->save($exercise)) {
                 $newExerciseId = $this->SpeechScript->Exercise->getLastInsertID();
                 $this->SpeechScript->Exercise->id = $newExerciseId;
 
                 $str = $this->request->data['SpeechScript']['complete_text'];
-                $arr = preg_split('/\R|\.|\/|!|;|:/', $str); //explode("\n", $str);
+
+                $arr = '';
+                if ($this->request->data['SpeechScript']['include_comma'] === "1") {
+                    $arr = preg_split('/\R|\.|\/|!|;|:/', $str);
+                } else {
+                    $arr = preg_split('/\R|\.|\/|!|;/', $str);
+                }
+                //$arr = preg_split('/\R|\.|\/|!|;|:/', $str); //explode("\n", $str);
                 foreach ($arr as $key => $value) {
                     $arr[$key] = trim($arr[$key]);
                     if (empty($arr[$key]) || $arr[$key] == " ") {

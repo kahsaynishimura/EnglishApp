@@ -113,6 +113,9 @@ class VideoLessonsController extends AppController {
                 $this->Flash->error(__('The video lesson could not be saved. Please, try again.'));
             }
         }
+        $this->set(array(
+            'categories' => $this->VideoLesson->VideoCategory->find('list'),
+            '_serialize' => array('categories')));
     }
 
     /**
@@ -137,6 +140,9 @@ class VideoLessonsController extends AppController {
             $options = array('conditions' => array('VideoLesson.' . $this->VideoLesson->primaryKey => $id));
             $this->request->data = $this->VideoLesson->find('first', $options);
         }
+         $this->set(array(
+            'categories' => $this->VideoLesson->VideoCategory->find('list'),
+            '_serialize' => array('categories')));
     }
 
     /**

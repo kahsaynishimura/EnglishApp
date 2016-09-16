@@ -6,6 +6,7 @@ App::uses('AppModel', 'Model');
  * VideoLesson Model
  *
  * @property VideoLessonScript $VideoLessonScript
+ * @property VideoCategory $VideoCategory
  */
 class VideoLesson extends AppModel {
 
