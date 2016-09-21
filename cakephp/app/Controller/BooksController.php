@@ -38,14 +38,14 @@ class BooksController extends AppController {
                 'order' => array('difficulty_level', 'name' => 'asc'),
                 'conditions' => array('is_free' => true),
             ));
-            
+
             //Hack:  manages premium lessons to have the same structure as the free lessons
             for ($i = 0; $i < sizeof($usersBook); $i++) {
                 $lessons = $usersBook[$i]['Book']['Lesson'];
                 unset($usersBook[$i]['Book']['Lesson']);
                 $b['Book'] = $usersBook[$i]['Book'];
-                $b['Lesson']=$lessons;
-                
+                $b['Lesson'] = $lessons;
+
                 array_push($books, $b);
             }
             //  array_push($books, $usersBook);
@@ -93,12 +93,14 @@ class BooksController extends AppController {
      *
      * @return void
      */
-    public function add() {
+    public function add($packageId = 0) {
         if ($this->request->is('post')) {
             $this->Book->create();
             $this->request->data['Book']['user_id'] = $this->Auth->user('id');
-            // $this->Book->User->id = $this->Auth->user('id');
-            //$this->Book->User->saveField('role', 'author');
+
+            $this->request->data['Book']['package_id'] = $packageId;
+
+
             if ($this->Book->save($this->request->data)) {
                 $this->Flash->success(__('The book has been saved.'));
                 return $this->redirect(array('action' => 'index'));
@@ -158,7 +160,7 @@ class BooksController extends AppController {
             return true;
         }
 
-        // The owner of a post can edit and delete it
+        // The owner of a book can edit and delete it
         if (in_array($this->action, array('edit', 'delete'))) {
             $bookId = (int) $this->request->params['pass'][0];
             if ($this->Book->isOwnedBy($bookId, $user['id'])) {

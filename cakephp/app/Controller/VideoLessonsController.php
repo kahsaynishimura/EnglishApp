@@ -4,7 +4,7 @@ App::uses('AppController', 'Controller');
 
 /**
  * VideoLessons Controller
- *
+ * 
  * @property VideoLesson $VideoLesson
  * @property PaginatorComponent $Paginator
  */
@@ -103,9 +103,11 @@ class VideoLessonsController extends AppController {
      *
      * @return void
      */
-    public function add() {
+    public function add($packageId = 0) {
         if ($this->request->is('post')) {
             $this->VideoLesson->create();
+            $this->request->data['VideoLesson']['package_id'] = $packageId;
+
             if ($this->VideoLesson->save($this->request->data)) {
                 $this->Flash->success(__('The video lesson has been saved.'));
                 return $this->redirect(array('action' => 'index'));
@@ -140,7 +142,7 @@ class VideoLessonsController extends AppController {
             $options = array('conditions' => array('VideoLesson.' . $this->VideoLesson->primaryKey => $id));
             $this->request->data = $this->VideoLesson->find('first', $options);
         }
-         $this->set(array(
+        $this->set(array(
             'categories' => $this->VideoLesson->VideoCategory->find('list'),
             '_serialize' => array('categories')));
     }
@@ -164,6 +166,22 @@ class VideoLessonsController extends AppController {
             $this->Flash->error(__('The video lesson could not be deleted. Please, try again.'));
         }
         return $this->redirect(array('action' => 'index'));
+    }
+
+    public function isAuthorized($user) {
+        if (in_array($this->action, array('add', 'index'))) {
+            return true;
+        }
+
+        // The owner of a videoLesson can edit and delete it
+        if (in_array($this->action, array('edit', 'delete'))) {
+            $itemId = (int) $this->request->params['pass'][0];
+            if ($this->VideoLesson->isOwnedBy($itemId, $user['id'])) {
+                return true;
+            }
+        }
+
+        return parent::isAuthorized($user);
     }
 
 }

@@ -4,7 +4,7 @@ App::uses('AppModel', 'Model');
 
 /**
  * VideoLesson Model
- *
+ * @property Package $Package 
  * @property VideoLessonScript $VideoLessonScript
  * @property VideoCategory $VideoCategory
  */
@@ -73,7 +73,18 @@ class VideoLesson extends AppModel {
             'conditions' => '',
             'fields' => '',
             'order' => ''
-        )
+        ),
+        'Package' => array(
+            'className' => 'Package',
+            'foreignKey' => 'package_id',
+            'conditions' => '',
+            'fields' => '',
+            'order' => ''
+        ),
     );
+
+    public function isOwnedBy($itemId, $userId) {
+        return $this->field('id', array('id' => $itemId, 'user_id' => $userId)) !== false;
+    }
 
 }
