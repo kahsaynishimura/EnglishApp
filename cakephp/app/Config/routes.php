@@ -40,7 +40,7 @@ Router::connect('/pages/*', array('controller' => 'pages', 'action' => 'home'));
 CakePlugin::routes();
 
 
-Router::mapResources(array('Users', 'Products', 'Books', 'Practices', 'Trades', 'BtcConfigs', 'BitcoinRequests', 'VideoLessons', 'VideoCategories'));
+Router::mapResources(array('Users', 'Products', 'Books', 'Practices', 'Trades', 'BtcConfigs', 'BitcoinRequests', 'VideoLessons', 'VideoCategories','Packages'));
 Router::parseExtensions('xml');
 /**
  * Load the CakePHP default routes. Only remove this if you do not want to use

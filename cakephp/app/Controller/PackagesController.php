@@ -15,7 +15,7 @@ class PackagesController extends AppController {
      *
      * @var array
      */
-    public $components = array('Paginator');
+    public $components = array('Paginator', 'RequestHandler');
 
     /**
      * index method
@@ -25,6 +25,23 @@ class PackagesController extends AppController {
     public function index() {
         $this->Package->recursive = 0;
         $this->set('packages', $this->Paginator->paginate());
+    }
+
+    /**
+     * index_api method
+     *
+     * @return void
+     */
+    public function index_api() {
+                $this->Package->recursive = 0;
+
+        $packages = $this->Package->find('all', array(
+          //  'conditions' => array('is_free' => true),//$this->request->data['Package']['is_free']),
+                )
+        );
+        $this->set(array(
+            'packages' => $packages,
+            '_serialize' => 'packages'));
     }
 
     /**

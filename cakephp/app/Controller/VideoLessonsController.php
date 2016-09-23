@@ -32,7 +32,9 @@ class VideoLessonsController extends AppController {
                 '_serialize' => 'VideoLessons'));
         }
     }
-
+    
+    
+//expects a post parameter: TAG_CATEGORY_ID = "data[VideoLesson][video_category_id]"
     public function filtered_index_api() {
         $this->VideoLesson->recursive = 0;
         if ($this->request->is('xml')) {
