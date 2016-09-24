@@ -17,6 +17,11 @@ class BooksController extends AppController {
      */
     public $components = array('Paginator', 'RequestHandler');
 
+    public function beforeFilter() {
+        parent::beforeFilter();
+        $this->Auth->allow('book_by_package');
+    }
+
     public function index_api() {
         $this->Book->recursive = 0;
         $this->Book->Behaviors->load('Containable');
@@ -28,7 +33,7 @@ class BooksController extends AppController {
                         'Lesson' => array('fields' => array('id', 'name'))
                     )),
                 'order' => array('difficulty_level', 'name' => 'asc'),
-                'conditions' => array('UsersBook.user_id' => 62, 'Book.is_free' => false), //$this->request->data['User']['id']
+                'conditions' => array('UsersBook.user_id' => $this->request->data['User']['id'], 'Book.is_free' => false),
             ));
             $books = $this->Book->find('all', array(
                 'fields' => array('id', 'name'),
@@ -51,6 +56,26 @@ class BooksController extends AppController {
             //  array_push($books, $usersBook);
 //            foreach ($booksWithPermission as $usersBook) {
 //            }
+
+            $this->set(array(
+                'books' => $books,
+                '_serialize' => 'books'));
+        }
+    }
+
+    public function book_by_package() {
+        $this->Book->recursive = 0;
+        $this->layout=false;
+        if ($this->request->is('xml')) {
+
+            $this->Book->Behaviors->load('Containable');
+            $options = array(
+                'fields' => array('Book.id', 'Book.name'),
+                'order' => array('Book.name' => 'asc'),
+                'conditions' => array('package_id' => $this->request->data['Book']['package_id']),
+                'contain' => array('Lesson' => array('fields' => array('id', 'name')))
+            );
+            $books = $this->Book->find('all', $options);
 
             $this->set(array(
                 'books' => $books,

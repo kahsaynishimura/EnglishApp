@@ -17,6 +17,12 @@ class PackagesController extends AppController {
      */
     public $components = array('Paginator', 'RequestHandler');
 
+    public function beforeFilter() {
+        parent::beforeFilter();
+        // Allow users to register and logout.
+        $this->Auth->allow('index_api');
+    }
+
     /**
      * index method
      *
@@ -27,18 +33,21 @@ class PackagesController extends AppController {
         $this->set('packages', $this->Paginator->paginate());
     }
 
-    /**
-     * index_api method
-     *
-     * @return void
-     */
     public function index_api() {
-                $this->Package->recursive = 0;
+        $this->Package->Behaviors->load("Containable");
 
-        $packages = $this->Package->find('all', array(
-          //  'conditions' => array('is_free' => true),//$this->request->data['Package']['is_free']),
+
+        $options = array(
+            'contain' => array(
+                'UsersPackage' => array(
+                    //return if the user bought this lesson
+                    'conditions' => array('UsersPackage.user_id' => $this->request->data['User']['id']),
+                    'fields' => array('UsersPackage.user_id')
                 )
+            )
         );
+
+        $packages = $this->Package->find('all', $options);
         $this->set(array(
             'packages' => $packages,
             '_serialize' => 'packages'));

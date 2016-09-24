@@ -2,7 +2,7 @@
 <h2><?php echo __('Package'); ?></h2>
 	<dl>
 		<dt><?php echo __('Id'); ?></dt>
-		<dd>
+		<dd> 
 			<?php echo h($package['Package']['id']); ?>
 			&nbsp;
 		</dd>

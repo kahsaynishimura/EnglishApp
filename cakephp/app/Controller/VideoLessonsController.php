@@ -26,14 +26,15 @@ class VideoLessonsController extends AppController {
     public function index_api() {
         $this->VideoLesson->recursive = 0;
         if ($this->request->is('xml')) {
-            $freeVideoLEssons = $this->VideoLesson->find('all'); //is_free==1
+            $videos = $this->VideoLesson->find('all', array(
+                'conditions' => array('package_id' => $this->request->data['VideoLesson']['package_id'])
+            ));
             $this->set(array(
-                'VideoLessons' => $freeVideoLEssons,
-                '_serialize' => 'VideoLessons'));
+                'videoLessons' => $videos,
+                '_serialize' => 'videoLessons'));
         }
     }
-    
-    
+
 //expects a post parameter: TAG_CATEGORY_ID = "data[VideoLesson][video_category_id]"
     public function filtered_index_api() {
         $this->VideoLesson->recursive = 0;

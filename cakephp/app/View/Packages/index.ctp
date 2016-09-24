@@ -2,7 +2,7 @@
     <h2><?php echo __('Packages'); ?></h2>
     <table cellpadding="0" cellspacing="0">
         <thead>
-            <tr>
+            <tr> 
                 <th><?php echo $this->Paginator->sort('id'); ?></th>
                 <th><?php echo $this->Paginator->sort('name'); ?></th>
                 <th><?php echo $this->Paginator->sort('created'); ?></th>
