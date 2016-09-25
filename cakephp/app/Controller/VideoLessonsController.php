@@ -75,7 +75,6 @@ class VideoLessonsController extends AppController {
                 '_serialize' => 'VideoLesson'));
         }
     }
-
     /**
      * index method
      *
@@ -83,6 +82,7 @@ class VideoLessonsController extends AppController {
      */
     public function index() {
         $this->VideoLesson->recursive = 0;
+         
         $this->set('videoLessons', $this->Paginator->paginate());
     }
 

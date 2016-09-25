@@ -7,7 +7,7 @@
                 <th><?php echo $this->Paginator->sort('id'); ?></th>
                 <th><?php echo $this->Paginator->sort('name'); ?></th>
                 <th><?php echo $this->Paginator->sort('id_video'); ?></th>
-                <th><?php echo $this->Paginator->sort('created'); ?></th>
+                <th><?php echo $this->Paginator->sort('created', null, array('direction' => 'asc')); ?></th>
                 <th class="actions"><?php echo __('Actions'); ?></th>
             </tr>
         </thead>
