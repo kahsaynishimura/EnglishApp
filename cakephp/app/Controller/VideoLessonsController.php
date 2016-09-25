@@ -64,8 +64,8 @@ class VideoLessonsController extends AppController {
                             'video_lesson_id',
                             'stop_at_seconds',
                             'start_at_seconds'),
-                        'order' => array('VideoLessonScript.stop_at_seconds')
-                    )
+                        'VideoLessonScriptCheck' => array('fields' => array('id', 'text_to_check'))
+                    ),
                 ),
                 'conditions' => array('VideoLesson.id' => $this->request->data['VideoLesson']['id']),
             ));
@@ -75,6 +75,7 @@ class VideoLessonsController extends AppController {
                 '_serialize' => 'VideoLesson'));
         }
     }
+
     /**
      * index method
      *
@@ -82,7 +83,7 @@ class VideoLessonsController extends AppController {
      */
     public function index() {
         $this->VideoLesson->recursive = 0;
-         
+
         $this->set('videoLessons', $this->Paginator->paginate());
     }
 
