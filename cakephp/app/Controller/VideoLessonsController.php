@@ -83,7 +83,9 @@ class VideoLessonsController extends AppController {
      */
     public function index() {
         $this->VideoLesson->recursive = 0;
-
+        $this->Paginator->settings = array(
+            'order' => 'VideoLesson.created desc'
+        );
         $this->set('videoLessons', $this->Paginator->paginate());
     }
 

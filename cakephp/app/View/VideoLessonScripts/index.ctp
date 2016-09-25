@@ -25,6 +25,7 @@
                     <td><?php echo h($videoLessonScript['VideoLessonScript']['start_at_seconds']); ?>&nbsp;</td>
                     <td class="actions">
                         <?php echo $this->Html->link(__('Add Alternate Check'), array('controller' => 'videoLessonScriptChecks', 'action' => 'add', $videoLessonScript['VideoLessonScript']['id'])); ?>
+                        <?php echo $this->Html->link(__('List Alternate Checks'), array('controller' => 'videoLessonScriptChecks', 'action' => 'index', $videoLessonScript['VideoLessonScript']['id'])); ?>
                         <?php echo $this->Html->link(__('View'), array('action' => 'view', $videoLessonScript['VideoLessonScript']['id'])); ?>
                         <?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $videoLessonScript['VideoLessonScript']['id'])); ?>
                         <?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $videoLessonScript['VideoLessonScript']['id']), array('confirm' => __('Are you sure you want to delete # %s?', $videoLessonScript['VideoLessonScript']['id']))); ?>

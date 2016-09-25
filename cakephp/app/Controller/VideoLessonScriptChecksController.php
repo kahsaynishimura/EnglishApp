@@ -22,9 +22,9 @@ class VideoLessonScriptChecksController extends AppController {
      *
      * @return void
      */
-    public function index() {
+    public function index($videoLessonScriptId) {
         $this->VideoLessonScriptCheck->recursive = 0;
-        $this->set('videoLessonScriptChecks', $this->Paginator->paginate());
+        $this->set('videoLessonScriptChecks', $this->Paginator->paginate(array('video_lesson_script_id' => $videoLessonScriptId)));
     }
 
     /**
@@ -54,7 +54,7 @@ class VideoLessonScriptChecksController extends AppController {
 
             if ($this->VideoLessonScriptCheck->save($this->request->data)) {
                 $this->Flash->success(__('The video lesson script check has been saved.'));
-                return $this->redirect(array('action' => 'index'));
+                return $this->redirect(array('action' => 'index', $videoScriptId));
             } else {
                 $this->Flash->error(__('The video lesson script check could not be saved. Please, try again.'));
             }
@@ -107,7 +107,7 @@ class VideoLessonScriptChecksController extends AppController {
         } else {
             $this->Flash->error(__('The video lesson script check could not be deleted. Please, try again.'));
         }
-        return $this->redirect(array('action' => 'index'));
+        return $this->redirect(array('controller' => 'videoLessons', 'action' => 'index'));
     }
 
 }
