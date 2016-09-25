@@ -122,8 +122,9 @@ class BooksController extends AppController {
         if ($this->request->is('post')) {
             $this->Book->create();
             $this->request->data['Book']['user_id'] = $this->Auth->user('id');
-            $this->request->data['Book']['package_id'] = $packageId;
-
+            if ($packageId != 0) {
+                $this->request->data['Book']['package_id'] = $packageId;
+            }
             if ($this->Book->save($this->request->data)) {
                 $this->Flash->success(__('The book has been saved.'));
                 return $this->redirect(array('controller' => 'lessons', 'action' => 'add', $this->Book->getLastInsertID()));

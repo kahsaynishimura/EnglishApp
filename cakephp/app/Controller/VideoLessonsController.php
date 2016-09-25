@@ -112,7 +112,9 @@ class VideoLessonsController extends AppController {
     public function add($packageId = 0) {
         if ($this->request->is('post')) {
             $this->VideoLesson->create();
-            $this->request->data['VideoLesson']['package_id'] = $packageId;
+            if ($packageId != 0) {
+                $this->request->data['VideoLesson']['package_id'] = $packageId;
+            }
             $this->request->data['VideoLesson']['user_id'] = $this->Auth->user('id');
 
             if ($this->VideoLesson->save($this->request->data)) {

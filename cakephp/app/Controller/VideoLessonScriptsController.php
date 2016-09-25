@@ -24,11 +24,17 @@ class VideoLessonScriptsController extends AppController {
      */
     public function index($id = 0) {
         $this->VideoLessonScript->recursive = 0;
+        $this->Paginator->settings = array(
+            'order' => 'VideoLessonScript.stop_at_seconds desc'
+        );
         $this->set('videoLessonScripts', $this->Paginator->paginate('VideoLessonScript', array('VideoLessonScript.video_lesson_id' => $id)));
     }
 
     public function index_for_text($id = 0) {
         $this->VideoLessonScript->recursive = 0;
+         $this->Paginator->settings = array(
+            'limit' => '400'
+        );
         $this->set('videoLessonScripts', $this->Paginator->paginate('VideoLessonScript', array('VideoLessonScript.video_lesson_id' => $id)));
     }
 
