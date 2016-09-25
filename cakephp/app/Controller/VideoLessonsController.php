@@ -110,6 +110,7 @@ class VideoLessonsController extends AppController {
         if ($this->request->is('post')) {
             $this->VideoLesson->create();
             $this->request->data['VideoLesson']['package_id'] = $packageId;
+            $this->request->data['VideoLesson']['user_id'] = $this->Auth->user('id');
 
             if ($this->VideoLesson->save($this->request->data)) {
                 $this->Flash->success(__('The video lesson has been saved.'));
@@ -120,7 +121,8 @@ class VideoLessonsController extends AppController {
         }
         $this->set(array(
             'categories' => $this->VideoLesson->VideoCategory->find('list'),
-            '_serialize' => array('categories')));
+            'packages' => $this->VideoLesson->Package->find('list'),
+            '_serialize' => array('categories', 'packages')));
     }
 
     /**
@@ -147,7 +149,8 @@ class VideoLessonsController extends AppController {
         }
         $this->set(array(
             'categories' => $this->VideoLesson->VideoCategory->find('list'),
-            '_serialize' => array('categories')));
+            'packages' => $this->VideoLesson->Package->find('list'),
+            '_serialize' => array('categories', 'packages')));
     }
 
     /**

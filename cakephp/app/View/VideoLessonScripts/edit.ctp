@@ -7,11 +7,17 @@
         echo $this->Form->input('video_lesson_id');
         echo $this->Form->input('text_to_show');
         echo $this->Form->input('text_to_check');
-        echo __('Stop should be greater than start');
-        echo $this->Form->input('start_minutes', array('label' => 'Start Minute', 'type' => 'number', 'min' => '0'));
-        echo $this->Form->input('start_seconds', array('label' => 'Start Second', 'type' => 'number', 'min' => '0', 'max' => '60'));
-        echo $this->Form->input('stop_minutes', array('label' => 'Stop Minute', 'type' => 'number', 'min' => '0'));
-        echo $this->Form->input('stop_seconds', array('label' => 'Stop Second', 'type' => 'number', 'min' => '0', 'max' => '60'));
+        echo __('Stop should be greater than start ');
+        $start = $this->request->data['VideoLessonScript']['start_at_seconds'];
+        $stop = $this->request->data['VideoLessonScript']['stop_at_seconds'];
+        echo $this->Form->input('start_minutes', array('label' => 'Start Minute', 'type' => 'number', 'min' => '0',
+            'value' => intval($start / 60)));
+        echo $this->Form->input('start_seconds', array('label' => 'Start Second', 'type' => 'number', 'min' => '0', 'max' => '60',
+            'value' => $start % 60));
+        echo $this->Form->input('stop_minutes', array('label' => 'Stop Minute', 'type' => 'number', 'min' => '0',
+            'value' => intval($stop / 60)));
+        echo $this->Form->input('stop_seconds', array('label' => 'Stop Second', 'type' => 'number', 'min' => '0', 'max' => '60',
+            'value' => $stop % 60));
         ?>
     </fieldset>
     <?php echo $this->Form->end(__('Submit')); ?>

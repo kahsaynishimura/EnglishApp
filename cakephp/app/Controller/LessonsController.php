@@ -73,7 +73,7 @@ class LessonsController extends AppController {
             $this->Lesson->create();
             if ($this->Lesson->save($this->request->data)) {
                 $this->Flash->success(__('The lesson has been saved.'));
-                return $this->redirect(array('action' => 'index', $book_id));
+                return $this->redirect(array('controller' => 'speech_scripts', 'action' => 'add', $this->Lesson->getLastInsertID()));
             } else {
                 $this->Flash->error(__('The lesson could not be saved. Please, try again.'));
             }
@@ -94,10 +94,10 @@ class LessonsController extends AppController {
             throw new NotFoundException(__('Invalid lesson'));
         }
         if ($this->request->is(array('post', 'put'))) {
-            $this->Lesson->id=$id;
-            if ($this->Lesson->saveField('name',$this->request->data['Lesson']['name'])) {
+            $this->Lesson->id = $id;
+            if ($this->Lesson->saveField('name', $this->request->data['Lesson']['name'])) {
                 $this->Flash->success(__('The lesson has been saved.'));
-                return $this->redirect(array('controller'=>'books','action' => 'index'));
+                return $this->redirect(array('controller' => 'books', 'action' => 'index'));
             } else {
                 $this->Flash->error(__('The lesson could not be saved. Please, try again.'));
             }
@@ -131,12 +131,9 @@ class LessonsController extends AppController {
     }
 
     public function isAuthorized($user) {
-        if (in_array($this->action, array('edit', 'delete', 'add','index'))) {
+        if (in_array($this->action, array('edit', 'delete', 'add', 'index'))) {
             return true;
         }
-
-
-
     }
 
 }

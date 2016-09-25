@@ -27,6 +27,11 @@ class VideoLessonScriptsController extends AppController {
         $this->set('videoLessonScripts', $this->Paginator->paginate('VideoLessonScript', array('VideoLessonScript.video_lesson_id' => $id)));
     }
 
+    public function index_for_text($id = 0) {
+        $this->VideoLessonScript->recursive = 0;
+        $this->set('videoLessonScripts', $this->Paginator->paginate('VideoLessonScript', array('VideoLessonScript.video_lesson_id' => $id)));
+    }
+
     /**
      * view method
      *
@@ -47,26 +52,6 @@ class VideoLessonScriptsController extends AppController {
      *
      * @return void
      */
-//    public function add($lesson_id) {
-//        if ($this->request->is('post')) {
-//            $this->VideoLessonScript->create();
-//            $this->request->data['VideoLessonScript']['video_lesson_id'] = $lesson_id;
-//            if ($this->VideoLessonScript->save($this->request->data)) {
-//                $this->Flash->success(__('The video lesson script has been saved.'));
-//                return $this->redirect(array('action' => 'index', $this->request->data['VideoLessonScript']['video_lesson_id']));
-//            } else {
-//                $this->Flash->error(__('The video lesson script could not be saved. Please, try again.'));
-//            }
-//        }
-//        $options = array('conditions' => array('VideoLesson.id' => $lesson_id));
-//        $videoLesson = $this->VideoLessonScript->VideoLesson->find('first', $options);
-//        $this->set(compact('videoLesson'));
-//    }
-    /**
-     * add method
-     *
-     * @return void
-     */
     public function add($lesson_id) {
         if ($this->request->is('post')) {
             $this->VideoLessonScript->create();
@@ -79,7 +64,7 @@ class VideoLessonScriptsController extends AppController {
             $this->request->data['VideoLessonScript']['stop_at_seconds'] = $stopSec + $stopMin * 60;
             if ($this->VideoLessonScript->save($this->request->data)) {
                 $this->Flash->success(__('The video lesson script has been saved.'));
-                return $this->redirect(array('action' => 'index', $this->request->data['VideoLessonScript']['video_lesson_id']));
+                return $this->redirect(array('controller' => 'videoLessons', 'action' => 'index'));
             } else {
                 $this->Flash->error(__('The video lesson script could not be saved. Please, try again.'));
             }
@@ -143,6 +128,15 @@ class VideoLessonScriptsController extends AppController {
             $this->Flash->error(__('The video lesson script could not be deleted. Please, try again.'));
         }
         return $this->redirect(array('action' => 'index', $video_lesson_id));
+    }
+
+    public function isAuthorized($user) {
+        // All registered users can 
+        if (in_array($this->action, array('edit', 'delete', 'add', 'index_for_text'))) {
+            return true;
+        }
+
+        return parent::isAuthorized($user);
     }
 
 }

@@ -6,6 +6,8 @@
         echo $this->Form->input('id');
         echo $this->Form->input('name');
         echo $this->Form->input('id_video');
+        echo $this->Form->input('package_id');
+
         echo $this->Form->input('video_category_id', array(
             'options' => $categories
         ));

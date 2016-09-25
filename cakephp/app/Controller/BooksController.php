@@ -65,7 +65,7 @@ class BooksController extends AppController {
 
     public function book_by_package() {
         $this->Book->recursive = 0;
-        $this->layout=false;
+        $this->layout = false;
         if ($this->request->is('xml')) {
 
             $this->Book->Behaviors->load('Containable');
@@ -122,17 +122,18 @@ class BooksController extends AppController {
         if ($this->request->is('post')) {
             $this->Book->create();
             $this->request->data['Book']['user_id'] = $this->Auth->user('id');
-
             $this->request->data['Book']['package_id'] = $packageId;
-
 
             if ($this->Book->save($this->request->data)) {
                 $this->Flash->success(__('The book has been saved.'));
-                return $this->redirect(array('action' => 'index'));
+                return $this->redirect(array('controller' => 'lessons', 'action' => 'add', $this->Book->getLastInsertID()));
             } else {
                 $this->Flash->error(__('The book could not be saved. Please, try again.'));
             }
         }
+        $this->set(array(
+            'packages' => $this->Book->Package->find('list'),
+            '_serialize' => array('packages')));
     }
 
     /**
@@ -157,6 +158,9 @@ class BooksController extends AppController {
             $options = array('conditions' => array('Book.' . $this->Book->primaryKey => $id));
             $this->request->data = $this->Book->find('first', $options);
         }
+        $this->set(array(
+            'packages' => $this->Book->Package->find('list'),
+            '_serialize' => array('packages')));
     }
 
     /**
