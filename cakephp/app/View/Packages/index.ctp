@@ -5,6 +5,8 @@
             <tr> 
                 <th><?php echo $this->Paginator->sort('id'); ?></th>
                 <th><?php echo $this->Paginator->sort('name'); ?></th>
+                <th><?php echo $this->Paginator->sort('description'); ?></th>
+                <th><?php echo $this->Paginator->sort('link_blog_description'); ?></th>
                 <th><?php echo $this->Paginator->sort('created'); ?></th>
                 <th><?php echo $this->Paginator->sort('modified'); ?></th>
                 <th class="actions"><?php echo __('Actions'); ?></th>
@@ -15,6 +17,8 @@
                 <tr>
                     <td><?php echo h($package['Package']['id']); ?>&nbsp;</td>
                     <td><?php echo h($package['Package']['name']); ?>&nbsp;</td>
+                    <td><?php echo h($package['Package']['description']); ?>&nbsp;</td>
+                    <td><?php echo h($package['Package']['link_blog_description']); ?>&nbsp;</td>
                     <td><?php echo h($package['Package']['created']); ?>&nbsp;</td>
                     <td><?php echo h($package['Package']['modified']); ?>&nbsp;</td>
                     <td class="actions">

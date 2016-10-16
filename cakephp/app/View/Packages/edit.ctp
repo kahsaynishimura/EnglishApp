@@ -5,8 +5,9 @@
         <?php
         echo $this->Form->input('id');
         echo $this->Form->input('name');
-        echo $this->Form->input('is_free'); 
+        echo $this->Form->input('is_free');
         echo $this->Form->input('description');
+        echo $this->Form->input('link_blog_description');
         ?>
     </fieldset>
     <?php echo $this->Form->end(__('Submit')); ?>

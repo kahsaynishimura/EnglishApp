@@ -11,6 +11,11 @@
 			<?php echo h($package['Package']['name']); ?>
 			&nbsp;
 		</dd>
+                <dt><?php echo __('Link to blog description'); ?></dt>
+		<dd>
+			<?php echo h($package['Package']['link_blog_description']); ?>
+			&nbsp;
+		</dd>
 		<dt><?php echo __('Created'); ?></dt>
 		<dd>
 			<?php echo h($package['Package']['created']); ?>

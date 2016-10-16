@@ -71,7 +71,7 @@ class BooksController extends AppController {
             $this->Book->Behaviors->load('Containable');
             $options = array(
                 'fields' => array('Book.id', 'Book.name'),
-                'order' => array('Book.name' => 'asc'),
+                'order' => array('Book.name'),
                 'conditions' => array('package_id' => $this->request->data['Book']['package_id']),
                 'contain' => array('Lesson' => array('fields' => array('id', 'name')))
             );

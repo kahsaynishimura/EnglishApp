@@ -42,9 +42,10 @@ class PackagesController extends AppController {
                 'UsersPackage' => array(
                     //return if the user bought this lesson
                     'conditions' => array('UsersPackage.user_id' => $this->request->data['User']['id']),
-                    'fields' => array('UsersPackage.user_id')
+                    'fields' => array('UsersPackage.user_id'),
                 )
-            )
+            ),
+            'order'=>array('name')
         );
 
         $packages = $this->Package->find('all', $options);
