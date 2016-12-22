@@ -43,5 +43,7 @@
     <h3><?php echo __('Actions'); ?></h3>
     <ul>
         <li><?php echo $this->Html->link(__('New Book'), array('action' => 'add')); ?></li>
+        <li><?php echo $this->Html->link(__('Reset Password'), array('controller' => 'users', 'action' => 'resetPassword')); ?></li>
+ 
     </ul>
 </div>

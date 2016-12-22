@@ -24,7 +24,58 @@ class UsersController extends AppController {
         $this->Auth->allow('add', 'login', 'save_last_lesson_api', 'add_api', 'add_fb_api', 'login_api', 'confirmation');
     }
 
-    /*     * *******************************Rest API********************************** */
+    public function confirmation() {
+        $this->autoLayout = false;
+        $this->autoRender = false;
+        if ($this->request->query('email')) {
+            $user = $this->User->find('first', array(
+                'fields' => array('id', 'name', 'username'),
+                'conditions' => array('User.username' => $this->request->query('email'))));
+            if (!empty($user)) {
+                $this->User->id = $user['User']['id'];
+                $this->User->saveField('is_confirmed', true);
+
+                $this->Flash->success(__('Sua conta está ativa.'));
+                $this->redirect("http://www.echopractice.com/thank-you-for-signing-in/");
+            } else {
+                $this->Flash->error('Não foi possível confirmar seu cadastro.');
+            }
+        }
+        $this->redirect(array('controller' => 'users', 'action' => 'login'));
+    }
+
+    public function resetPassword() {
+        if ($this->request->is(array('post', 'put'))) {
+            $this->request->data['User']['id'] = $this->Auth->user('id');
+            $this->log('User Id - resetPassword: ' . $this->Auth->user('id'));
+            $this->User->id = $this->Auth->user('id');
+            $this->log($this->request->data);
+            if ($this->User->saveField('password', $this->request->data['User']['password'])) {
+                $message = __('The user has been saved. Redirecting to echopractice.com');
+
+                //Email
+                $Email = new CakeEmail('smtp');
+                $Email->from(array('robot@echopractice.com' => 'Echo Practice'))
+                        ->to($this->Auth->user('username'))
+                        ->subject(__('Echo Practice - New Password Created'))
+                        ->template('password_changed', 'default')
+                        ->emailFormat('html')
+                        ->viewVars(array(
+                            'oneMoreStep' => __('It is sorted.'),
+                            'userName' => $this->request->data['first_name'],
+                            'instructions' => __('Password successfully changed.'),
+                            'login' => $this->Auth->user('username'),
+                            'password' => $this->request->data['User']['password']))
+                        ->send();
+                $this->Auth->logout();
+            } else {
+                $message = __('The user could not be saved. Please, try again.');
+            }
+            $this->flash($message, 'https://echopractice.com');
+        }
+    }
+
+    /*     * ********************************Rest API********************************** */
 
     public function login_api() {
         if ($this->request->is(array('post', 'xml'))) {
@@ -75,6 +126,22 @@ class UsersController extends AppController {
                     'user' => $this->request->data['User'],
                     '_serialize' => array('user')
                 ));
+
+                //Email
+//                $Email = new CakeEmail('smtp');
+//
+//                $Email->from(array('robot@echopractice.com' => 'Echo Practice'))
+//                        ->to($this->request->data['User']['username'] . '')
+//                        ->subject(__('Echo Practice - Account confirmation. Start improving your pronunciation'))
+//                        ->template('confirmation', 'default')
+//                        ->emailFormat('html')
+//                        ->viewVars(array(
+//                            'activate_account' => __('Activate Account'),
+//                            'oneMoreStep' => __('Only one more step to start having fun.'),
+//                            'userName' => $this->request->data['User']['name'],
+//                            'instructions' => __('Please, click the button bellow to activate your access and start using Echo Practice for free'),
+//                            'email' => $this->request->data['User']['username']))
+//                        ->send();
             } else {
                 $user = $this->User->find('first', array(
                     'fields' => array('id', 'username', 'name', 'is_confirmed', 'last_completed_lesson', 'total_points'),
@@ -90,26 +157,6 @@ class UsersController extends AppController {
         }
     }
 
-    public function add_api() {
-        if ($this->request->is(array('post', 'xml'))) {
-            $this->User->create();
-
-            $this->request->data['User']['last_completed_lesson'] = 0;
-            $this->request->data['User']['total_points'] = 0;
-            $this->request->data['User']['role'] = 'student'; //only students are allowed to be added via app
-            $this->request->data['User']['is_confirmed'] = true;
-            if ($this->User->save($this->request->data)) {
-                $general_response = array('status' => 'success', 'data' => $this->User->getLastInsertID(), 'message' => __('Your account was created. Enjoy the ride.'));
-            } else {
-                $general_response = array('status' => 'success', 'data' => '', 'message' => __('Sorry, we could not create your account. Try again.'));
-            }
-            $this->set(array(
-                'general_response' => $general_response,
-                '_serialize' => array('general_response')
-            ));
-        }
-    }
-
     //must return the user's available score
     public function save_last_lesson_api() {
         if ($this->request->is(array('post', 'xml'))) {
@@ -121,6 +168,40 @@ class UsersController extends AppController {
                     '_serialize' => array('general_response')
                 ));
             }
+        }
+    }
+
+    public function add_api() {
+        if ($this->request->is(array('post', 'xml'))) {
+            $this->User->create();
+
+            $this->request->data['User']['last_completed_lesson'] = 0;
+            $this->request->data['User']['total_points'] = 0;
+            $this->request->data['User']['role'] = 'student'; //only students are allowed to be added via app
+            $this->request->data['User']['is_confirmed'] = true;
+            if ($this->User->save($this->request->data)) {
+                //Email
+//                $Email = new CakeEmail('smtp');
+//                $Email->from(array('robot@echopractice.com' => 'Echo Practice'))
+//                        ->to($this->request->data['User']['username'] . '')
+//                        ->subject(__('Echo Practice - Account confirmation. Start improving your pronunciation'))
+//                        ->template('confirmation', 'default')
+//                        ->emailFormat('html')
+//                        ->viewVars(array(
+//                            'activate_account' => __('Activate Account'),
+//                            'oneMoreStep' => __('Only one more step to start having fun.'),
+//                            'userName' => $this->request->data['User']['name'],
+//                            'instructions' => __('Please, click the button bellow to activate your access and start using Echo Practice for free'),
+//                            'email' => $this->request->data['User']['username']))
+//                        ->send();
+                $message = __('Conta criada. Aproveite sua prática.');
+            } else {
+                $message = __('The user could not be saved. Please, try again.');
+            }
+            $this->set(array(
+                'message' => $message,
+                '_serialize' => array('message')
+            ));
         }
     }
 
@@ -283,7 +364,7 @@ class UsersController extends AppController {
     }
 
     public function isAuthorized($user) {
-        if (in_array($this->action, array('add', 'logout'))) {
+        if (in_array($this->action, array('add', 'logout', 'resetPassword'))) {
             return true;
         }
         return parent::isAuthorized($user);
