@@ -81,6 +81,7 @@ class UsersController extends AppController {
         if ($this->request->is(array('post', 'xml'))) {
             $this->Auth->login();
             $user = $this->Auth->user();
+            $user['User']['password']='';
             $this->set(array(
                 'user' => $user,
                 '_serialize' => array('user')
@@ -180,8 +181,8 @@ class UsersController extends AppController {
             $this->request->data['User']['role'] = 'student'; //only students are allowed to be added via app
             $this->request->data['User']['is_confirmed'] = false;
             if ($this->User->save($this->request->data)) {
-                
-                $message = __('Conta criada. Aproveite sua prática.');
+                $general_response = array('status' => 'success', 'data' => $this->User->getLastInsertID(), 'message' => __('Conta criada com sucesso. Aproveite sua prática.'));
+
                 $Email = new CakeEmail('smtp');
                 $Email->from(array('robot@echopractice.com' => 'Echo Practice'))
                         ->to($this->request->data['User']['username'] . '')
@@ -196,11 +197,12 @@ class UsersController extends AppController {
                             'email' => $this->request->data['User']['username']))
                         ->send();
             } else {
-                $message = __('The user could not be saved. Please, try again.');
+                $general_response = array('status' => 'error', 'data' => '', 'message' => __('Não foi possível salvar sua conta.'));
             }
+
             $this->set(array(
-                'message' => $message,
-                '_serialize' => array('message')
+                'general_response' => $general_response,
+                '_serialize' => array('general_response')
             ));
         }
     }
@@ -266,20 +268,19 @@ class UsersController extends AppController {
         $this->User->recursive = 0;
         $this->set('users', $this->Paginator->paginate());
     }
-    
+
     public function admin_email_ptbr() {
         $this->User->recursive = 0;
-        $this->set('users', $this->User->find('all',
-                array(
-                    'conditions'=>array('user_locale'=>'pt_BR')
-                )));
+        $this->set('users', $this->User->find('all', array(
+                    'conditions' => array('user_locale' => 'pt_BR')
+        )));
     }
-public function admin_email() {
+
+    public function admin_email() {
         $this->User->recursive = 0;
-        $this->set('users', $this->User->find('all',
-                array(
-                    'conditions'=>array('user_locale <>'=>'pt_BR')
-                )));
+        $this->set('users', $this->User->find('all', array(
+                    'conditions' => array('user_locale <>' => 'pt_BR')
+        )));
     }
 
     /**
