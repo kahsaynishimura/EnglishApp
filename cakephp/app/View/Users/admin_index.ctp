@@ -5,9 +5,10 @@
             <tr>
                 <th><?php echo $this->Paginator->sort('id'); ?></th>
                 <th><?php echo $this->Paginator->sort('name'); ?></th>  
-                <th><?php echo $this->Paginator->sort('role'); ?></th>
                 <th><?php echo $this->Paginator->sort('username'); ?></th>
                 <th><?php echo $this->Paginator->sort('total_points'); ?></th>
+                <th><?php echo $this->Paginator->sort('user_locale'); ?></th>
+                <th><?php echo $this->Paginator->sort('role'); ?></th>
                 <th><?php echo $this->Paginator->sort('is_confirmed'); ?></th>
                 <th><?php echo $this->Paginator->sort('created'); ?></th>
                 <th><?php echo $this->Paginator->sort('modified'); ?></th>
@@ -19,9 +20,10 @@
                 <tr>
                     <td><?php echo h($user['User']['id']); ?>&nbsp;</td>
                     <td><?php echo h($user['User']['name']); ?>&nbsp;</td>
-                    <td><?php echo h($user['User']['role']); ?>&nbsp;</td>
                     <td><?php echo h($user['User']['username']); ?>&nbsp;</td>
                     <td><?php echo h($user['User']['total_points']); ?>&nbsp;</td>
+                    <td><?php echo h($user['User']['user_locale']); ?>&nbsp;</td>
+                    <td><?php echo h($user['User']['role']); ?>&nbsp;</td>
                     <td><?php echo h($user['User']['is_confirmed']); ?>&nbsp;</td>
                     <td><?php echo h($user['User']['created']); ?>&nbsp;</td>
                     <td><?php echo h($user['User']['modified']); ?>&nbsp;</td>
