@@ -81,7 +81,7 @@ class UsersController extends AppController {
         if ($this->request->is(array('post', 'xml'))) {
             $this->Auth->login();
             $user = $this->Auth->user();
-            $user['User']['password']='';
+            $user['User']['password'] = '';
             $this->set(array(
                 'user' => $user,
                 '_serialize' => array('user')
@@ -265,6 +265,9 @@ class UsersController extends AppController {
      * @return void
      */
     public function admin_index() {
+        $this->Paginator->settings = array(
+            'order' => array('User.id' => 'desc') 
+        );
         $this->User->recursive = 0;
         $this->set('users', $this->Paginator->paginate());
     }
