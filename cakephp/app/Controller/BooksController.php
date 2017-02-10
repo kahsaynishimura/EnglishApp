@@ -67,13 +67,19 @@ class BooksController extends AppController {
         $this->Book->recursive = 0;
         $this->layout = false;
         if ($this->request->is('xml')) {
-
             $this->Book->Behaviors->load('Containable');
             $options = array(
                 'fields' => array('Book.id', 'Book.name'),
                 'order' => array('Book.name'),
                 'conditions' => array('package_id' => $this->request->data['Book']['package_id']),
-                'contain' => array('Lesson' => array('fields' => array('id', 'name')))
+                'contain' => array('Lesson' => array(
+                        'fields' => array('id', 'name'),
+                        'UsersLesson' => array(
+                            'fields' => array('id', 'user_id', 'lesson_id'),
+                            'conditions' => array('user_id' => $this->request->data['User']['id'])
+                        )
+                    ),
+                )
             );
             $books = $this->Book->find('all', $options);
 
