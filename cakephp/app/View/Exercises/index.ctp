@@ -48,7 +48,7 @@
 <div class="actions">
     <h3><?php echo __('Actions'); ?></h3>
     <ul>
-        <li><?php echo $this->Html->link(__('New Speech Script'), array('controller' => 'speech_scripts', 'action' => 'add', $this->request->params['pass'][0])); ?> </li>
+        <li><?php echo $this->Html->link(__('New Exercise'), array('controller' => 'speech_scripts', 'action' => 'add', $this->request->params['pass'][0])); ?> </li>
         <li><?php echo $this->Html->link(__('List Lessons'), array('controller' => 'lessons', 'action' => 'index', $exercise['Lesson']['book_id'])); ?> </li>
 
     </ul>

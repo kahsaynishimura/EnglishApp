@@ -51,9 +51,20 @@ class UsersLessonsController extends AppController {
 
     public function add_api() {
         if ($this->request->is(array('post', 'xml'))) {
-            $this->UsersLesson->create();
+            $hasSavedLessonCompleted = $this->UsersLesson->find('first', array('conditions'
+                => array(
+                    'user_id' => $this->request->data['UsersLesson']['user_id'],
+                    'lesson_id' => $this->request->data['UsersLesson']['lesson_id']
+            )));
 
-            if ($this->UsersLesson->save($this->request->data)) {
+            $this->UsersLesson->create();
+            if (!empty($hasSavedLessonCompleted)) {
+                 $general_response = array(
+                    'status' => 'success',
+                    'data' => $hasSavedLessonCompleted['UsersLesson']['id'],
+                    'message' => __('The completed lesson has been saved.')
+                );
+            } else if ($this->UsersLesson->save($this->request->data)) {
                 $general_response = array(
                     'status' => 'success',
                     'data' => $this->UsersLesson->getLastInsertID(),
@@ -66,6 +77,7 @@ class UsersLessonsController extends AppController {
                     'message' => __('The completed Lesson could not be saved. Please, try again.')
                 );
             }
+
             $this->set(array(
                 'general_response' => $general_response,
                 '_serialize' => array('general_response')
