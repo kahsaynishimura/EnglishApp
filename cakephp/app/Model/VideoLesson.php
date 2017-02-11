@@ -58,6 +58,19 @@ class VideoLesson extends AppModel {
             'exclusive' => '',
             'finderQuery' => '',
             'counterQuery' => ''
+        ),
+        'Practice' => array(
+            'className' => 'Practice',
+            'foreignKey' => 'exercise_id',
+            'dependent' => true,
+            'conditions' => '',
+            'fields' => '',
+            'order' => '',
+            'limit' => '',
+            'offset' => '',
+            'exclusive' => '',
+            'finderQuery' => '',
+            'counterQuery' => ''
         )
     );
 

@@ -82,7 +82,14 @@ class Practice extends AppModel {
         ),
         'Exercise' => array(
             'className' => 'Exercise',
-            'foreignKey' => 'user_id',
+            'foreignKey' => 'exercise_id',
+            'conditions' => '',
+            'fields' => '',
+            'order' => ''
+        ),
+        'VideoLesson' => array(
+            'className' => 'VideoLesson',
+            'foreignKey' => 'exercise_id',
             'conditions' => '',
             'fields' => '',
             'order' => ''

@@ -25,9 +25,12 @@ class VideoLessonsController extends AppController {
 
     public function index_api() {
         $this->VideoLesson->recursive = 0;
+        $this->VideoLesson->Behaviors->load('Containable');
         if ($this->request->is('xml')) {
             $videos = $this->VideoLesson->find('all', array(
-                'conditions' => array('package_id' => $this->request->data['VideoLesson']['package_id'])
+                'conditions' => array('package_id' => $this->request->data['VideoLesson']['package_id']),
+                'fields' => array('id', 'user_id', 'name', 'id_video', 'is_free'),
+                'contain' => array('Practice' => array('fields' => array('id', 'exercise_id')))
             ));
             $this->set(array(
                 'videoLessons' => $videos,

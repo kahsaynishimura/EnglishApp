@@ -74,6 +74,11 @@ class BooksController extends AppController {
                 'conditions' => array('package_id' => $this->request->data['Book']['package_id']),
                 'contain' => array('Lesson' => array(
                         'fields' => array('id', 'name'),
+                        'Exercise' => array('fields' => array('id'),
+                            'Practice' => array(
+                                'fields' => array('id', 'user_id',),
+                                'conditions' => array('user_id' => $this->request->data['User']['id'] ),
+                            )),
                         'UsersLesson' => array(
                             'fields' => array('id', 'user_id', 'lesson_id'),
                             'conditions' => array('user_id' => $this->request->data['User']['id'])
