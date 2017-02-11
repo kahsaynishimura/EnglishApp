@@ -9,9 +9,9 @@
             <?php
         echo $this->Form->input('text_to_check');
         echo $this->Form->input('text_to_show');
-        echo $this->Form->input('speech_function_id', array(
-            'options' => array('1' => __('Just Speak'),'2'=>__('Speak and Check'))
-        ));
+//        echo $this->Form->input('speech_function_id', array(
+//            'options' => array('1' => __('Just Speak'),'2'=>__('Speak and Check'))
+//        ));
         echo $this->Form->input('script_index');
         ?>
     </fieldset>

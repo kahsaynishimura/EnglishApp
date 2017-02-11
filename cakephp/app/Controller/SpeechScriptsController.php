@@ -117,6 +117,7 @@ class SpeechScriptsController extends AppController {
         if ($this->request->is('post') && $exerciseId != null) {
             $this->SpeechScript->create();
             $this->request->data['SpeechScript']['exercise_id'] = $exerciseId;
+            $this->request->data['SpeechScript']['speech_function_id'] = 2;
             if ($this->SpeechScript->save($this->request->data)) {
                 $this->Flash->success(__('The speech script has been saved.'));
                 return $this->redirect(array('action' => 'index', $this->request->data['SpeechScript']['exercise_id']));

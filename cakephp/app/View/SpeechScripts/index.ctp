@@ -28,11 +28,11 @@
                     </td>
                     <td><?php echo h($speechScript['SpeechScript']['script_index']); ?>&nbsp;</td>
                     <td class="actions">
-                        <?php echo $this->Html->link(__('Add alternate check word'), array('controller'=>'speechScriptChecks','action' => 'add', $speechScript['SpeechScript']['id'])); ?>
-                        
+                        <?php echo $this->Html->link(__('Add alternate check word'), array('controller' => 'speechScriptChecks', 'action' => 'add', $speechScript['SpeechScript']['id'])); ?>
+
                         <?php echo $this->Html->link(__('View'), array('action' => 'view', $speechScript['SpeechScript']['id'])); ?>
                         <?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $speechScript['SpeechScript']['id'])); ?>
-                        <?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $speechScript['SpeechScript']['id'],$speechScript['SpeechScript']['exercise_id']), array('confirm' => __('Are you sure you want to delete # %s?', $speechScript['SpeechScript']['id']))); ?>
+                        <?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $speechScript['SpeechScript']['id'], $speechScript['SpeechScript']['exercise_id']), array('confirm' => __('Are you sure you want to delete # %s?', $speechScript['SpeechScript']['id']))); ?>
                     </td> 
                 </tr>
             <?php endforeach; ?>
@@ -55,8 +55,10 @@
 </div>
 
 <div class="actions">
-	<h3><?php echo __('Actions'); ?></h3>
-	<ul>
-        <li><?php echo $this->Html->link(__('List Exercises'), array('controller'=>'exercises','action' => 'index', $speechScript['Exercise']['lesson_id'])); ?> </li>
-	</ul>
+    <h3><?php echo __('Actions'); ?></h3>
+    <ul>
+        <li><?php echo $this->Html->link(__('New Speech Script'), array('controller' => 'speech_scripts', 'action' => 'add_one', $speechScript['Exercise']['id'])); ?> </li>
+
+        <li><?php echo $this->Html->link(__('List Exercises'), array('controller' => 'exercises', 'action' => 'index', $speechScript['Exercise']['lesson_id'])); ?> </li>
+    </ul>
 </div>
