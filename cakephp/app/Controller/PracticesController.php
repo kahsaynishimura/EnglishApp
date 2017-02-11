@@ -49,6 +49,19 @@ class PracticesController extends AppController {
      */
     public function index() {
         $this->Practice->recursive = 0;
+        $this->Practice->Behaviors->load("Containable");
+
+        $this->Paginator->settings = array(
+            'Practice' => array(
+                'contain' => array(
+                    'User' => array('id', 'name'),
+                    'Exercise' => array(
+                        'fields' => array('id', 'name'),
+                        'Lesson' => array('fields' => array('id', 'name'))
+                    )
+                ),
+                'fields' => array('id', 'user_id', 'start_time', 'finish_time', 'points'),
+        ));
         $this->set('practices', $this->Paginator->paginate());
     }
 
@@ -121,6 +134,27 @@ class PracticesController extends AppController {
         }
         $options = array('conditions' => array('Practice.' . $this->Practice->primaryKey => $id));
         $this->set('practice', $this->Practice->find('first', $options));
+    }
+
+    /**
+     * delete method
+     *
+     * @throws NotFoundException
+     * @param string $id
+     * @return void
+     */
+    public function delete($id = null) {
+        $this->Practice->id = $id;
+        if (!$this->Practice->exists()) {
+            throw new NotFoundException(__('Invalid users lesson'));
+        }
+        $this->request->allowMethod('post', 'delete');
+        if ($this->Practice->delete()) {
+            $this->Flash->success(__('The users lesson has been deleted.'));
+        } else {
+            $this->Flash->error(__('The users lesson could not be deleted. Please, try again.'));
+        }
+        return $this->redirect(array('action' => 'index'));
     }
 
     public function isAuthorized($user) {
