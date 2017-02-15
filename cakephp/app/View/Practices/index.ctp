@@ -19,7 +19,7 @@
                 <tr>
                     <td><?php echo h($practice['Practice']['id']); ?>&nbsp;</td>
                     <td>
-                        <?php echo $this->Html->link($practice['User']['name'], array('controller' => 'users', 'action' => 'view', $practice['User']['id'])); ?>
+                        <?php echo $this->Html->link($practice['User']['name'], array('controller' => 'users', 'action' => 'admin_view', $practice['User']['id'])); ?>
                     </td>
                     <td><?php echo h($practice['User']['id']); ?>&nbsp;</td>
                     <td><?php echo h($practice['Exercise']['name']); ?>&nbsp;</td>
