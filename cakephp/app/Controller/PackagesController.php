@@ -38,6 +38,7 @@ class PackagesController extends AppController {
 
 
         $options = array(
+            'fields' => array('id', 'name', 'is_free', 'is_scratch', 'link_blog_description', 'description'),
             'contain' => array(
                 'UsersPackage' => array(
                     //return if the user bought this lesson
@@ -45,7 +46,7 @@ class PackagesController extends AppController {
                     'fields' => array('UsersPackage.user_id'),
                 )
             ),
-            'order'=>array('name')
+            'order' => array('name')
         );
 
         $packages = $this->Package->find('all', $options);

@@ -65,7 +65,7 @@ class Package extends AppModel {
         'UsersPackage' => array(
             'className' => 'UsersPackage',
             'foreignKey' => 'package_id',
-            'dependent' => false,
+            'dependent' => true,
             'conditions' => '',
             'fields' => '',
             'order' => '',

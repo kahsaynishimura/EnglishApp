@@ -28,7 +28,8 @@
                     </td>
                     <td><?php echo h($speechScript['SpeechScript']['script_index']); ?>&nbsp;</td>
                     <td class="actions">
-                        <?php echo $this->Html->link(__('Add alternate check word'), array('controller' => 'speechScriptChecks', 'action' => 'add', $speechScript['SpeechScript']['id'])); ?>
+                        <?php echo $this->Html->link(__('Add alternate check'), array('controller' => 'speechScriptChecks', 'action' => 'add', $speechScript['SpeechScript']['id'], $speechScript['Exercise']['id'])); ?>
+                        <?php echo $this->Html->link(__('List alternate checks'), array('controller' => 'speechScriptChecks', 'action' => 'index', $speechScript['SpeechScript']['id'], $speechScript['Exercise']['id'])); ?>
 
                         <?php echo $this->Html->link(__('View'), array('action' => 'view', $speechScript['SpeechScript']['id'])); ?>
                         <?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $speechScript['SpeechScript']['id'])); ?>
@@ -60,5 +61,6 @@
         <li><?php echo $this->Html->link(__('New Speech Script'), array('controller' => 'speech_scripts', 'action' => 'add_one', $speechScript['Exercise']['id'])); ?> </li>
 
         <li><?php echo $this->Html->link(__('List Exercises'), array('controller' => 'exercises', 'action' => 'index', $speechScript['Exercise']['lesson_id'])); ?> </li>
+        <li><?php echo $this->Html->link(__('Add Another Exercise'), array('controller' => 'speechScripts', 'action' => 'add', $speechScript['Exercise']['lesson_id'])); ?> </li>
     </ul>
 </div>

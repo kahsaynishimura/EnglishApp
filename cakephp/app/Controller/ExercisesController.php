@@ -103,7 +103,7 @@ class ExercisesController extends AppController {
         if ($this->request->is(array('post', 'put'))) {
             if ($this->Exercise->save($this->request->data)) {
                 $this->Flash->success(__('The exercise has been saved.'));
-                return $this->redirect(array('controller' => 'books', 'action' => 'index'));
+                return $this->redirect(array('controller' => 'exercises', 'action' => 'index', $this->request->data['Exercise']['lesson_id']));
             } else {
                 $this->Flash->error(__('The exercise could not be saved. Please, try again.'));
             }
@@ -128,22 +128,22 @@ class ExercisesController extends AppController {
             throw new NotFoundException(__('Invalid exercise'));
         }
         $this->request->allowMethod('post', 'delete');
-        $lesson_id=$this->Exercise->field("lesson_id");
+        $lesson_id = $this->Exercise->field("lesson_id");
         if ($this->Exercise->delete()) {
             $this->Flash->success(__('The exercise has been deleted.'));
         } else {
             $this->Flash->error(__('The exercise could not be deleted. Please, try again.'));
         }
-        return $this->redirect(array( 'action' => 'index',$lesson_id));
+        return $this->redirect(array('action' => 'index', $lesson_id));
     }
 
     public function isAuthorized($user) {
         // All registered users can add posts
-        if (in_array($this->action, array('edit', 'delete', 'add','index'))) {
+        if (in_array($this->action, array('edit', 'delete', 'add', 'index'))) {
             return true;
         }
 
         return parent::isAuthorized($user);
     }
- 
+
 }

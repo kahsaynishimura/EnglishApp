@@ -22,9 +22,11 @@ class SpeechScriptChecksController extends AppController {
      *
      * @return void
      */
-    public function index() {
+    public function index($speechScriptId) {
         $this->SpeechScriptCheck->recursive = 0;
-        $this->set('speechScriptChecks', $this->Paginator->paginate());
+        $this->set('speechScriptChecks', $this->Paginator->paginate(array(
+                    'speech_script_id' => $speechScriptId
+        )));
     }
 
     /**
@@ -47,7 +49,7 @@ class SpeechScriptChecksController extends AppController {
      *
      * @return void
      */
-    public function add($speechScriptId = null) {
+    public function add($speechScriptId = null, $exerciseId = null) {
         if ($this->request->is('post')) {
             $this->SpeechScriptCheck->create();
 
@@ -55,7 +57,7 @@ class SpeechScriptChecksController extends AppController {
 
             if ($this->SpeechScriptCheck->save($this->request->data)) {
                 $this->Flash->success(__('The speech script check has been saved.'));
-                return $this->redirect(array('action' => 'index'));
+                return $this->redirect(array('action' => 'index', $speechScriptId, $exerciseId));
             } else {
                 $this->Flash->error(__('The speech script check could not be saved. Please, try again.'));
             }
@@ -111,13 +113,14 @@ class SpeechScriptChecksController extends AppController {
         return $this->redirect(array('action' => 'index'));
     }
 
-     public function isAuthorized($user) {
-        if (in_array($this->action, array('add', 'index','edit', 'delete'))) {
+    public function isAuthorized($user) {
+        if (in_array($this->action, array('add', 'index', 'edit', 'delete'))) {
             return true;
         }
 
-      
+
 
         return parent::isAuthorized($user);
     }
+
 }

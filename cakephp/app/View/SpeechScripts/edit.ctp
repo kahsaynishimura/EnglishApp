@@ -7,11 +7,14 @@
         echo $this->Form->input('text_to_read');
         ?>
         <p>if your content contains the words "live" as a verb, use "liv" instead</p>
-            <?php
+        <?php
         echo $this->Form->input('text_to_check');
         echo $this->Form->input('text_to_show');
         echo $this->Form->input('script_index');
-        echo $this->Form->input('exercise_id',array('type'=>'hidden'));
+        echo $this->Form->input('speech_function_id', array(
+            'options' => array(2=>'fala e escuta', 3=>'só escuta'),
+        ));
+        echo $this->Form->input('exercise_id', array('type' => 'hidden'));
         ?>
     </fieldset>
     <?php echo $this->Form->end(__('Submit')); ?>
