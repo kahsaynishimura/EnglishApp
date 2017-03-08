@@ -8,7 +8,7 @@
 
         echo $this->Form->input('checkbox', array('name' => 'data[SpeechScript][include_comma]',
             'type' => 'checkbox',
-            'label' => 'Include comma as separator',
+            'label' => 'Include comma and colon as separators',
             'format' => array('before', 'input', 'between', 'label', 'after', 'error')
         ));
 

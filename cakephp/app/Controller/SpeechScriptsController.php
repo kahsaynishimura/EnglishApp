@@ -79,7 +79,7 @@ class SpeechScriptsController extends AppController {
 
                 $arr = '';
                 if ($this->request->data['SpeechScript']['include_comma'] === "1") {
-                    $arr = preg_split('/\R|\.|\/|!|;|:/', $str);
+                    $arr = preg_split('/\R|\.|\/|!|;|:|,/', $str);
                 } else {
                     $arr = preg_split('/\R|\.|\/|!|;/', $str);
                 }
