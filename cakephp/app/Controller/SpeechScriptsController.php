@@ -68,7 +68,7 @@ class SpeechScriptsController extends AppController {
             $exercise = array(
                 'transition_image' => 'practice',
                 'name' => $this->request->data['SpeechScript']['exercise_name'],
-                'lesson_id' => $lessonId
+                'lesson_id' => $lessonId,
             );
 
             if ($this->SpeechScript->Exercise->save($exercise)) {
@@ -97,11 +97,13 @@ class SpeechScriptsController extends AppController {
                     $speechScript = array(
                         'text_to_show' => $arr[$key],
                         'text_to_check' => $arr[$key],
-                        'text_to_read' => $arr[$key],
+                        'text_to_read' =>
+                        ($this->request->data['SpeechScript']['fulfill_text_to_read'] === "1") ? $arr[$key] : '',
                         'exercise_id' => $this->SpeechScript->Exercise->id,
-                        'speech_function_id' => 2,
+                        'speech_function_id' => $this->request->data['SpeechScript']['speech_function_id'],
                         'script_index' => $i
                     );
+
                     $this->SpeechScript->create();
 
                     $this->SpeechScript->save($speechScript);

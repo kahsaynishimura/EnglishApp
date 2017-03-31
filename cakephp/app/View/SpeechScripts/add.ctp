@@ -5,14 +5,19 @@
         <?php
         echo $this->Form->input('exercise_name', array('label' => 'Excercise name'));
 
-
+        echo $this->Form->input('speech_function_id', array(
+            'options' => array(1 => 'só fala', 2 => 'fala e escuta', 3 => 'só escuta'),
+        ));
         echo $this->Form->input('checkbox', array('name' => 'data[SpeechScript][include_comma]',
             'type' => 'checkbox',
             'label' => 'Include comma and colon as separators',
             'format' => array('before', 'input', 'between', 'label', 'after', 'error')
         ));
 
-
+        echo $this->Form->input('checkbox_tts', array('name' => 'data[SpeechScript][fulfill_text_to_read]',
+            'type' => 'checkbox',
+            'label' => 'Fulfill Text to Read (TTS)',
+        ));
 
         echo $this->Form->input('complete_text', array(
             'type' => 'textarea',
