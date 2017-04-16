@@ -103,7 +103,7 @@ class BooksController extends AppController {
         $this->Book->recursive = 0;
         $this->Paginator->settings = array(
             'Book' => array(
-                'order' => array('difficulty_level', 'name' => 'asc'),
+                'order' => array('difficulty_level', 'name' => 'desc'),
             )
         );
         $this->set('books', $this->Paginator->paginate('Book', array('Book.user_id' => $this->Auth->user('id'))));

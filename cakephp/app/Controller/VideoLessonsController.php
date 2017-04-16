@@ -67,6 +67,7 @@ class VideoLessonsController extends AppController {
                             'video_lesson_id',
                             'stop_at_seconds',
                             'start_at_seconds'),
+                        'order' => array('stop_at_seconds'),
                         'VideoLessonScriptCheck' => array('fields' => array('id', 'text_to_check'))
                     ),
                 ),
