@@ -8,6 +8,7 @@
                 <th><?php echo $this->Paginator->sort('name'); ?></th>
                 <th><?php echo $this->Paginator->sort('Package.name'); ?></th>
                 <th><?php echo $this->Paginator->sort('id_video'); ?></th>
+                <th><?php echo $this->Paginator->sort('video_index'); ?></th>
                 <th><?php echo $this->Paginator->sort('created', null, array('direction' => 'asc')); ?></th>
                 <th class="actions"><?php echo __('Actions'); ?></th>
             </tr>
@@ -19,6 +20,7 @@
                     <td><?php echo h($videoLesson['VideoLesson']['name']); ?>&nbsp;</td> 
                     <td><?php echo h($videoLesson['Package']['name']); ?>&nbsp;</td> 
                     <td><?php echo h($videoLesson['VideoLesson']['id_video']); ?>&nbsp;</td>
+                    <td><?php echo h($videoLesson['VideoLesson']['video_index']); ?>&nbsp;</td>
                     <td><?php echo h($videoLesson['VideoLesson']['created']); ?>&nbsp;</td>
                     <td class="actions">
                         <?php echo $this->Html->link(__('View'), array('action' => 'view', $videoLesson['VideoLesson']['id'])); ?>
