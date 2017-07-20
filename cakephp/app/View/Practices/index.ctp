@@ -6,7 +6,10 @@
                 <th><?php echo $this->Paginator->sort('id'); ?></th>
                 <th><?php echo $this->Paginator->sort('user_id'); ?></th>
                 <th><?php echo $this->Paginator->sort('user_id'); ?></th>
+                <th><?php echo $this->Paginator->sort('lesson_type'); ?></th>
+
                 <th><?php echo $this->Paginator->sort('exercise_id'); ?></th>
+
                 <th><?php echo $this->Paginator->sort('Exercise.lesson_id'); ?></th>
                 <th><?php echo $this->Paginator->sort('start_time'); ?></th>
                 <th><?php echo $this->Paginator->sort('finish_time'); ?></th>
@@ -22,8 +25,16 @@
                         <?php echo $this->Html->link($practice['User']['name'], array('controller' => 'users', 'action' => 'admin_view', $practice['User']['id'])); ?>
                     </td>
                     <td><?php echo h($practice['User']['id']); ?>&nbsp;</td>
-                    <td><?php echo h($practice['Exercise']['name']); ?>&nbsp;</td>
-                    <td><?php echo h($practice['Exercise']['Lesson']['name']); ?>&nbsp;</td>
+                    <td>
+                        <?php echo h($practice['Practice']['lesson_type']); ?>&nbsp;</td>
+
+                    <?php if ($practice['Practice']['lesson_type'] === '1'): ?>
+                        <td><?php echo h($practice['Exercise']['name']); ?>&nbsp;</td>
+                        <td><?php echo h($practice['Exercise']['Lesson']['name']); ?>&nbsp;</td>
+                    <?php else: ?>
+                        <td><?php echo h($practice['VideoLesson']['name']); ?>&nbsp;</td>
+                        <td></td>
+                    <?php endif; ?>
                     <td><?php echo h($practice['Practice']['start_time']); ?>&nbsp;</td>
                     <td><?php echo h($practice['Practice']['finish_time']); ?>&nbsp;</td>
                     <td><?php echo h($practice['Practice']['points']); ?>&nbsp;</td>

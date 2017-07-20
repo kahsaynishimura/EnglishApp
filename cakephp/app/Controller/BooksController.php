@@ -74,10 +74,11 @@ class BooksController extends AppController {
                 'conditions' => array('package_id' => $this->request->data['Book']['package_id']),
                 'contain' => array('Lesson' => array(
                         'fields' => array('id', 'name'),
+                        'order' => array('Lesson.id'),
                         'Exercise' => array('fields' => array('id'),
                             'Practice' => array(
                                 'fields' => array('id', 'user_id',),
-                                'conditions' => array('user_id' => $this->request->data['User']['id'] ),
+                                'conditions' => array('user_id' => $this->request->data['User']['id']),
                             )),
                         'UsersLesson' => array(
                             'fields' => array('id', 'user_id', 'lesson_id'),
@@ -103,7 +104,7 @@ class BooksController extends AppController {
         $this->Book->recursive = 0;
         $this->Paginator->settings = array(
             'Book' => array(
-                'order' => array('difficulty_level', 'name' => 'desc'),
+                'order' => array('id' => 'desc'),
             )
         );
         $this->set('books', $this->Paginator->paginate('Book', array('Book.user_id' => $this->Auth->user('id'))));

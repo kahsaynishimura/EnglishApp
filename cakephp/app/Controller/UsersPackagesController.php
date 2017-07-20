@@ -65,7 +65,7 @@ class UsersPackagesController extends AppController {
                 $this->Flash->error(__('The users package could not be saved. Please, try again.'));
             }
         }
-        $users = $this->UsersPackage->User->find('list');
+        $users = $this->UsersPackage->User->find('list',array('order'=>array('name')));
         $packages = $this->UsersPackage->Package->find('list');
         $this->set(compact('users', 'packages'));
     }
