@@ -5,6 +5,10 @@
             <tr>
                 <th><?php echo $this->Paginator->sort('id'); ?></th>
                 <th><?php echo $this->Paginator->sort('name'); ?></th>
+                <th><?php echo $this->Paginator->sort('book_index'); ?></th>
+                <th><?php echo $this->Paginator->sort('created'); ?></th>
+                <th><?php echo $this->Paginator->sort('modified'); ?></th>
+
                 <th class="actions"><?php echo __('Actions'); ?></th>
             </tr> 
         </thead>
@@ -13,6 +17,9 @@
                 <tr>
                     <td><?php echo h($book['Book']['id']); ?>&nbsp;</td>
                     <td><?php echo h($book['Book']['name']); ?>&nbsp;</td>
+                    <td><?php echo h($book['Book']['book_index']); ?>&nbsp;</td>
+                    <td><?php echo h($book['Book']['created']); ?>&nbsp;</td>
+                    <td><?php echo h($book['Book']['modified']); ?>&nbsp;</td>
                     <td class="actions">
                         <?php echo $this->Html->link(__('View'), array('action' => 'view', $book['Book']['id'])); ?>
                         <?php echo $this->Html->link(__('View Lessons'), array('controller' => 'lessons', 'action' => 'index', $book['Book']['id'])); ?>
@@ -44,6 +51,6 @@
     <ul>
         <li><?php echo $this->Html->link(__('New Book'), array('action' => 'add')); ?></li>
         <li><?php echo $this->Html->link(__('Reset Password'), array('controller' => 'users', 'action' => 'resetPassword')); ?></li>
- 
+
     </ul>
 </div>
