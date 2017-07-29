@@ -37,7 +37,7 @@ $cakeVersion = __('Echo Practice &copy; 2016');
     <body>
         <div id="container">
             <div id="header">
-                <h1><?php echo $this->Html->link($cakeDescription, 'http://www.echopractice.com'); ?></h1>
+                <h1><?php echo $this->Html->link($cakeDescription, 'https://www.echopractice.com'); ?></h1>
                 <h1><?php
                     if (AuthComponent::user()):
                         // The user is logged in, show the logout link

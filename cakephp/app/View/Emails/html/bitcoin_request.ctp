@@ -16,7 +16,7 @@
                             <tbody>
                                 <tr>
                                     <td align="center" valign="middle" style="color:#ffffff;font-family:Helvetica,Arial,sans-serif;font-size:15px;font-weight:bold;line-height:100%;padding-top:18px;padding-right:15px;padding-bottom:15px;padding-left:15px">
-                                        <a href="<?php echo 'http://echopractice.com/ep/bitcoinRequests'; ?>" style="color:#ffffff;text-decoration:none" target="_blank"><?php echo $manage_bitcoin_requests;?></a>
+                                        <a href="<?php echo 'https://echopractice.com/ep/bitcoinRequests'; ?>" style="color:#ffffff;text-decoration:none" target="_blank"><?php echo $manage_bitcoin_requests;?></a>
                                     </td>
                                 </tr>
                             </tbody>

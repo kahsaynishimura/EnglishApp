@@ -36,7 +36,7 @@ class UsersController extends AppController {
                 $this->User->saveField('is_confirmed', true);
 
                 $this->Flash->success(__('Sua conta está ativa.'));
-                $this->redirect("http://www.echopractice.com/thank-you-for-signing-in/");
+                $this->redirect("https://www.echopractice.com/thank-you-for-signing-in/");
             } else {
                 $this->Flash->error('Não foi possível confirmar seu cadastro.');
             }
