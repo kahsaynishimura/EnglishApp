@@ -23,27 +23,6 @@ class VideoLessonsController extends AppController {
         $this->Auth->allow('filtered_index_api', 'index_api', 'index_api_63', 'lesson_scripts_api');
     }
 
-    /*
-     * Remove this when releasing app version 64
-     */
-
-    public function index_api() {
-        $this->VideoLesson->recursive = 0;
-        $this->VideoLesson->Behaviors->load('Containable');
-        if ($this->request->is('xml')) {
-            $videos = $this->VideoLesson->find('all', array(
-                'conditions' => array('package_id' => $this->request->data['VideoLesson']['package_id']),
-                'fields' => array('id', 'user_id', 'name', 'id_video', 'is_free'),
-                'contain' => array('Practice' => array(
-                        'fields' => array('id', 'exercise_id'),
-                    ))
-            ));
-            $this->set(array(
-                'videoLessons' => $videos,
-                '_serialize' => 'videoLessons'));
-        }
-    }
-
     public function index_api_63() {
         $this->VideoLesson->recursive = 0;
         $this->VideoLesson->Behaviors->load('Containable');
@@ -53,8 +32,8 @@ class VideoLessonsController extends AppController {
                 'order' => array('video_index'),
                 'fields' => array('id', 'user_id', 'name', 'id_video', 'is_free', 'video_index'),
                 'contain' => array('Practice' => array(
-                        'fields' => array('id', 'exercise_id', 'user_id'),
-                        'conditions' => array('user_id' => $this->request->data['VideoLesson']['user_id'])
+                        'fields' => array('id', 'exercise_id', 'user_id','lesson_type' ),
+                        'conditions' => array('lesson_type' => 2, 'user_id' => $this->request->data['VideoLesson']['user_id'])
                     ))
             ));
             $this->set(array(
