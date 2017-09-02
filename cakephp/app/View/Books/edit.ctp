@@ -6,6 +6,7 @@
         echo $this->Form->input('id');
         echo $this->Form->input('name');
         echo $this->Form->input('package_id');
+        echo $this->Form->input('book_index');
 
         echo $this->Form->input('is_free', array('label' => __('Free')));
         echo $this->Form->input('difficulty_level', array(

@@ -4,6 +4,7 @@
         <legend><?php echo __('Add Book'); ?></legend>
         <?php echo $this->Form->input('name'); ?>
         <?php echo $this->Form->input('package_id'); ?>
+        <?php echo $this->Form->input('book_index'); ?>
 
         <?php
         echo $this->Form->input('is_free', array('label' => 'Free'));
