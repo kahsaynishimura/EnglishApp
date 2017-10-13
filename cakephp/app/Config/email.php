@@ -44,9 +44,9 @@ class EmailConfig {
 //	);
         public $smtp = array(
 		'transport' => 'Mail',
-		'from' => array('robot@echopractice.com' => 'Echo Practice'),
-		'host' => 'mailout.one.com',
-		'port' => 25, 
+		'from' => array('karina@echopractice.com' => 'Echo Practice'),
+		'host' => 'send.one.com',
+		'port' => 465, 
 		'timeout' => 30,
 		'username' => '',
 		'password' => '',

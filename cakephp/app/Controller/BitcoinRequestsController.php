@@ -62,7 +62,7 @@ class BitcoinRequestsController extends AppController {
             if ($this->BitcoinRequest->save($this->request->data)) {
                 $Email = new CakeEmail();
 
-                $Email->from(array('robot@echopractice.com' => 'Echo Practice'))
+                $Email->from(array('karina@echopractice.com' => 'Echo Practice'))
                         ->to('thiago@echopractice.com')
                         ->subject(__('Echo Practice - BitCoin request'))
                         ->template('bitcoin_request', 'default')

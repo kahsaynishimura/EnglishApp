@@ -21,7 +21,7 @@ class UsersController extends AppController {
     public function beforeFilter() {
         parent::beforeFilter();
         // Allow users to register and logout.
-        $this->Auth->allow('add', 'login', 'save_last_lesson_api', 'add_api', 'add_fb_api', 'login_api', 'confirmation');
+        $this->Auth->allow('resetPassword', 'recover_account', 'add', 'login', 'save_last_lesson_api', 'add_api', 'add_fb_api', 'login_api', 'confirmation');
     }
 
     public function confirmation() {
@@ -44,30 +44,52 @@ class UsersController extends AppController {
         $this->redirect(array('controller' => 'users', 'action' => 'login'));
     }
 
+    public function recover_account() {
+        $this->autoRender = false;
+        if ($this->request->is(array('post'))) {
+            $options = array('fields' => array('id', 'username'), 'conditions' => array('username' => $this->request->data['User']['username']));
+            $user = $this->User->find('first', $options);
+
+            $Email = new CakeEmail('smtp');
+            $Email->from(array('karina@echopractice.com' => 'Echo Practice'))
+                    ->to($this->request->data['User']['username'])
+                    ->subject(__('Echo Practice - Password Recovery'))
+                    ->template('password_request', 'default')
+                    ->emailFormat('html')
+                    ->viewVars(array(
+                        'activate_account' => __('Create New Password'),
+                        'oneMoreStep' => __('Recover your Echo Practice Account'),
+                        'userId' => $user['User']['id'],
+                        'instructions' => __('If you didn\'t request a new password, please, ignore this email.'),
+                    ))
+                    ->send();
+        }
+    }
+
     public function resetPassword() {
-        if ($this->request->is(array('post', 'put'))) {
-            $this->request->data['User']['id'] = $this->Auth->user('id');
-            $this->log('User Id - resetPassword: ' . $this->Auth->user('id'));
-            $this->User->id = $this->Auth->user('id');
+        if ($this->request->is(array('post', 'put')) && $this->request->query('userId')) {
+            $options = array('fields' => array('id', 'username'), 'conditions' => array('id' => $this->request->query('userId')));
+            $user = $this->User->find('first', $options);
+            $this->log('User Id - resetPassword: ' . $user['User']['id'] . ' llll');
+            $this->User->id = $this->request->query('userId');
             $this->log($this->request->data);
             if ($this->User->saveField('password', $this->request->data['User']['password'])) {
                 $message = __('The user has been saved. Redirecting to echopractice.com');
 
                 //Email
                 $Email = new CakeEmail('smtp');
-                $Email->from(array('robot@echopractice.com' => 'Echo Practice'))
-                        ->to($this->Auth->user('username'))
+                $Email->from(array('karina@echopractice.com' => 'Echo Practice'))
+                        ->to($user['User']['username'])
                         ->subject(__('Echo Practice - New Password Created'))
                         ->template('password_changed', 'default')
                         ->emailFormat('html')
                         ->viewVars(array(
                             'oneMoreStep' => __('It is sorted.'),
                             'userName' => $this->request->data['first_name'],
-                            'instructions' => __('Password successfully changed.'),
-                            'login' => $this->Auth->user('username'),
-                            'password' => $this->request->data['User']['password']))
+                            'instructions' => __('Password successfully changed.')
+                                )
+                        )
                         ->send();
-                $this->Auth->logout();
             } else {
                 $message = __('The user could not be saved. Please, try again.');
             }
@@ -131,7 +153,7 @@ class UsersController extends AppController {
                 //Email
 //                $Email = new CakeEmail('smtp');
 //
-//                $Email->from(array('robot@echopractice.com' => 'Echo Practice'))
+//                $Email->from(array('karina@echopractice.com' => 'Echo Practice'))
 //                        ->to($this->request->data['User']['username'] . '')
 //                        ->subject(__('Echo Practice - Account confirmation. Start improving your pronunciation'))
 //                        ->template('confirmation', 'default')
@@ -184,7 +206,7 @@ class UsersController extends AppController {
                 $general_response = array('status' => 'success', 'data' => $this->User->getLastInsertID(), 'message' => __('Conta criada com sucesso. Aproveite sua prática.'));
 
                 $Email = new CakeEmail('smtp');
-                $Email->from(array('robot@echopractice.com' => 'Echo Practice'))
+                $Email->from(array('karina@echopractice.com' => 'Echo Practice'))
                         ->to($this->request->data['User']['username'] . '')
                         ->subject(__('Echo Practice - Account confirmation. Start improving your pronunciation'))
                         ->template('confirmation', 'default')
@@ -266,12 +288,13 @@ class UsersController extends AppController {
      */
     public function admin_index() {
         $this->Paginator->settings = array(
-            'order' => array('User.id' => 'desc') 
+            'order' => array('User.id' => 'desc')
         );
         $this->User->recursive = 0;
         $this->set('users', $this->Paginator->paginate());
     }
- /**
+
+    /**
      * admin_view method
      *
      * @throws NotFoundException
@@ -286,6 +309,7 @@ class UsersController extends AppController {
             'conditions' => array('User.' . $this->User->primaryKey => $id));
         $this->set('user', $this->User->find('first', $options));
     }
+
     public function admin_email_ptbr() {
         $this->User->recursive = 0;
         $this->set('users', $this->User->find('all', array(
@@ -330,7 +354,7 @@ class UsersController extends AppController {
 
                 //Email
                 $Email = new CakeEmail('smtp');
-                $Email->from(array('robot@echopractice.com' => 'Echo Practice'))
+                $Email->from(array('karina@echopractice.com' => 'Echo Practice'))
                         ->to($this->request->data['User']['username'] . '')
                         ->subject(__('Echo Practice - Account confirmation. Start improving your pronunciation'))
                         ->template('confirmation', 'default')

@@ -25,10 +25,7 @@
                         <br />
 
                         <?php echo $instructions; ?><br /><br />
-                        <p>Login: 
-                        <?php echo $login; ?></p>
-                        <p>New Password:
-                        <?php echo $password; ?> </p>
+                       
 
 
                     </td>

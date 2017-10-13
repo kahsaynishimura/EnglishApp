@@ -131,7 +131,7 @@ class UsersPackagesController extends AppController {
             if ($isNewUser) {//the person bought the package with an email that is not related to a user account
                 //Email
                 $Email = new CakeEmail('smtp'); 
-                $Email->from(array('robot@echopractice.com' => 'Echo Practice'))
+                $Email->from(array('karina@echopractice.com' => 'Echo Practice'))
                         ->to($this->request->data['payer_email'])
                         ->subject(__('Echo Practice - Credentials'))
                         ->template('new_user_from_paypal', 'default')
