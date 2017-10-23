@@ -5,9 +5,10 @@
         <?php
         echo $this->Form->input('name');
         echo $this->Form->input('is_free');
-        echo $this->Form->input('description'); 
-        echo $this->Form->input('link_blog_description'); 
-?>
+        echo $this->Form->input('is_scratch');
+        echo $this->Form->input('description');
+        echo $this->Form->input('link_blog_description');
+        ?>
     </fieldset>
     <?php echo $this->Form->end(__('Submit')); ?>
 </div>
