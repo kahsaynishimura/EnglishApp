@@ -59,11 +59,12 @@ class PracticesController extends AppController {
                         'fields' => array('id', 'name'),
                         'Lesson' => array('fields' => array('id', 'name'))
                     ),
-                    'VideoLesson' =>array(
-                        'fields'=>array('id', 'name'),
+                    'VideoLesson' => array(
+                        'fields' => array('id', 'name'),
                     )
                 ),
-                'fields' => array('id', 'user_id', 'start_time', 'finish_time', 'points','lesson_type'),
+                'order' => array('id' => 'desc'),
+                'fields' => array('id', 'user_id', 'start_time', 'finish_time', 'points', 'lesson_type'),
         ));
         $this->set('practices', $this->Paginator->paginate());
     }

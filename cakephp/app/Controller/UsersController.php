@@ -319,9 +319,9 @@ class UsersController extends AppController {
 
     public function admin_email() {
         $this->User->recursive = 0;
-        $this->set('users', $this->User->find('all', array(
-                    'conditions' => array('user_locale <>' => 'pt_BR')
-        )));
+        $this->set('users', $this->User->find('all',
+                array('conditions' => array('is_confirmed' => '1'))
+                ));
     }
 
     /**
