@@ -208,7 +208,7 @@ class UsersController extends AppController {
                 $fEmail = "" . $this->request->data['User']['username'];
                 $fName = "" . $this->request->data['User']['name'];
                 $HttpSocket = new HttpSocket();
-                $HttpSocket->configAuth('Basic', 'anystring', '65fab09a12874c795c3ef623f1fbd4f9-us9');
+                $HttpSocket->configAuth('Basic', 'anystring', '');
                 $data = '{ "email_address": "' . $fEmail . '",
     "status": "subscribed",
     "merge_fields": {
