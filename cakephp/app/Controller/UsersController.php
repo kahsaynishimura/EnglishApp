@@ -2,6 +2,7 @@
 
 App::uses('AppController', 'Controller');
 App::uses('CakeEmail', 'Network/Email');
+App::uses('HttpSocket', 'Network/Http');
 
 /**
  * Users Controller
@@ -204,6 +205,20 @@ class UsersController extends AppController {
             $this->request->data['User']['is_confirmed'] = false;
             if ($this->User->save($this->request->data)) {
                 $general_response = array('status' => 'success', 'data' => $this->User->getLastInsertID(), 'message' => __('Conta criada com sucesso. Aproveite sua prática.'));
+                $fEmail = "" . $this->request->data['User']['username'];
+                $fName = "" . $this->request->data['User']['name'];
+                $HttpSocket = new HttpSocket();
+                $HttpSocket->configAuth('Basic', 'anystring', '65fab09a12874c795c3ef623f1fbd4f9-us9');
+                $data = '{ "email_address": "' . $fEmail . '",
+    "status": "subscribed",
+    "merge_fields": {
+        "FNAME": "' . $fName . '"
+    }
+}';
+                $HttpSocket->post('https://us9.api.mailchimp.com/3.0/lists/d8777255b4/members', $data);
+                $data = '{ "email_address": "' . $fEmail . '"}';
+                $HttpSocket->post('https://us9.api.mailchimp.com/3.0/automations/45d2c892bc/emails/229ea31e6b/queue', $data);
+                //  $HttpSocket->post('https://us9.api.mailchimp.com/3.0/automations/919867bfe2/emails/275f5a8174/queue', $data);
 
                 $Email = new CakeEmail('smtp');
                 $Email->from(array('karina@echopractice.com' => 'Echo Practice'))
@@ -266,6 +281,7 @@ class UsersController extends AppController {
     /*     * ********************************Website********************************** */
 
     public function login() {
+
         if ($this->Auth->user() != null) {
             return $this->redirect($this->Auth->redirectUrl());
         }
@@ -319,9 +335,8 @@ class UsersController extends AppController {
 
     public function admin_email() {
         $this->User->recursive = 0;
-        $this->set('users', $this->User->find('all',
-                array('conditions' => array('is_confirmed' => '1'))
-                ));
+        $this->set('users', $this->User->find('all', array('conditions' => array('is_confirmed' => '1'))
+        ));
     }
 
     /**
