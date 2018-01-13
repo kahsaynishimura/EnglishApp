@@ -309,6 +309,33 @@ class UsersController extends AppController {
         $this->User->recursive = 0;
         $this->set('users', $this->Paginator->paginate());
     }
+     /**
+     * admin_index_confirmed method
+     *
+     * @return void
+     */
+    public function admin_index_confirmed() {
+        $this->Paginator->settings = array(
+            'order' => array('User.id' => 'desc'),
+            'conditions'=>array('User.is_confirmed'=>true)
+        );
+        $this->User->recursive = 0;
+        $this->set('users', $this->Paginator->paginate());
+    }
+    
+    /**
+     * admin_index_practiced method
+     *
+     * @return void
+     */
+    public function admin_index_practiced() {
+        $this->Paginator->settings = array(
+            'order' => array('User.id' => 'desc'),
+            'conditions'=>array('User.total_points >'=>0)
+        );
+        $this->User->recursive = 0;
+        $this->set('users', $this->Paginator->paginate());
+    }
 
     /**
      * admin_view method
@@ -326,12 +353,6 @@ class UsersController extends AppController {
         $this->set('user', $this->User->find('first', $options));
     }
 
-    public function admin_email_ptbr() {
-        $this->User->recursive = 0;
-        $this->set('users', $this->User->find('all', array(
-                    'conditions' => array('user_locale' => 'pt_BR')
-        )));
-    }
 
     public function admin_email() {
         $this->User->recursive = 0;
