@@ -54,7 +54,7 @@ class UsersController extends AppController {
             $Email = new CakeEmail('smtp');
             $Email->from(array('karina@echopractice.com' => 'Echo Practice'))
                     ->to($this->request->data['User']['username'])
-                    ->subject(__('Echo Practice - Password Recovery'))
+                    ->subject(__('Echo Practice - Trocar senha'))
                     ->template('password_request', 'default')
                     ->emailFormat('html')
                     ->viewVars(array(

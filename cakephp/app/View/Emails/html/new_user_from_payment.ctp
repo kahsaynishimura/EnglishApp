@@ -9,7 +9,7 @@
                         <br />
                         <h1 style="color:#606060!important;  font-family:Helvetica,Arial,sans-serif;font-size:40px; font-weight:bold;letter-spacing:-1px;line-height:115%; margin:0;padding:0;text-align:center"> 
                             <?php echo $oneMoreStep; ?></h1>
-
+ 
                         <br />
 
                         <?php echo $instructions; ?><br /><br />
