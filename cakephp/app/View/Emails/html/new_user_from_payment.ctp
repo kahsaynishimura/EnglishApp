@@ -15,7 +15,7 @@
                         <?php echo $instructions; ?><br /><br />
                         <p>Login:
                         <?php echo $login; ?> </p>
-                        <p>Temporary Password: 
+                        <p>Senha temporária: 
                         <?php echo $password; ?></p>
 
 
@@ -32,7 +32,7 @@
                                         line-height:100%;padding-top:18px;
                                         padding-right:15px;padding-bottom:15px;
                                         padding-left:15px">
-                                        <a href="<?php echo 'https://echopractice.com/ep/users/resetPassword'; ?>" 
+                                        <a href="<?php echo 'https://echopractice.com/ep/users/resetPassword?userId=' . $userId; ?>" 
                                            style="color:#ffffff;text-decoration:none" target="_blank">
                                             <?php echo $activate_account; ?></a>
                                     </td>
