@@ -17,6 +17,40 @@ class LessonsController extends AppController {
      */
     public $components = array('Paginator', 'RequestHandler');
 
+    public function beforeFilter() {
+        parent::beforeFilter();
+        // Allow users to register and logout.
+        $this->Auth->allow('v_lesson_scripts_api');
+    }
+
+    public function v_lesson_scripts_api() {
+        $this->Lesson->recursive = 0;
+        $this->Lesson->Behaviors->load('Containable');
+        if ($this->request->is('xml')) {
+            $videoLesson = $this->Lesson->find('all', array(
+                'fields' => array('Lesson.id', 'id_video', 'name'),
+                'contain' => array(
+                    'VideoLessonScript' => array(
+                        'fields' => array('id',
+                            'lesson_id',
+                            'text_to_show',
+                            'text_to_check',
+                            'video_lesson_id',
+                            'stop_at_seconds',
+                            'start_at_seconds'),
+                        'order' => array('stop_at_seconds'),
+                        'VideoLessonScriptCheck' => array('fields' => array('id', 'text_to_check'))
+                    ),
+                ),
+                'conditions' => array('Lesson.id' => $this->request->data['Lesson']['id']),
+            ));
+
+            $this->set(array(
+                'VideoLesson' => $videoLesson,
+                '_serialize' => 'VideoLesson'));
+        }
+    }
+
     public function index_api() {
         $this->Lesson->recursive = 0;
         if ($this->request->is('xml')) {

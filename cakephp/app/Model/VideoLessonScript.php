@@ -5,7 +5,7 @@ App::uses('AppModel', 'Model');
 /**
  * VideoLessonScript Model
  *
- * @property VideoLesson $VideoLesson
+ * @property Lesson $Lesson
  */
 class VideoLessonScript extends AppModel {
 
@@ -16,6 +16,16 @@ class VideoLessonScript extends AppModel {
      */
     public $validate = array(
         'video_lesson_id' => array(
+            'numeric' => array(
+                'rule' => array('numeric'),
+            //'message' => 'Your custom message here',
+            //'allowEmpty' => false,
+            //'required' => false,
+            //'last' => false, // Stop validation after this rule
+            //'on' => 'create', // Limit validation to 'create' or 'update' operations
+            ),
+        ),
+        'lesson_id' => array(
             'numeric' => array(
                 'rule' => array('numeric'),
             //'message' => 'Your custom message here',
@@ -94,13 +104,14 @@ class VideoLessonScript extends AppModel {
      * @var array
      */
     public $belongsTo = array(
-        'VideoLesson' => array(
-            'className' => 'VideoLesson',
-            'foreignKey' => 'video_lesson_id',
-            'conditions' => '',
-            'fields' => '',
-            'order' => ''
-        )
+       
+        'Lesson' => array(
+			'className' => 'Lesson',
+			'foreignKey' => 'lesson_id',
+			'conditions' => '',
+			'fields' => '',
+			'order' => ''
+		)
     );
 
 }

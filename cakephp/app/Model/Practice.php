@@ -7,6 +7,7 @@ App::uses('AppModel', 'Model');
  *
  * @property User $User
  *  @property Exercise $Exercise
+ *  @property Lesson $Lesson
  */
 class Practice extends AppModel {
 
@@ -87,9 +88,9 @@ class Practice extends AppModel {
             'fields' => '',
             'order' => ''
         ),
-        'VideoLesson' => array(
-            'className' => 'VideoLesson',
-            'foreignKey' => 'exercise_id',
+        'Lesson' => array(
+            'className' => 'Lesson',
+            'foreignKey' => 'lesson_id',
             'conditions' => '',
             'fields' => '',
             'order' => ''
