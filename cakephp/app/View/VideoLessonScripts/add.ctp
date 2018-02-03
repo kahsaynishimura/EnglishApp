@@ -5,7 +5,7 @@
         <?php
         echo $this->Form->input('text_to_show');
         echo $this->Form->input('text_to_check');
-        echo $videoLesson['VideoLesson']['name'];
+        echo $videoLesson['Lesson']['name'];
         echo __('Stop should be greater than start');
         echo $this->Form->input('start_minutes', array('label' => 'Start Minute', 'type' => 'number', 'min' => '0'));
         echo $this->Form->input('start_seconds', array('label' => 'Start Second', 'type' => 'number', 'min' => '0', 'max' => '60'));
@@ -19,8 +19,8 @@
     <h3><?php echo __('Actions'); ?></h3>
     <ul>
 
-        <li><?php echo $this->Html->link(__('List Video Lesson Scripts'), array('action' => 'index')); ?></li>
-        <li><?php echo $this->Html->link(__('List Video Lessons'), array('controller' => 'video_lessons', 'action' => 'index')); ?> </li>
-        <li><?php echo $this->Html->link(__('New Video Lesson'), array('controller' => 'video_lessons', 'action' => 'add')); ?> </li>
+        <li><?php echo $this->Html->link(__('List Video Scripts'), array('action' => 'index')); ?></li>
+        <li><?php echo $this->Html->link(__('List Lessons'), array('controller' => 'lessons', 'action' => 'index')); ?> </li>
+        <li><?php echo $this->Html->link(__('New Lesson'), array('controller' => 'lessons', 'action' => 'add')); ?> </li>
     </ul>
 </div>

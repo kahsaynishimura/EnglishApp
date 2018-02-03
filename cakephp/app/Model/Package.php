@@ -6,7 +6,6 @@ App::uses('AppModel', 'Model');
  * Package Model
  *
  * @property Book $Book
- * @property VideoLesson $VideoLesson
  */
 class Package extends AppModel {
 
@@ -49,19 +48,7 @@ class Package extends AppModel {
             'finderQuery' => '',
             'counterQuery' => ''
         ),
-        'VideoLesson' => array(
-            'className' => 'VideoLesson',
-            'foreignKey' => 'package_id',
-            'dependent' => false,
-            'conditions' => '',
-            'fields' => '',
-            'order' => '',
-            'limit' => '',
-            'offset' => '',
-            'exclusive' => '',
-            'finderQuery' => '',
-            'counterQuery' => ''
-        ),
+        
         'UsersPackage' => array(
             'className' => 'UsersPackage',
             'foreignKey' => 'package_id',

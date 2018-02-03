@@ -22,10 +22,17 @@
                     <td><?php echo h($lesson['Lesson']['created']); ?>&nbsp;</td>
                     <td><?php echo h($lesson['Lesson']['modified']); ?>&nbsp;</td>
                     <td class="actions">
+                        <?php if (empty($lesson['Lesson']['id_video']) && empty($lesson['Lesson']['url_pdf'])): ?>
+                            <?php echo $this->Html->link(__('Add Practices'), array('controller' => 'speech_scripts', 'action' => 'add', $lesson['Lesson']['id'])); ?>
+                            <?php echo $this->Html->link(__('List Exercises'), array('controller' => 'exercises', 'action' => 'index', $lesson['Lesson']['id'])); ?>
+                        <?php elseif (!empty($lesson['Lesson']['id_video'])): ?>
+                            <?php echo $this->Html->link(__('List Video Lesson Scripts'), array('controller' => 'video_lesson_scripts', 'action' => 'index', $lesson['Lesson']['id'])); ?> 
+                            <?php echo $this->Html->link(__('Get Text Practices from video'), array('controller' => 'video_lesson_scripts', 'action' => 'index_for_text', $lesson['Lesson']['id'])); ?> 
+                        <?php elseif (!empty($lesson['Lesson']['url_pdf'])): ?> 
+                            <?php echo $this->Html->link(__('View Workbook'), $lesson['Lesson']['url_pdf'], array('target' => '_blank')); ?> 
+                        <?php endif; ?>
                         <?php echo $this->Html->link(__('View'), array('action' => 'view', $lesson['Lesson']['id'])); ?>
                         <?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $lesson['Lesson']['id'])); ?>
-                        <?php echo $this->Html->link(__('List Exercises'), array('controller' => 'exercises', 'action' => 'index', $lesson['Lesson']['id'])); ?>
-                        <?php echo $this->Html->link(__('Add Practices'), array('controller' => 'speech_scripts', 'action' => 'add', $lesson['Lesson']['id'])); ?>
                         <?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $lesson['Lesson']['id']), array('confirm' => __('Are you sure you want to delete # %s?', $lesson['Lesson']['id']))); ?>
                     </td>
                 </tr>

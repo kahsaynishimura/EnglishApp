@@ -32,7 +32,7 @@
                         <td><?php echo h($practice['Exercise']['name']); ?>&nbsp;</td>
                         <td><?php echo h($practice['Exercise']['Lesson']['name']); ?>&nbsp;</td>
                     <?php else: ?>
-                        <td><?php echo h($practice['VideoLesson']['name']); ?>&nbsp;</td>
+                        <td><?php echo h($practice['Lesson']['name']); ?>&nbsp;</td>
                         <td></td>
                     <?php endif; ?>
                     <td><?php echo h($practice['Practice']['start_time']); ?>&nbsp;</td>

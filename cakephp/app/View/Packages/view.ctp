@@ -37,8 +37,8 @@
 		<li><?php echo $this->Html->link(__('New Package'), array('action' => 'add')); ?> </li>
 		<li><?php echo $this->Html->link(__('List Books'), array('controller' => 'books', 'action' => 'index')); ?> </li>
 		<li><?php echo $this->Html->link(__('New Book'), array('controller' => 'books', 'action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Video Lessons'), array('controller' => 'video_lessons', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Video Lesson'), array('controller' => 'video_lessons', 'action' => 'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('List Lessons'), array('controller' => 'lessons', 'action' => 'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('New Lesson'), array('controller' => 'lessons', 'action' => 'add')); ?> </li>
 	</ul>
 </div>
 <div class="related">
@@ -75,47 +75,6 @@
 	<div class="actions">
 		<ul>
 			<li><?php echo $this->Html->link(__('New Book'), array('controller' => 'books', 'action' => 'add')); ?> </li>
-		</ul>
-	</div>
-</div>
-<div class="related">
-	<h3><?php echo __('Related Video Lessons'); ?></h3>
-	<?php if (!empty($package['VideoLesson'])): ?>
-	<table cellpadding = "0" cellspacing = "0">
-	<tr>
-		<th><?php echo __('Id'); ?></th>
-		<th><?php echo __('Name'); ?></th>
-		<th><?php echo __('Id Video'); ?></th>
-		<th><?php echo __('Is Free'); ?></th>
-		<th><?php echo __('Video Category Id'); ?></th>
-		<th><?php echo __('Package Id'); ?></th>
-		<th><?php echo __('Created'); ?></th>
-		<th><?php echo __('Modified'); ?></th>
-		<th class="actions"><?php echo __('Actions'); ?></th>
-	</tr>
-	<?php foreach ($package['VideoLesson'] as $videoLesson): ?>
-		<tr>
-			<td><?php echo $videoLesson['id']; ?></td>
-			<td><?php echo $videoLesson['name']; ?></td>
-			<td><?php echo $videoLesson['id_video']; ?></td>
-			<td><?php echo $videoLesson['is_free']; ?></td>
-			<td><?php echo $videoLesson['video_category_id']; ?></td>
-			<td><?php echo $videoLesson['package_id']; ?></td>
-			<td><?php echo $videoLesson['created']; ?></td>
-			<td><?php echo $videoLesson['modified']; ?></td>
-			<td class="actions">
-				<?php echo $this->Html->link(__('View'), array('controller' => 'video_lessons', 'action' => 'view', $videoLesson['id'])); ?>
-				<?php echo $this->Html->link(__('Edit'), array('controller' => 'video_lessons', 'action' => 'edit', $videoLesson['id'])); ?>
-				<?php echo $this->Form->postLink(__('Delete'), array('controller' => 'video_lessons', 'action' => 'delete', $videoLesson['id']), array('confirm' => __('Are you sure you want to delete # %s?', $videoLesson['id']))); ?>
-			</td>
-		</tr>
-	<?php endforeach; ?>
-	</table>
-<?php endif; ?>
-
-	<div class="actions">
-		<ul>
-			<li><?php echo $this->Html->link(__('New Video Lesson'), array('controller' => 'video_lessons', 'action' => 'add')); ?> </li>
 		</ul>
 	</div>
 </div>

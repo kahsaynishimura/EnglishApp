@@ -59,7 +59,7 @@ class PracticesController extends AppController {
                         'fields' => array('id', 'name'),
                         'Lesson' => array('fields' => array('id', 'name'))
                     ),
-                    'VideoLesson' => array(
+                    'Lesson' => array(
                         'fields' => array('id', 'name'),
                     )
                 ),

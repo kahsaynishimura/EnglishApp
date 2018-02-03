@@ -8,7 +8,7 @@
 		</dd>
 		<dt><?php echo __('Video Lesson'); ?></dt>
 		<dd>
-			<?php echo $this->Html->link($videoLessonScript['VideoLesson']['name'], array('controller' => 'video_lessons', 'action' => 'view', $videoLessonScript['VideoLesson']['id'])); ?>
+			<?php echo $this->Html->link($videoLessonScript['Lesson']['name'], array('controller' => 'lessons', 'action' => 'view', $videoLessonScript['Lesson']['id'])); ?>
 			&nbsp;
 		</dd>
 		<dt><?php echo __('Text To Show'); ?></dt>
@@ -40,7 +40,7 @@
 		<li><?php echo $this->Form->postLink(__('Delete Video Lesson Script'), array('action' => 'delete', $videoLessonScript['VideoLessonScript']['id']), array('confirm' => __('Are you sure you want to delete # %s?', $videoLessonScript['VideoLessonScript']['id']))); ?> </li>
 		<li><?php echo $this->Html->link(__('List Video Lesson Scripts'), array('action' => 'index')); ?> </li>
 		<li><?php echo $this->Html->link(__('New Video Lesson Script'), array('action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Video Lessons'), array('controller' => 'video_lessons', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Video Lesson'), array('controller' => 'video_lessons', 'action' => 'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('List Video Lessons'), array('controller' => 'lessons', 'action' => 'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('New Video Lesson'), array('controller' => 'lessons', 'action' => 'add')); ?> </li>
 	</ul>
 </div>

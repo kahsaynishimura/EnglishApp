@@ -27,7 +27,13 @@ class VideoLessonScriptsController extends AppController {
         $this->Paginator->settings = array(
             'order' => 'VideoLessonScript.stop_at_seconds desc'
         );
-        $this->set('videoLessonScripts', $this->Paginator->paginate('VideoLessonScript', array('VideoLessonScript.video_lesson_id' => $id)));
+        $scripts = $this->Paginator->paginate('VideoLessonScript', array('VideoLessonScript.lesson_id' => $id));
+        $this->set('videoLessonScripts', $scripts);
+        $this->VideoLessonScript->Lesson->recursive = 0;
+        $lesson = $this->VideoLessonScript->Lesson->find('first', array(
+            'fields' => array('id_video', 'id'),
+            'conditions' => array('Lesson.id' => $id)));
+        $this->set('lesson', $lesson);
     }
 
     public function index_for_text($id = 0) {
@@ -35,7 +41,7 @@ class VideoLessonScriptsController extends AppController {
         $this->Paginator->settings = array(
             'limit' => '400'
         );
-        $this->set('videoLessonScripts', $this->Paginator->paginate('VideoLessonScript', array('VideoLessonScript.video_lesson_id' => $id)));
+        $this->set('videoLessonScripts', $this->Paginator->paginate('VideoLessonScript', array('VideoLessonScript.lesson_id' => $id)));
     }
 
     /**
@@ -61,7 +67,7 @@ class VideoLessonScriptsController extends AppController {
     public function add($lesson_id) {
         if ($this->request->is('post')) {
             $this->VideoLessonScript->create();
-            $this->request->data['VideoLessonScript']['video_lesson_id'] = $lesson_id;
+            $this->request->data['VideoLessonScript']['lesson_id'] = $lesson_id;
             $startSec = (int) $this->request->data['VideoLessonScript']['start_seconds'];
             $startMin = (int) $this->request->data['VideoLessonScript']['start_minutes'];
             $stopSec = (int) $this->request->data['VideoLessonScript']['stop_seconds'];
@@ -75,9 +81,36 @@ class VideoLessonScriptsController extends AppController {
                 $this->Flash->error(__('The video lesson script could not be saved. Please, try again.'));
             }
         }
-        $options = array('conditions' => array('VideoLesson.id' => $lesson_id));
-        $videoLesson = $this->VideoLessonScript->VideoLesson->find('first', $options);
-        $this->set(compact('videoLesson'));
+        $options = array('conditions' => array('Lesson.id' => $lesson_id));
+        $lesson = $this->VideoLessonScript->Lesson->find('first', $options);
+        $this->set(compact('lesson'));
+    }
+
+    /**
+     * add method
+     *
+     * @return void
+     */
+    public function add_api() {
+        if ($this->request->is('post')) {
+            $this->VideoLessonScript->create();
+            if ($this->VideoLessonScript->save($this->data)) {
+                $this->VideoLessonScript->recursive = 0;
+                $this->Paginator->settings = array(
+                    'order' => 'VideoLessonScript.stop_at_seconds desc'
+                );
+                $scripts = $this->Paginator->paginate('VideoLessonScript', array(
+                    'VideoLessonScript.lesson_id' => $this->data['VideoLessonScript']['lesson_id']));
+                $this->set('videoLessonScripts', $scripts);
+                $this->VideoLessonScript->Lesson->recursive = 0;
+                $lesson = $this->VideoLessonScript->Lesson->find('first', array(
+                    'fields' => array('id_video', 'id'),
+                    'conditions' => array('Lesson.id' => $this->data['VideoLessonScript']['lesson_id'])));
+                $this->set('lesson', $lesson);
+            } else {
+                $this->Flash->error(__('The video lesson script could not be saved. Please, try again.'));
+            }
+        }
     }
 
     /**
@@ -109,8 +142,8 @@ class VideoLessonScriptsController extends AppController {
             $options = array('conditions' => array('VideoLessonScript.' . $this->VideoLessonScript->primaryKey => $id));
             $this->request->data = $this->VideoLessonScript->find('first', $options);
         }
-        $videoLessons = $this->VideoLessonScript->VideoLesson->find('list');
-        $this->set(compact('videoLessons'));
+        $lessons = $this->VideoLessonScript->Lesson->find('list');
+        $this->set(compact('lessons'));
     }
 
     /**
@@ -126,14 +159,38 @@ class VideoLessonScriptsController extends AppController {
             throw new NotFoundException(__('Invalid video lesson script'));
         }
         $this->VideoLessonScript->id = $id;
-        $video_lesson_id = $this->VideoLessonScript->field('video_lesson_id');
+        $lesson_id = $this->VideoLessonScript->field('lesson_id');
         $this->request->allowMethod('post', 'delete');
         if ($this->VideoLessonScript->delete()) {
             $this->Flash->success(__('The video lesson script has been deleted.'));
         } else {
             $this->Flash->error(__('The video lesson script could not be deleted. Please, try again.'));
         }
-        return $this->redirect(array('action' => 'index', $video_lesson_id));
+        return $this->redirect(array('action' => 'index', $lesson_id));
+    }
+
+    public function delete_api() {
+        $this->VideoLessonScript->id = $this->data['VideoLessonScript']['id'];
+        if (!$this->VideoLessonScript->exists()) {
+            throw new NotFoundException(__('Invalid video lesson script'));
+        }
+        $this->request->allowMethod('post', 'delete');
+        if ($this->VideoLessonScript->delete()) {
+            $this->VideoLessonScript->recursive = 0;
+            $this->Paginator->settings = array(
+                'order' => 'VideoLessonScript.stop_at_seconds desc'
+            );
+            $scripts = $this->Paginator->paginate('VideoLessonScript', array(
+                'VideoLessonScript.lesson_id' => $this->data['VideoLessonScript']['lesson_id']));
+            $this->set('videoLessonScripts', $scripts);
+            $this->VideoLessonScript->Lesson->recursive = 0;
+            $lesson = $this->VideoLessonScript->Lesson->find('first', array(
+                'fields' => array('id_video', 'id'),
+                'conditions' => array('Lesson.id' => $this->data['VideoLessonScript']['lesson_id'])));
+            $this->set('lesson', $lesson);
+        } else {
+            $this->Flash->error(__('The video lesson script could not be saved. Please, try again.'));
+        }
     }
 
     public function isAuthorized($user) {
@@ -145,4 +202,30 @@ class VideoLessonScriptsController extends AppController {
         return parent::isAuthorized($user);
     }
 
+//    function updateField($id = null) {
+//        if (!$id)
+//            return;
+//
+//        if ($this->data) {
+//            // get all the fields with its values (there should be only one, but anyway...)
+//            foreach ($this->data['VideoLessonScript'] as $field => $value) {
+//                // check if the provided field name is acceptable
+//                switch ($field) {
+//                    case 'text_to_check':
+//                    case 'text_to_show':
+//                    case 'stop_at_seconds':
+//                    case 'start_at_seconds':
+//                        break;
+//                    default:
+//                        $this->set('updated_value', '');
+//                        return;
+//                }
+//
+//                $this->VideoLessonScript->id = $id;
+//                $this->VideoLessonScript->saveField($field, $value);
+//
+//                $this->set('updated_value', $value);
+//            }
+//        }
+//    }
 }

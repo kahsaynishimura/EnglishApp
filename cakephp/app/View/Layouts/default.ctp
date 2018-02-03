@@ -28,6 +28,7 @@ $cakeVersion = __('Echo Practice &copy; 2016');
         echo $this->Html->meta('icon');
 
         echo $this->Html->css('cake.generic');
+        echo $this->Html->script('jquery-3.3.1.min');
 
         echo $this->fetch('meta');
         echo $this->fetch('css');
@@ -64,7 +65,8 @@ $cakeVersion = __('Echo Practice &copy; 2016');
                     <?php echo $cakeVersion; ?>
                 </p>
             </div>
-        </div>
+        </div> 
         <?php echo $this->element('sql_dump'); ?>
+
     </body>
 </html>

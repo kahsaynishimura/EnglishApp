@@ -27,15 +27,14 @@ class LessonsController extends AppController {
         $this->Lesson->recursive = 0;
         $this->Lesson->Behaviors->load('Containable');
         if ($this->request->is('xml')) {
-            $videoLesson = $this->Lesson->find('all', array(
+            $lesson = $this->Lesson->find('all', array(
                 'fields' => array('Lesson.id', 'id_video', 'name'),
                 'contain' => array(
                     'VideoLessonScript' => array(
                         'fields' => array('id',
-                            'lesson_id',
                             'text_to_show',
                             'text_to_check',
-                            'video_lesson_id',
+                            'lesson_id',
                             'stop_at_seconds',
                             'start_at_seconds'),
                         'order' => array('stop_at_seconds'),
@@ -46,8 +45,8 @@ class LessonsController extends AppController {
             ));
 
             $this->set(array(
-                'VideoLesson' => $videoLesson,
-                '_serialize' => 'VideoLesson'));
+                'lesson' => $lesson,
+                '_serialize' => 'lesson'));
         }
     }
 
