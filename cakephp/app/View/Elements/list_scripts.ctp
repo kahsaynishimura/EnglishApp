@@ -1,4 +1,4 @@
-<table cellpadding="0" cellspacing="0">
+<table cellpadding="0" cellspacing="0" id="my_table">
     <thead>
         <tr>
             <th><?php echo $this->Paginator->sort('id'); ?></th>
@@ -13,19 +13,17 @@
     <tbody>
         <?php foreach ($videoLessonScripts as $videoLessonScript): ?>
             <tr id="<?php echo $videoLessonScript['VideoLessonScript']['id']; ?>">
-                <td><?php echo h($videoLessonScript['VideoLessonScript']['id']); ?>&nbsp;</td>
+                <td class="id"><?php echo h($videoLessonScript['VideoLessonScript']['id']); ?>&nbsp;</td>
                 <td>
                     <?php echo $this->Html->link($videoLessonScript['Lesson']['name'], array('controller' => 'lessons', 'action' => 'view', $videoLessonScript['Lesson']['id'])); ?>
                 </td>
-                <td><?php echo h($videoLessonScript['VideoLessonScript']['text_to_show']); ?>&nbsp;</td>
-                <td><?php echo h($videoLessonScript['VideoLessonScript']['text_to_check']); ?>&nbsp;</td>
-                <td><?php echo h($videoLessonScript['VideoLessonScript']['stop_at_seconds']); ?>&nbsp;</td>
-                <td><?php echo h($videoLessonScript['VideoLessonScript']['start_at_seconds']); ?>&nbsp;</td>
+                <td class="text_to_show"><?php echo h($videoLessonScript['VideoLessonScript']['text_to_show']); ?>&nbsp;</td>
+                <td class="text_to_check"><?php echo h($videoLessonScript['VideoLessonScript']['text_to_check']); ?>&nbsp;</td>
+                <td class="stop_at_seconds"><?php echo h($videoLessonScript['VideoLessonScript']['stop_at_seconds']); ?>&nbsp;</td>
+                <td class="start_at_seconds"><?php echo h($videoLessonScript['VideoLessonScript']['start_at_seconds']); ?>&nbsp;</td>
                 <td class="actions">
                     <?php echo $this->Html->link(__('Add Alternate Check'), array('controller' => 'videoLessonScriptChecks', 'action' => 'add', $videoLessonScript['VideoLessonScript']['id'])); ?>
                     <?php echo $this->Html->link(__('List Alternate Checks'), array('controller' => 'videoLessonScriptChecks', 'action' => 'index', $videoLessonScript['VideoLessonScript']['id'])); ?>
-                    <?php echo $this->Html->link(__('View'), array('action' => 'view', $videoLessonScript['VideoLessonScript']['id'])); ?>
-                    <?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $videoLessonScript['VideoLessonScript']['id'])); ?>
 
                     <?php
                     $options = array(
@@ -57,3 +55,56 @@
     ?>
 </div>
 
+
+<script type="text/javascript">
+
+
+    $('#my_table').on('click', '.text_to_show', function (event) {
+
+        var target = $(event.target);
+        if (target.is("td")) {
+            var t = $(this).text();
+            $(this).text('').append($('<input />', {'value': t}));
+            $('input').focus();
+        }
+
+    });
+    $('#my_table').on('click', '.text_to_check', function (event) {
+
+        var target = $(event.target);
+        if (target.is("td")) {
+            var t = $(this).text();
+            $(this).text('').append($('<input />', {'value': t}));
+            $('input').focus();
+        }
+
+    });
+    $('#my_table').on('click', '.stop_at_seconds', function (event) {
+
+        var target = $(event.target);
+        if (target.is("td")) {
+            var t = $.trim($(this).text());
+            $(this).text('').append($('<input />', {'value': t, 'type': 'number'}));
+            $('input').focus();
+        }
+
+    });
+    $('#my_table').on('click', '.start_at_seconds', function (event) {
+
+        var target = $(event.target);
+        if (target.is("td")) {
+            var t = $.trim($(this).text());
+            $(this).text('').append($('<input />', {'value': t, 'type': 'number'}));
+            $('input').focus();
+        }
+
+    });
+    $('#my_table').on('blur', 'input', function () {
+        var myTd = $(this).parent();
+        var newValue = $(this).val();
+        myTd.text(newValue);
+
+        editScript(myTd.closest('tr').attr('id'), myTd.attr('class'), newValue);
+    });
+
+</script>

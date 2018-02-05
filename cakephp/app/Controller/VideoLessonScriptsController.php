@@ -202,30 +202,41 @@ class VideoLessonScriptsController extends AppController {
         return parent::isAuthorized($user);
     }
 
-//    function updateField($id = null) {
-//        if (!$id)
-//            return;
-//
-//        if ($this->data) {
-//            // get all the fields with its values (there should be only one, but anyway...)
-//            foreach ($this->data['VideoLessonScript'] as $field => $value) {
-//                // check if the provided field name is acceptable
-//                switch ($field) {
-//                    case 'text_to_check':
-//                    case 'text_to_show':
-//                    case 'stop_at_seconds':
-//                    case 'start_at_seconds':
-//                        break;
-//                    default:
-//                        $this->set('updated_value', '');
-//                        return;
-//                }
-//
-//                $this->VideoLessonScript->id = $id;
-//                $this->VideoLessonScript->saveField($field, $value);
-//
-//                $this->set('updated_value', $value);
-//            }
-//        }
-//    }
+    function edit_api() {
+        if (!$this->data['VideoLessonScript']['id'])
+            return;
+
+        if ($this->data) {
+
+            $field = $this->data['VideoLessonScript']['field'];
+            switch ($field) {
+                case 'text_to_check':
+                case 'text_to_show':
+                case 'stop_at_seconds':
+                case 'start_at_seconds':
+                    break;
+                default:
+
+                    return;
+            }
+            if ($this->request->is(array('post', 'put'))) {
+                $this->VideoLessonScript->id = $this->data['VideoLessonScript']['id'];
+                if ($this->VideoLessonScript->saveField($field, $this->data['VideoLessonScript']['value'])) {
+                    $this->VideoLessonScript->recursive = 0;
+                    $this->Paginator->settings = array(
+                        'order' => 'VideoLessonScript.stop_at_seconds desc'
+                    );
+                    $scripts = $this->Paginator->paginate('VideoLessonScript', array(
+                        'VideoLessonScript.lesson_id' => $this->data['VideoLessonScript']['lesson_id']));
+                    $this->set('videoLessonScripts', $scripts);
+                    $this->VideoLessonScript->Lesson->recursive = 0;
+                    $lesson = $this->VideoLessonScript->Lesson->find('first', array(
+                        'fields' => array('id_video', 'id'),
+                        'conditions' => array('Lesson.id' => $this->data['VideoLessonScript']['lesson_id'])));
+                    $this->set('lesson', $lesson);
+                }
+            }
+        }
+    }
+
 }

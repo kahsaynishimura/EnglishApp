@@ -15,54 +15,57 @@
                 'data[VideoLessonScript][text_to_check]': 'new script',
                 'data[VideoLessonScript][lesson_id]': <?php echo $lesson['Lesson']['id']; ?>
             },
-            //                beforeSend: function () {
-            //                    // this is where we append a loading image
-            //                    $('#ajax-panel').html('<div class="loading"><img src="/images/loading.gif" alt="Loading..." /></div>');
-            //                },
             success: function (data) {
                 // successful request; do something with the data
 
                 $('#script_list').html(data);
-                // $('#ajax-panel').empty();
-                //                    $(data).find('item').each(function (i) {
-                //                        $('#ajax-panel').append('<h4>' + $(this).find('title').text() + '</h4><p>' + $(this).find('link').text() + '</p>');
-                //                    });
             },
             error: function () {
                 alert('Oops!');
-                // failed request; give feedback to user
-                // $('#ajax-panel').html('<p class="error"><strong>Oops!</strong> Try that again in a few moments.</p>');
             }
         });
     }
-    function deleteScript(id) {
-
+    function editScript(id, className, newValue) {
         $.ajax({
-            type: 'DELETE',
-            url: 'https://echopractice.com/ep/videoLessonScripts/delete_api',
+            type: 'POST',
+            url: 'https://echopractice.com/ep/videoLessonScripts/edit_api',
             data: {
                 'data[VideoLessonScript][id]': id,
+                'data[VideoLessonScript][field]': className,
+                'data[VideoLessonScript][value]': newValue,
                 'data[VideoLessonScript][lesson_id]': <?php echo $lesson['Lesson']['id']; ?>
+
             },
-            //                beforeSend: function () {
-            //                    // this is where we append a loading image
-            //                    $('#ajax-panel').html('<div class="loading"><img src="/images/loading.gif" alt="Loading..." /></div>');
-            //                },
             success: function (data) {
                 // successful request; do something with the data
 
                 $('#script_list').html(data);
-                // $('#ajax-panel').empty();
-                //                    $(data).find('item').each(function (i) {
-                //                        $('#ajax-panel').append('<h4>' + $(this).find('title').text() + '</h4><p>' + $(this).find('link').text() + '</p>');
-                //                    });
             },
             error: function () {
                 alert('Oops!');
-                // failed request; give feedback to user
-                // $('#ajax-panel').html('<p class="error"><strong>Oops!</strong> Try that again in a few moments.</p>');
             }
         });
+
+    }
+    function deleteScript(id) {
+        if (confirm('Are you sure?')) {
+            $.ajax({
+                type: 'DELETE',
+                url: 'https://echopractice.com/ep/videoLessonScripts/delete_api',
+                data: {
+                    'data[VideoLessonScript][id]': id,
+                    'data[VideoLessonScript][lesson_id]': <?php echo $lesson['Lesson']['id']; ?>
+                },
+                success: function (data) {
+                    // successful request; do something with the data
+
+                    $('#script_list').html(data);
+                },
+                error: function () {
+                    alert('Oops!');
+                }
+            });
+        }
     }
 
     // 2. This code loads the IFrame Player API code asynchronously.

@@ -128,7 +128,7 @@ class LessonsController extends AppController {
         }
         if ($this->request->is(array('post', 'put'))) {
             $this->Lesson->id = $id;
-            if ($this->Lesson->saveField('name', $this->request->data['Lesson']['name'])) {
+            if ($this->Lesson->save($this->request->data)) {
                 $this->Flash->success(__('The lesson has been saved.'));
                 return $this->redirect(array('controller' => 'books', 'action' => 'index'));
             } else {
