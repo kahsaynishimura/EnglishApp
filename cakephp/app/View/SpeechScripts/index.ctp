@@ -7,6 +7,7 @@
                 <th><?php echo $this->Paginator->sort('text_to_read'); ?></th>
                 <th><?php echo $this->Paginator->sort('text_to_check'); ?></th>
                 <th><?php echo $this->Paginator->sort('text_to_show'); ?></th>
+                <th><?php echo $this->Paginator->sort('translation'); ?></th>
                 <th><?php echo $this->Paginator->sort('speech_function_id'); ?></th>
                 <th><?php echo $this->Paginator->sort('exercise_id'); ?></th>
                 <th><?php echo $this->Paginator->sort('script_index'); ?></th>
@@ -20,6 +21,7 @@
                     <td><?php echo h($speechScript['SpeechScript']['text_to_read']); ?>&nbsp;</td>
                     <td><?php echo h($speechScript['SpeechScript']['text_to_check']); ?>&nbsp;</td>
                     <td><?php echo h($speechScript['SpeechScript']['text_to_show']); ?>&nbsp;</td>
+                    <td><?php echo h($speechScript['SpeechScript']['translation']); ?>&nbsp;</td>
                     <td>
                         <?php echo $this->Html->link($speechScript['SpeechScript']['speech_function_id'], array('controller' => 'speech_functions', 'action' => 'view', $speechScript['SpeechFunction']['id'])); ?>
                     </td>

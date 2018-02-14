@@ -34,6 +34,7 @@ class LessonsController extends AppController {
                         'fields' => array('id',
                             'text_to_show',
                             'text_to_check',
+                            'translation',
                             'lesson_id',
                             'stop_at_seconds',
                             'start_at_seconds'),
@@ -72,6 +73,11 @@ class LessonsController extends AppController {
         if (!$this->Lesson->Book->exists($book_id)) {
             throw new NotFoundException(__('Invalid book'));
         }
+         $this->Paginator->settings = array(
+            'Lesson' => array(
+                'order' => array('lesson_index' => 'asc'),
+            )
+        );
         $this->set('lessons', $this->Paginator->paginate('Lesson', array('Book.id' => $book_id)));
     }
 

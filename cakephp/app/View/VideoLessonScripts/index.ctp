@@ -13,6 +13,7 @@
                 'data[VideoLessonScript][start_at_seconds]': stop_at_seconds + '',
                 'data[VideoLessonScript][text_to_show]': 'new script',
                 'data[VideoLessonScript][text_to_check]': 'new script',
+                'data[VideoLessonScript][translation]': 'tradução',
                 'data[VideoLessonScript][lesson_id]': <?php echo $lesson['Lesson']['id']; ?>
             },
             success: function (data) {
@@ -114,28 +115,30 @@
     <h2><?php echo __('Video Lesson Scripts'); ?> </h2>
 
 <!-- 1. The <iframe> (and video player) will replace this <div> tag. -->
-    <center> <div id="player"></div>
+    <center> <div id="player"style="display: block;"></div>
+        <div style="padding:15px;">
+            <?php
+            $options = array(
+                'div' => false,
+                'type' => 'button',
+                'label' => 'Add New Script',
+                'id' => 'add_new_script',
+                'onclick' => 'saveNewScript()',
+                'class' => 'myButton'
+            );
+            echo $this->Form->button('Add New Script', $options);
+            ?>
+        </div>
     </center>
-    <?php
-    $options = array(
-        'type' => 'button',
-        'label' => 'Add New Script',
-        'id' => 'add_new_script',
-        'onclick' => 'saveNewScript()'
-    );
-    echo $this->Form->button('Add New Script', $options);
-    ?>
-    <div id="script_list">
+
+    <div id="script_list" style="padding:15px;" class="related">
         <?php echo $this->element('list_scripts'); ?>
     </div>
-
 </div>
 <div class="actions">
     <h3><?php echo __('Actions'); ?></h3>
     <ul>
-        <li><?php echo $this->Html->link(__('New Video Lesson Script'), array('action' => 'add', $lesson['Lesson']['id'])); ?></li>
-        <li><?php echo $this->Html->link(__('List Video Lessons'), array('controller' => 'lessons', 'action' => 'index')); ?> </li>
-        <li><?php echo $this->Html->link(__('New Video Lesson'), array('controller' => 'lessons', 'action' => 'add')); ?> </li>
+        <li><?php echo $this->Html->link(__('List Lessons'), array('controller' => 'lessons', 'action' => 'index', $lesson['Lesson']['book_id'])); ?> </li>
     </ul>
 </div>
 

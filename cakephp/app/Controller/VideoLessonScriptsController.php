@@ -31,17 +31,90 @@ class VideoLessonScriptsController extends AppController {
         $this->set('videoLessonScripts', $scripts);
         $this->VideoLessonScript->Lesson->recursive = 0;
         $lesson = $this->VideoLessonScript->Lesson->find('first', array(
-            'fields' => array('id_video', 'id'),
+            'fields' => array('id_video', 'id', 'book_id'),
             'conditions' => array('Lesson.id' => $id)));
         $this->set('lesson', $lesson);
     }
 
     public function index_for_text($id = 0) {
         $this->VideoLessonScript->recursive = 0;
+        $this->VideoLessonScript->Lesson->recursive = 0;
         $this->Paginator->settings = array(
             'limit' => '400'
         );
-        $this->set('videoLessonScripts', $this->Paginator->paginate('VideoLessonScript', array('VideoLessonScript.lesson_id' => $id)));
+        $lesson = $videoScripts = $this->VideoLessonScript->Lesson->find('first', array(
+            'fields' => array('Lesson.id', 'book_id', 'name', 'lesson_index'),
+            'conditions' => array('Lesson.id' => $id))
+        );
+
+        $videoScripts = $this->VideoLessonScript->find('all', array(
+            'fields' => array('stop_at_seconds', 'lesson_id', 'text_to_check', 'translation'),
+            'conditions' => array('VideoLessonScript.lesson_id' => $id),
+            'order' => array('VideoLessonScript.stop_at_seconds'))
+        );
+        $speechScripts = array();
+        $speechScriptsType3 = array();
+        $i = 1;
+        foreach ($videoScripts as $s) {
+            $textScript = array(
+                'speech_function_id' => 2,
+                'text_to_read' => $s['VideoLessonScript']['text_to_check'],
+                'text_to_check' => $s['VideoLessonScript']['text_to_check'],
+                'translation' => $s['VideoLessonScript']['translation'],
+                'text_to_show' => $s['VideoLessonScript']['text_to_check'],
+                'script_index' => $i
+            );
+            $i++;
+
+            array_push($speechScripts, $textScript);
+        }
+        $i = 1;
+        foreach ($videoScripts as $s) {
+            $textScript = array(
+                'speech_function_id' => 3,
+                'text_to_read' => '',
+                'text_to_check' => $s['VideoLessonScript']['text_to_check'],
+                'text_to_show' => $s['VideoLessonScript']['text_to_check'],
+                'translation' => $s['VideoLessonScript']['translation'],
+                'script_index' => $i
+            );
+            $i++;
+
+            array_push($speechScriptsType3, $textScript);
+        }
+        $newExercises = array(
+            array(
+                'Exercise' => array(
+                    'name' => $lesson['Lesson']['name'],
+                    'lesson_id' => $id),
+                'SpeechScript' => $speechScripts
+            ),
+            array(
+                'Exercise' => array(
+                    'name' => $lesson['Lesson']['name'] . ' - Mais uma Vez!',
+                    'lesson_id' => $id),
+                'SpeechScript' => $speechScripts
+            ),
+            array(
+                'Exercise' => array(
+                    'name' => $lesson['Lesson']['name'] . ' - Time to Check!',
+                    'lesson_id' => $id),
+                'SpeechScript' => $speechScriptsType3
+            )
+        );
+        $newLesson = array(
+            array('Lesson' => array(
+                    'name' => 'Prática ' . $lesson['Lesson']['name'],
+                    'lesson_index' => $lesson['Lesson']['lesson_index'] + 1,
+                    'book_id' => $lesson['Lesson']['book_id'],
+                ),
+                'Exercise' => $newExercises)
+        );
+
+
+        $this->VideoLessonScript->Lesson
+                ->saveMany($newLesson, array('deep' => true));
+        $this->set('videoLessonScripts', $videoScripts);
     }
 
     /**
@@ -212,6 +285,7 @@ class VideoLessonScriptsController extends AppController {
             switch ($field) {
                 case 'text_to_check':
                 case 'text_to_show':
+                case 'translation':
                 case 'stop_at_seconds':
                 case 'start_at_seconds':
                     break;

@@ -125,8 +125,16 @@ class BooksController extends AppController {
         if (!$this->Book->exists($id)) {
             throw new NotFoundException(__('Invalid book'));
         }
+        $this->Book->recursive = 0;
         $options = array('conditions' => array('Book.' . $this->Book->primaryKey => $id));
         $this->set('book', $this->Book->find('first', $options));
+        $this->Paginator->settings = array(
+            'Lesson' => array(
+                'order' => array('lesson_index'),
+                'fields' => array('lesson_index', 'id', 'book_id', 'id_video', 'url_pdf', 'name', 'created', 'modified'),
+            )
+        );
+        $this->set('lessons', $this->Paginator->paginate('Lesson', array('Lesson.book_id' => $id)));
     }
 
     /**

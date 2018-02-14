@@ -5,8 +5,9 @@
             <th><?php echo $this->Paginator->sort('lesson_id'); ?></th>
             <th><?php echo $this->Paginator->sort('text_to_show'); ?></th>
             <th><?php echo $this->Paginator->sort('text_to_check'); ?></th>
-            <th><?php echo $this->Paginator->sort('stop_at_seconds'); ?></th>
+            <th><?php echo $this->Paginator->sort('translation'); ?></th>
             <th><?php echo $this->Paginator->sort('start_at_seconds'); ?></th>
+            <th><?php echo $this->Paginator->sort('stop_at_seconds'); ?></th>
             <th class="actions"><?php echo __('Actions'); ?></th>
         </tr>
     </thead>
@@ -19,16 +20,28 @@
                 </td>
                 <td class="text_to_show"><?php echo h($videoLessonScript['VideoLessonScript']['text_to_show']); ?>&nbsp;</td>
                 <td class="text_to_check"><?php echo h($videoLessonScript['VideoLessonScript']['text_to_check']); ?>&nbsp;</td>
-                <td class="stop_at_seconds"><?php echo h($videoLessonScript['VideoLessonScript']['stop_at_seconds']); ?>&nbsp;</td>
+                <td class="translation"><?php echo h($videoLessonScript['VideoLessonScript']['translation']); ?>&nbsp;</td>
                 <td class="start_at_seconds"><?php echo h($videoLessonScript['VideoLessonScript']['start_at_seconds']); ?>&nbsp;</td>
+                <td class="stop_at_seconds"><?php echo h($videoLessonScript['VideoLessonScript']['stop_at_seconds']); ?>&nbsp;</td>
                 <td class="actions">
-                    <?php echo $this->Html->link(__('Add Alternate Check'), array('controller' => 'videoLessonScriptChecks', 'action' => 'add', $videoLessonScript['VideoLessonScript']['id'])); ?>
-                    <?php echo $this->Html->link(__('List Alternate Checks'), array('controller' => 'videoLessonScriptChecks', 'action' => 'index', $videoLessonScript['VideoLessonScript']['id'])); ?>
+                    <?php
+                    echo $this->Html->link(
+                            __('Add Alternate Check'), array('controller' => 'videoLessonScriptChecks',
+                        'action' => 'add', $videoLessonScript['VideoLessonScript']['id']), array(
+                        'class' => 'myButton', 'div' => false));
+                    ?>
+                    <?php
+                    echo $this->Html->link(
+                            __('List Alternate Checks'), array('controller' => 'videoLessonScriptChecks',
+                        'action' => 'index', $videoLessonScript['VideoLessonScript']['id']), array(
+                        'class' => 'myButton', 'div' => false));
+                    ?>
 
                     <?php
                     $options = array(
                         'type' => 'button',
                         'label' => 'Delete',
+                        'class' => 'myButton',
                         'onclick' => 'deleteScript(' . $videoLessonScript['VideoLessonScript']['id'] . ')'
                     );
                     echo $this->Form->button('Delete', $options);
@@ -70,6 +83,16 @@
 
     });
     $('#my_table').on('click', '.text_to_check', function (event) {
+
+        var target = $(event.target);
+        if (target.is("td")) {
+            var t = $(this).text();
+            $(this).text('').append($('<input />', {'value': t}));
+            $('input').focus();
+        }
+
+    });
+    $('#my_table').on('click', '.translation', function (event) {
 
         var target = $(event.target);
         if (target.is("td")) {

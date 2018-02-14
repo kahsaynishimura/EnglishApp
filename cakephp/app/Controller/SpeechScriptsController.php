@@ -23,7 +23,7 @@ class SpeechScriptsController extends AppController {
         if ($this->request->is('xml')) {
             $this->set(array(
                 'speech_scripts' => $this->SpeechScript->find('all', array(
-                    'fields' => array('id', 'text_to_read', 'text_to_check', 'text_to_show', 'exercise_id', 'speech_function_id', 'script_index'),
+                    'fields' => array('id', 'text_to_read', 'text_to_check', 'text_to_show', 'translation', 'exercise_id', 'speech_function_id', 'script_index'),
                     'contain' => array('SpeechScriptCheck' => array(
                             'fields' => array('id', 'speech_script_id', 'text_to_check')
                         )),

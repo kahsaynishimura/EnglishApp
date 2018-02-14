@@ -4,7 +4,7 @@
 
         <p>
 
-            <?php echo h($videoLessonScript['VideoLessonScript']['text_to_show']); ?>
+            <?php echo h($videoLessonScript['VideoLessonScript']['text_to_check']); ?>
         </p>
     <?php endforeach; ?>
 </div>

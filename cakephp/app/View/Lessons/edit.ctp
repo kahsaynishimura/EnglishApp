@@ -6,6 +6,8 @@
         echo $this->Form->input('id');
         echo $this->Form->input('name');
         echo $this->Form->input('id_video');
+        echo $this->Form->input('lesson_index');
+        echo $this->Form->input('url_pdf');
         ?>
     </fieldset>
     <?php echo $this->Form->end(__('Submit')); ?>
