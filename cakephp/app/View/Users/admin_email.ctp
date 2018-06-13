@@ -1,14 +1,24 @@
+
+
+
 <div class="users index">
-    <h2><?php echo __('Not Brazilian Users'); ?></h2>
-   
+    <h2><?php echo __('Users'); ?></h2>
+    <table cellpadding="0" cellspacing="0">
+        <thead>
+            <tr>
+                <th><?php echo $this->Paginator->sort('username'); ?></th>
+                <th><?php echo $this->Paginator->sort('name'); ?></th>  
+            </tr>
+        </thead>
+        <tbody>
             <?php foreach ($users as $user): ?>
-                <?php echo h($user['User']['username']).';'; ?>&nbsp;
+                <tr>
+                    <td><?php echo h($user['User']['username']); ?>&nbsp;</td>
+                    <td><?php echo h($user['User']['name']); ?>&nbsp;</td>
                    
+                </tr>
             <?php endforeach; ?>
-</div>
-<div class="actions">
-    <h3><?php echo __('Actions'); ?></h3>
-    <ul>
-        <li><?php echo $this->Html->link(__('New User'), array('action' => 'add')); ?></li>
-    </ul>
+        </tbody>
+    </table>
+   
 </div>

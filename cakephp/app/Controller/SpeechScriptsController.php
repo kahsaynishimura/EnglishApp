@@ -81,7 +81,7 @@ class SpeechScriptsController extends AppController {
                 if ($this->request->data['SpeechScript']['include_comma'] === "1") {
                     $arr = preg_split('/\R|\.|\/|!|;|:|,/', $str);
                 } else {
-                    $arr = preg_split('/\R|\.|\/|!|;/', $str);
+                    $arr = preg_split('/\R|\/|;/', $str); //$arr = preg_split('/\R|\.|\/|!|;/', $str);
                 }
                 //$arr = preg_split('/\R|\.|\/|!|;|:/', $str); //explode("\n", $str);
                 foreach ($arr as $key => $value) {
@@ -94,11 +94,15 @@ class SpeechScriptsController extends AppController {
                 $i = 0;
                 foreach ($arr as $key => $value) {
                     $i++;
+                    $text = preg_split('/=|\|/', $value);
+                  //  var_dump($text);
                     $speechScript = array(
-                        'text_to_show' => $arr[$key],
-                        'text_to_check' => $arr[$key],
+                        'text_to_show' => $text[0],
+                        'text_to_check' => $text[0],
                         'text_to_read' =>
-                        ($this->request->data['SpeechScript']['fulfill_text_to_read'] === "1") ? $arr[$key] : '',
+                        ($this->request->data['SpeechScript']['fulfill_text_to_read'] === "1") ? $text[0] : '',
+                        'translation' =>
+                        (array_key_exists(1, $text)) ? $text[1] : '',
                         'exercise_id' => $this->SpeechScript->Exercise->id,
                         'speech_function_id' => $this->request->data['SpeechScript']['speech_function_id'],
                         'script_index' => $i

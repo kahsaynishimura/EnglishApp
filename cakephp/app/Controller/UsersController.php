@@ -71,9 +71,9 @@ class UsersController extends AppController {
         if ($this->request->is(array('post', 'put')) && $this->request->query('userId')) {
             $options = array('fields' => array('id', 'username'), 'conditions' => array('id' => $this->request->query('userId')));
             $user = $this->User->find('first', $options);
-            $this->log('User Id - resetPassword: ' . $user['User']['id'] . ' llll');
+          //  $this->log('User Id - resetPassword: ' . $user['User']['id'] . ' llll');
             $this->User->id = $this->request->query('userId');
-            $this->log($this->request->data);
+          //  $this->log($this->request->data);
             if ($this->User->saveField('password', $this->request->data['User']['password'])) {
                 $message = __('The user has been saved. Redirecting to echopractice.com');
 

@@ -17,6 +17,11 @@ class VideoLessonScriptsController extends AppController {
      */
     public $components = array('Paginator', 'RequestHandler');
 
+    public function beforeFilter() {
+        parent::beforeFilter();
+        $this->Auth->allow('edit_api');
+    }
+
     /**
      * index method
      *
@@ -25,6 +30,7 @@ class VideoLessonScriptsController extends AppController {
     public function index($id = 0) {
         $this->VideoLessonScript->recursive = 0;
         $this->Paginator->settings = array(
+            'limit' => '1000',
             'order' => 'VideoLessonScript.stop_at_seconds desc'
         );
         $scripts = $this->Paginator->paginate('VideoLessonScript', array('VideoLessonScript.lesson_id' => $id));
@@ -40,7 +46,7 @@ class VideoLessonScriptsController extends AppController {
         $this->VideoLessonScript->recursive = 0;
         $this->VideoLessonScript->Lesson->recursive = 0;
         $this->Paginator->settings = array(
-            'limit' => '400'
+            'limit' => '1000'
         );
         $lesson = $videoScripts = $this->VideoLessonScript->Lesson->find('first', array(
             'fields' => array('Lesson.id', 'book_id', 'name', 'lesson_index'),
@@ -170,7 +176,8 @@ class VideoLessonScriptsController extends AppController {
             if ($this->VideoLessonScript->save($this->data)) {
                 $this->VideoLessonScript->recursive = 0;
                 $this->Paginator->settings = array(
-                    'order' => 'VideoLessonScript.stop_at_seconds desc'
+                    'order' => 'VideoLessonScript.stop_at_seconds desc',
+                    'limit' => '1000',
                 );
                 $scripts = $this->Paginator->paginate('VideoLessonScript', array(
                     'VideoLessonScript.lesson_id' => $this->data['VideoLessonScript']['lesson_id']));
@@ -251,6 +258,7 @@ class VideoLessonScriptsController extends AppController {
         if ($this->VideoLessonScript->delete()) {
             $this->VideoLessonScript->recursive = 0;
             $this->Paginator->settings = array(
+                'limit' => '1000',
                 'order' => 'VideoLessonScript.stop_at_seconds desc'
             );
             $scripts = $this->Paginator->paginate('VideoLessonScript', array(
@@ -298,10 +306,13 @@ class VideoLessonScriptsController extends AppController {
                 if ($this->VideoLessonScript->saveField($field, $this->data['VideoLessonScript']['value'])) {
                     $this->VideoLessonScript->recursive = 0;
                     $this->Paginator->settings = array(
+                        'limit' => '1000',
                         'order' => 'VideoLessonScript.stop_at_seconds desc'
                     );
                     $scripts = $this->Paginator->paginate('VideoLessonScript', array(
                         'VideoLessonScript.lesson_id' => $this->data['VideoLessonScript']['lesson_id']));
+                    
+                    $this->response->header('Access-Control-Allow-Origin', '*');
                     $this->set('videoLessonScripts', $scripts);
                     $this->VideoLessonScript->Lesson->recursive = 0;
                     $lesson = $this->VideoLessonScript->Lesson->find('first', array(

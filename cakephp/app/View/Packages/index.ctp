@@ -25,7 +25,6 @@
                     <td><?php echo h($package['Package']['modified']); ?>&nbsp;</td>
                     <td class="actions">
                         <?php echo $this->Html->link(__('Add Text Practice'), array('controller' => 'books', 'action' => 'add', $package['Package']['id'])); ?>
-                        <?php echo $this->Html->link(__('Add Video Practice'), array('controller' => 'videoLessons', 'action' => 'add', $package['Package']['id'])); ?>
                         <?php echo $this->Html->link(__('View'), array('action' => 'view', $package['Package']['id'])); ?>
                         <?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $package['Package']['id'])); ?>
                         <?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $package['Package']['id']), array('confirm' => __('Are you sure you want to delete # %s?', $package['Package']['id']))); ?>

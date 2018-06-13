@@ -31,6 +31,7 @@
             type: 'POST',
             url: 'https://echopractice.com/ep/videoLessonScripts/edit_api',
             data: {
+                'Access-Control-Allow-Credentials': true,
                 'data[VideoLessonScript][id]': id,
                 'data[VideoLessonScript][field]': className,
                 'data[VideoLessonScript][value]': newValue,

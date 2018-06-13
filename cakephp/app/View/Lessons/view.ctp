@@ -6,6 +6,11 @@
             <?php echo h($lesson['Lesson']['id']); ?>
             &nbsp;
         </dd>
+        <dt><?php echo __('Video Id'); ?></dt>
+        <dd>
+            <?php echo h($lesson['Lesson']['id_video']); ?>
+            &nbsp;
+        </dd>
         <dt><?php echo __('Name'); ?></dt>
         <dd>
             <?php echo h($lesson['Lesson']['name']); ?>

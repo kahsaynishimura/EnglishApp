@@ -17,6 +17,12 @@ class SpeechScriptChecksController extends AppController {
      */
     public $components = array('Paginator', 'RequestHandler');
 
+    public function beforeFilter() {
+        parent::beforeFilter();
+        // Allow users to register and logout.
+        $this->Auth->allow('add_api');
+    }
+
     /**
      * index method
      *
@@ -64,6 +70,29 @@ class SpeechScriptChecksController extends AppController {
         }
         $speechScripts = $this->SpeechScriptCheck->SpeechScript->find('list');
         $this->set(compact('speechScripts'));
+    }
+
+    /**
+     * add method
+     *
+     * @return void
+     */
+    public function add_api() {
+        if ($this->request->is(array('post', 'xml'))) {
+            $general_response = array();
+            $this->SpeechScriptCheck->create();
+
+            if ($this->SpeechScriptCheck->save($this->request->data)) {
+                $general_response = array('status' => 'success', 'data' => $this->SpeechScriptCheck->field("id"), 'message' => __('Your alternate check was saved.'));
+            } else {
+                $general_response = array('status' => 'error', 'data' => $this->SpeechScriptCheck->field("id"), 'message' => __('Something went wrong. Please, try again.'));
+            }
+        }
+
+        $this->set(array(
+            'general_response' => $general_response,
+            '_serialize' => array('general_response')
+        ));
     }
 
     /**
