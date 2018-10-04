@@ -77,13 +77,8 @@ class SpeechScriptsController extends AppController {
 
                 $str = $this->request->data['SpeechScript']['complete_text'];
 
-                $arr = '';
-                if ($this->request->data['SpeechScript']['include_comma'] === "1") {
-                    $arr = preg_split('/\R|\.|\/|!|;|:|,/', $str);
-                } else {
-                    $arr = preg_split('/\R|\/|;/', $str); //$arr = preg_split('/\R|\.|\/|!|;/', $str);
-                }
-                //$arr = preg_split('/\R|\.|\/|!|;|:/', $str); //explode("\n", $str);
+                $arr = explode("\n", $str);
+                
                 foreach ($arr as $key => $value) {
                     $arr[$key] = trim($arr[$key]);
                     if (empty($arr[$key]) || $arr[$key] == " ") {
@@ -95,7 +90,7 @@ class SpeechScriptsController extends AppController {
                 foreach ($arr as $key => $value) {
                     $i++;
                     $text = preg_split('/=|\|/', $value);
-                  //  var_dump($text);
+                    //  var_dump($text);
                     $speechScript = array(
                         'text_to_show' => $text[0],
                         'text_to_check' => $text[0],

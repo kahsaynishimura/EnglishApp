@@ -38,7 +38,7 @@ class PackagesController extends AppController {
 
 
         $options = array(
-            'fields' => array('id', 'name', 'is_free', 'is_scratch', 'link_blog_description', 'description'),
+            'fields' => array('id', 'name', 'is_free', 'is_scratch', 'link_blog_description', 'description', 'locale'),
             'contain' => array(
                 'UsersPackage' => array(
                     //return if the user bought this lesson

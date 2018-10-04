@@ -10,6 +10,16 @@
         <dd>
             <?php echo h($lesson['Lesson']['id_video']); ?>
             &nbsp;
+        </dd> 
+        <dt><?php echo __('Start milis'); ?></dt>
+        <dd>
+            <?php echo h($lesson['Lesson']['start_of_video_sec']); ?>
+            &nbsp;
+        </dd> 
+        <dt><?php echo __('End milis'); ?></dt>
+        <dd>
+            <?php echo h($lesson['Lesson']['end_of_video_sec']); ?>
+            &nbsp;
         </dd>
         <dt><?php echo __('Name'); ?></dt>
         <dd>

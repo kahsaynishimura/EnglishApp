@@ -133,7 +133,7 @@
     </center>
 
     <div id="script_list" style="padding:15px;" class="related">
-        <?php echo $this->element('list_scripts'); ?>
+        <?php echo $this->element('list_scripts', ['videoLesson' => $videoLesson]); ?>
     </div>
 </div>
 <div class="actions">

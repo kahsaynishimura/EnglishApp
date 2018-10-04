@@ -7,6 +7,7 @@
         echo $this->Form->input('is_free');
         echo $this->Form->input('is_scratch');
         echo $this->Form->input('description');
+        echo $this->Form->input('locale');
         echo $this->Form->input('link_blog_description');
         ?>
     </fieldset>

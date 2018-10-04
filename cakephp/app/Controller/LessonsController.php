@@ -28,7 +28,7 @@ class LessonsController extends AppController {
         $this->Lesson->Behaviors->load('Containable');
         if ($this->request->is('xml')) {
             $lesson = $this->Lesson->find('all', array(
-                'fields' => array('Lesson.id', 'id_video', 'name'),
+                'fields' => array('Lesson.id', 'id_video', 'name', 'start_of_video_sec', 'end_of_video_sec'),
                 'contain' => array(
                     'VideoLessonScript' => array(
                         'fields' => array('id',
@@ -73,7 +73,7 @@ class LessonsController extends AppController {
         if (!$this->Lesson->Book->exists($book_id)) {
             throw new NotFoundException(__('Invalid book'));
         }
-         $this->Paginator->settings = array(
+        $this->Paginator->settings = array(
             'Lesson' => array(
                 'order' => array('lesson_index' => 'asc'),
             )

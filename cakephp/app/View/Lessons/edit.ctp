@@ -7,6 +7,8 @@
         echo $this->Form->input('name');
         echo $this->Form->input('book_id');
         echo $this->Form->input('id_video');
+        echo $this->Form->input('start_of_video_sec', array('label' => __('Start of Video in Seconds')));
+        echo $this->Form->input('end_of_video_sec', array('label' => __('End of Video in Seconds')));
         echo $this->Form->input('lesson_index');
         echo $this->Form->input('url_pdf');
         ?>

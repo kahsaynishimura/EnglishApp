@@ -5,6 +5,8 @@
         <?php
         echo $this->Form->input('name');
         echo $this->Form->input('id_video');
+        echo $this->Form->input('start_of_video_sec', array('default' => 0, 'label' => __('Start of Video in seconds')));
+        echo $this->Form->input('end_of_video_sec', array('default' => 0, 'label' => __('End of Video in seconds')));
         echo $this->Form->input('lesson_index');
         ?>
     </fieldset>
